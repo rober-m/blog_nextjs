@@ -2,33 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
-
-html,
-body {
-  font-family: "Ubuntu", sans-serif;
-  background-color: #fff;
-  color: #222;
-  font-weight: 200;
-  height: 100%;
+@layer base {
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap)
+			format('swap');
+	}
+	@font-face {
+		font-family: 'Ubuntu Mono';
+		src: url(https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap)
+			format('swap');
+	}
+	html,
+	body {
+		@apply bg-gray-50 text-gray-800;
+		@apply font-ubuntu;
+		/* @apply font-ubuntuMono; */
+	}
+	h1 {
+		@apply text-4xl leading-10 mt-7;
+		@apply text-green-500;
+	}
+	h2 {
+		@apply text-3xl leading-10 mt-7;
+		@apply before:content-['#'] before:-ml-5 before:mr-2 before:text-gray-400;
+	}
+	h3 {
+		@apply text-xl leading-7 mt-3;
+	}
+	p {
+		@apply mt-5;
+	}
+	a {
+		@apply hover:text-green-500 active:text-green-500;
+	}
 }
 
-#__next {
-  height: 100%;
-}
-
-a {
-  color: #9b9b9b;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:active,
-a:hover {
-  color: #000;
-}
-
+/*
 .youtube-container {
   position: relative;
   width: 100%;
@@ -44,4 +54,5 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-} */
+}
+*/

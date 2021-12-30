@@ -1,43 +1,5 @@
-.content {
-	font-family: 'Ubuntu', sans-serif;
-	color: #222;
-	font-weight: 200;
-}
-
-.content time {
+/* .content time {
 	color: #9b9b9b;
-}
-
-.content p {
-	line-height: 1.5rem;
-	margin: 1.5rem 0 0 0;
-}
-
-.content a {
-	color: blue;
-	text-decoration: underline;
-}
-
-.content h1 {
-	margin: 2.5rem 0 0 0;
-}
-
-.content h2,
-.content h3,
-.content h4,
-.content h5 {
-	margin: 2rem 0 0 0;
-	line-height: 1.25em;
-}
-
-.content h2::before {
-	position: absolute;
-	margin-left: -1em;
-	font-weight: 300;
-	font-size: 1.5rem;
-	color: #9b9b9b;
-	display: none;
-	content: '#';
 }
 
 .content pre {
@@ -139,4 +101,4 @@
 	.content h2::before {
 		display: block;
 	}
-}
+} */

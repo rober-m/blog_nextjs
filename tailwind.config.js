@@ -4,7 +4,12 @@ module.exports = {
 		'./components/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				ubuntu: ['Ubuntu', 'sans-serif'],
+				ubuntuMono: ['Ubuntu Mono', 'monospace'],
+			},
+		},
 	},
 	plugins: [],
 };
