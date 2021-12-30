@@ -14,7 +14,7 @@ export default function Index() {
 				<div>
 					<h1>Hi, I'm Robertino Martinez</h1>
 					<span className='handle'>@robertinom_en</span>
-					<h2>I'm a technical founder and student of Blockchain</h2>
+					<h2>I'm a technical founder and Blockchain student</h2>
 					<SocialList />
 				</div>
 			</div>
