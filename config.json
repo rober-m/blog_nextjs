@@ -1,16 +1,16 @@
 {
-  "base_url": "publications.robertinom.com",
-  "site_title": "Robertino Martinez Publications",
-  "site_description": "Next.js blog template for Netlify",
-  "site_keywords": [
-    "Business",
-    "Blockchain",
-    "Programming",
-    "Development",
-    "Coding",
-    "Indie"
-  ],
-  "posts_per_page": 5,
-  "twitter_account": "@robertinom_en",
-  "github_account": "IIPatternII"
+	"base_url": "https://publications.robertinom.com",
+	"site_title": "Robertino Martinez Publications",
+	"site_description": "Robertino Martinez Publications",
+	"site_keywords": [
+		{ "keyword": "Business" },
+		{ "keyword": "Blockchain" },
+		{ "keyword": "Programming" },
+		{ "keyword": "Development" },
+		{ "keyword": "Coding" },
+		{ "keyword": "Indie" }
+	],
+	"posts_per_page": 5,
+	"twitter_account": "@robertinom_en",
+	"github_account": "IIPatternII"
 }

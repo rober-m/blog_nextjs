@@ -1,6 +1,12 @@
 authors:
   - slug: robertinom
     name: Robertino Martinez
-    introduction: Co-founder of Arquia, ClientFlows, and others. / Civil Engineer /
-      Coder / Typescript + React + NextJS / Dart + Flutter / Python / Tensorflow
-      / Aspiring Blockchain dev
+    introduction:
+      Co-founder and CTO at Fuller, Inc. / Software & Data Engineer /
+      Python / Golang / React
+# authors:
+#   - slug: robertinom
+#     name: Robertino Martinez
+#     introduction: Co-founder of Arquia, ClientFlows, and others. / Civil Engineer /
+#       Coder / Typescript + React + NextJS / Dart + Flutter / Python / Tensorflow
+#       / Aspiring Blockchain dev
