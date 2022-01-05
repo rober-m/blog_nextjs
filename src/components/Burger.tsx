@@ -4,22 +4,18 @@ type Props = {
 };
 export default function Burger({ active, onClick }: Props) {
 	return (
-		<div className={'container ' + (active ? 'active' : '')} onClick={onClick}>
+		<div
+			className={
+				'bg-gray-50 fixed w-10 h-10 cursor-pointer top-4 left-5 z-10 lg:hidden' +
+				(active ? 'active' : '')
+			}
+			onClick={onClick}
+		>
 			<div className={'meat meat-1'} />
 			<div className={'meat meat-2'} />
 			<div className={'meat meat-3'} />
 			<style jsx>
 				{`
-					.container {
-						position: fixed;
-						width: 38px;
-						height: 38px;
-						cursor: pointer;
-						top: 1rem;
-						left: 1.25rem;
-						z-index: 2;
-						background-color: rgba(255, 255, 255, 0.7);
-					}
 					.meat {
 						position: absolute;
 						width: 28px;
@@ -46,12 +42,6 @@ export default function Burger({ active, onClick }: Props) {
 					}
 					.active .meat-3 {
 						transform: rotate(-45deg);
-					}
-
-					@media (min-width: 1024px) {
-						.container {
-							display: none;
-						}
 					}
 				`}
 			</style>
