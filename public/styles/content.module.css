@@ -1,4 +1,4 @@
-/* .content time {
+.content time {
 	color: #9b9b9b;
 }
 
@@ -101,4 +101,4 @@
 	.content h2::before {
 		display: block;
 	}
-} */
+}
