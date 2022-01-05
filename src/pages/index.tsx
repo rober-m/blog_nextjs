@@ -10,41 +10,18 @@ export default function Index() {
 			<BasicMeta url={'/'} />
 			<OpenGraphMeta url={'/'} />
 			<TwitterCardMeta url={'/'} />
-			<div className='container'>
-				<div className=' max-w-md'>
-					<h1>Hi, I'm Robertino Martinez</h1>
-					<span className='handle'>@robertinom_en</span>
-					<h2>Engineer, technical founder, Blockchain student</h2>
+			<div className='container flex justify-center items-center px-6'>
+				<div className='max-w-md'>
+					<h1 className='md:text-5xl'>Hi, I'm Robertino Martinez</h1>
+					<span className='inline-block mt-1 text-gray-500 font-ubuntuMono'>
+						@robertinom_en
+					</span>
+					<h2 className='before:hidden md:text-4xl'>
+						Engineer, technical founder, Blockchain student
+					</h2>
 					<SocialList />
 				</div>
 			</div>
-			<style jsx>{`
-				.container {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					flex: 1 1 auto;
-					padding: 0 1.5rem;
-				}
-				h2:before {
-					display: none;
-				}
-				.handle {
-					display: inline-block;
-					margin-top: 0.275em;
-					color: #9b9b9b;
-					letter-spacing: 0.05em;
-				}
-
-				@media (min-width: 769px) {
-					h1 {
-						font-size: 3rem;
-					}
-					h2 {
-						font-size: 2.25rem;
-					}
-				}
-			`}</style>
 		</Layout>
 	);
 }
