@@ -21,7 +21,7 @@
 	}
 	h1 {
 		@apply text-4xl leading-10 mt-7;
-		@apply text-green-500;
+		@apply text-teal-800;
 	}
 	h2 {
 		@apply text-3xl leading-10 mt-7;
@@ -34,7 +34,7 @@
 		@apply mt-5;
 	}
 	a {
-		@apply hover:text-green-500 active:text-green-500;
+		@apply hover:text-teal-600 active:text-teal-600;
 	}
 }
 
