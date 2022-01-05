@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from "../../public/styles/content.module.css";
+import styles from '../../public/styles/content.module.css';
 import Author from './Author';
 import Copyright from './Copyright';
 import Date from './Date';
@@ -72,8 +72,8 @@ export default function PostLayout({
 							</div>
 						</div>
 					</header>
-					{/* <div className={styles.content}>{children}</div> */}
-					<div>{children}</div>
+					<div className={styles.content}>{children}</div>
+					{/* <div>{children}</div> */}
 					<ul className={'tag-list'}>
 						{tags.map((it, i) => (
 							<li key={i}>
