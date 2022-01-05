@@ -98,7 +98,7 @@
 		position: relative;
 	}
 
-	.content h2::before {
+	/* .content h2::before {
 		display: block;
-	}
+	} */
 }
