@@ -66,7 +66,7 @@ export default function Navigation() {
 							color: #222;
 						}
 
-						@media (min-width: 769px) {
+						@media (min-width: 1024px) {
 							.container {
 								width: 7rem;
 								display: block;
