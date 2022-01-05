@@ -11,10 +11,10 @@ export default function Index() {
 			<OpenGraphMeta url={'/'} />
 			<TwitterCardMeta url={'/'} />
 			<div className='container'>
-				<div>
+				<div className=' max-w-md'>
 					<h1>Hi, I'm Robertino Martinez</h1>
 					<span className='handle'>@robertinom_en</span>
-					<h2>I'm a technical founder and Blockchain student</h2>
+					<h2>Engineer, technical founder, Blockchain student</h2>
 					<SocialList />
 				</div>
 			</div>
