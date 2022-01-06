@@ -5,3 +5,7 @@ tags:
     name: programming
   - slug: indie-hacking
     name: indie_hacking
+  - slug: cryptography
+    name: cryptography
+  - slug: protocol
+    name: protocol
