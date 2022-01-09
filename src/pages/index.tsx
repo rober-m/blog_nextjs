@@ -17,7 +17,7 @@ export default function Index() {
 						@robertinom_en
 					</span>
 					<h2 className='before:hidden md:text-4xl'>
-						Engineer, technical founder, Blockchain student
+						Engineer, technical founder, Blockchain developer
 					</h2>
 					<SocialList />
 				</div>
