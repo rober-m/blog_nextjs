@@ -86,9 +86,9 @@
 	font-family: 'Ubuntu Mono', monospace;
 }
 
-.content img {
-	width: 100%;
-}
+/* .content img { */
+/* width: 100%; */
+/* } */
 
 @media (min-width: 769px) {
 	.content h2,

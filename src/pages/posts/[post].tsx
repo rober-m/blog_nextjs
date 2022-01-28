@@ -10,6 +10,7 @@ import { parseISO } from 'date-fns';
 import PostLayout from '../../components/PostLayout';
 
 import YouTube from 'react-youtube';
+import { Accordion } from '../../components/Accordion';
 
 export type Props = {
 	title: string;
@@ -21,7 +22,7 @@ export type Props = {
 	source: MdxRemote.Source;
 };
 
-const components = { YouTube };
+const components = { YouTube, Accordion };
 const slugToPostContent = ((postContents) => {
 	let hash = {};
 	postContents.forEach((it) => (hash[it.slug] = it));
