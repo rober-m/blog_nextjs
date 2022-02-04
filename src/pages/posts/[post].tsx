@@ -11,6 +11,7 @@ import PostLayout from '../../components/PostLayout';
 
 import YouTube from 'react-youtube';
 import { Accordion } from '../../components/Accordion';
+import { PaizaEmbed } from '../../components/PaizaEmbed';
 
 export type Props = {
 	title: string;
@@ -22,7 +23,7 @@ export type Props = {
 	source: MdxRemote.Source;
 };
 
-const components = { YouTube, Accordion };
+const components = { YouTube, Accordion, PaizaEmbed };
 const slugToPostContent = ((postContents) => {
 	let hash = {};
 	postContents.forEach((it) => (hash[it.slug] = it));

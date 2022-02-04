@@ -24,7 +24,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 	}
 
 	return (
-		<div className='flex flex-col m-4  border border-solid border-black rounded '>
+		<div className='flex flex-col my-4 mx-1 border border-solid border-black rounded '>
 			<button
 				className=' bg-violet-300 py-2  cursor-pointer focus:outline-none flex flex-row items-center '
 				onClick={toggleAccordion}
@@ -41,7 +41,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 				style={{ maxHeight: `${height}` }}
 				className='overflow-y-hidden transition-max-height duration-700 ease-in-out bg-violet-100'
 			>
-				<div className='p-1'>{content}</div>
+				<div className='p-0'>{content}</div>
 			</div>
 		</div>
 	);
