@@ -9,3 +9,7 @@ tags:
     name: cryptography
   - slug: protocol
     name: protocol
+  - slug: haskell-course
+    name: Haskell Course
+  - slug: haskell
+    name: Haskell
