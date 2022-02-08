@@ -5,10 +5,9 @@ type Props = {
 export default function Burger({ active, onClick }: Props) {
 	return (
 		<div
-			className={
-				'bg-gray-50 fixed w-10 h-10 cursor-pointer top-4 left-5 z-10 lg:hidden' +
-				(active ? 'active' : '')
-			}
+			className={`bg-gray-50 fixed w-10 h-10 cursor-pointer top-4 left-5 z-10 lg:hidden ${
+				active ? 'active' : ''
+			} `}
 			onClick={onClick}
 		>
 			<div className={'meat meat-1'} />
