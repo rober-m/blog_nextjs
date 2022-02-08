@@ -17,10 +17,10 @@ export default function Navigation() {
 						</Link>
 					</li>
 					<li>
-						<Link href='/courses/Haskell'>
+						<Link href='/courses/haskell-course'>
 							<a
 								className={
-									router.pathname.startsWith('/courses/blockchain')
+									router.pathname.startsWith('/courses/haskell-course')
 										? 'active'
 										: null
 								}
