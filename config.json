@@ -20,7 +20,10 @@
     },
     {
       "keyword": "Indie"
-    }
+    },
+    "Haskell",
+    "Plutus",
+    "Cardano"
   ],
   "posts_per_page": 5,
   "twitter_account": "@robertinom_en",
