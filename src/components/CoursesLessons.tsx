@@ -16,11 +16,8 @@ export default function TagPostList({ posts, tag }: Props) {
 			</h1>
 			<ul>
 				{posts.map((it, i) => (
-					<li
-						key={i}
-						className=' border rounded p-2 border-violet-300 shadow bg-violet-50 mb-4'
-					>
-						<PostItem post={it} />
+					<li key={i}>
+						<PostItem post={it} isLesson />
 					</li>
 				))}
 			</ul>

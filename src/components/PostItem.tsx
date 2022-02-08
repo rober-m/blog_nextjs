@@ -5,11 +5,18 @@ import { parseISO } from 'date-fns';
 
 type Props = {
 	post: PostContent;
+	isLesson?: boolean;
 };
-export default function PostItem({ post }: Props) {
+export default function PostItem({ post, isLesson }: Props) {
 	return (
 		<Link href={'/posts/' + post.slug}>
-			<a>
+			<a
+				className={
+					isLesson
+						? 'w-full border rounded p-2 border-violet-300 shadow bg-violet-50 mb-4'
+						: ''
+				}
+			>
 				<Date date={parseISO(post.date)} />
 				<h2>{post.title}</h2>
 				<style jsx>
