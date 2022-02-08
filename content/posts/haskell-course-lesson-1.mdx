@@ -1,0 +1,169 @@
+---
+slug: haskell-course-lesson-1
+title: Lesson 1 - Introduction
+date: 2022-02-08
+author: robertinom
+tags:
+  - haskell-course
+  - haskell
+  - blockchain
+  - programming
+---
+
+
+# Haskell Course -Lesson 0 - Testing
+
+Some courses start by explaining all the properties of Haskell. Others start by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. We won't do that here. Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
+
+This course is geared to people who code but have no CS degree or motivated people that don't code. The lecture itself will be written as if the person already knows basic programming knowledge (what a variable is, what a function is, etc.) and further explanations for people new to coding will be provided by hovering or clicking in special highlights like *this one*.
+
+You also don't need to install anything in your computer, yet. I'll provide an interactive way to practice here in the lessons. Ok. Are you ready? Let's go!
+
+## Commenting the code
+
+Sometimes the code is not clear or needs a little bit (or a lot 👀) of explanation. That's when *comments* come in. In Haskell, you can comment a single line of code by using a double-dash like this:
+
+```Haskell
+
+```
+
+Or, if you want to comment multiple lines at the same time, you can add a `{-` at the beginning and a `-}` at the end like this:
+
+```Haskell
+
+```
+
+I'll be using comments heavily to explain concepts inside the code. Now, let's go learn about our first *type*.
+
+## Characters
+
+The first thing that we're going to learn are that *characters* in Haskell are written between single quotes like this:
+
+```Haskell
+
+```
+
+Note that, if you write a number surrounded by single quotes (like in the last line), Haskell won't treat it like a number, it will treat it like any other character. So, you can't do math with `'7'`.
+This one was easy, so we won't waste more time on it.
+
+## Strings
+
+*Strings* represent — like the name suggest — strings of characters. You can use *Strings* to write messages, alphanumeric values, symbols, etc. They are written with double quotes like this:
+
+```Haskell
+
+```
+
+In Haskell, single *characters* and *Strings* are different! These are not the same!:
+
+```Haskell
+
+```
+
+You can write a `String` with a single character (e.g, `"p"`),  but you can't write a character with multiple characters (e.g. ~~`'hi'`~~).
+
+Why in the world are these different? 
+
+Add meme here.
+
+I'll tell you why... soon. I like to maintain some mystery in first dates 😏.
+Ok, great! We know about Strings and characters. Let's use them so we can get familiar!
+
+## Executing the code
+
+I'll provide a special *component* that can *compile* and *run* your *code*. Said component needs you to respect a specific *boilerplate*. We'll explain what this boilerplate does waaaaaaay into this course (because it's more advanced stuff). 
+
+Our boilerplate looks like this:
+
+```Haskell
+
+```
+
+It's just three lines. We'll explain the last line next, the other two we'll explain eventually. For now, think of them as something mysterious you have to write so you can do your thing. We'll se an example in the next section.
+
+## Showing something
+
+When you *run* your code, you don't see what's happening. The machine does its thing and, if you don't tell it, it won't show anything to you. So, all programming languages come with special ways to tell the computer to show you stuff.
+
+Python has:
+
+```Python
+
+```
+
+JavaScript has:
+
+```javascript
+
+```
+
+And Haskell has:
+
+```Haskell
+
+```
+
+`print` is a *function* that takes only one *parameter* and indicates to Haskell that you what to show in the *terminal* what's next after the white space. (Note that there's a white space before the parenthesis.) We'll learn how Haskell's functions work in future lessons, don't worry. I introduced `print` in this lesson so we can interact with the code easily.
+
+You can show any text by surrounding it by double quotes — like in the previous example. But you can also show numbers like this:
+
+```Haskell
+
+```
+
+Awesome! Now, let's run this bad boy! Open the next component — it will have the code already written — and click on the "Run (Ctrl+Enter)" button:
+
+Component containing:
+
+```Haskell
+
+```
+
+You just run your first Haskell program! 🥳  Super easy! 😃  Now let's play a little!
+
+What happens if we change `print ("Hello World!")` to `print (4)` ? Modify the code inside the component and try it!
+
+The console shows `4`, nothing fancy here. Let's do something a little bit more complicated.
+
+**You can't have two elements at the same time:**
+
+That's because `print` expects a single element as *parameter*. We'll explain why after we study types and functions. I'm letting you now this now in case you get an error trying things out:
+
+```Haskell
+
+```
+
+## Doing some basic math
+
+Here's a few common math operations in Haskell and its correspondent symbol and example:
+
+| Operation      | Haskell Symbol | Example |
+| -------------- | -------------- | ------- |
+| Addition       | +              | 3 + 2   |
+| Subtraction    | \-             | 3 - 2   |
+| Multiplication | \*             | 3 * 2   |
+| Division       | /              | 3 / 2   |
+
+It's important that you remember that operations have an *order* (division before addition and such). And in Haskell — the same as in maths — you can alter the order by applying parenthesis:
+$$ 6 + 4 / 2 = 8$$
+
+$$ (6 + 4) / 2 = 5$$
+
+Now comes an important thing to keep in mind: **Haskell will try to reduce expressions until it's no longer possible**. That means that if you write:
+
+$$1 + 1 + 1$$
+
+Haskell will reduce it to `3` and then will continue with whatever it needs to do next. So, if we write:
+
+```Haskell
+
+```
+
+Haskell will reduce the expression inside parenthesis like this:
+$$ 5 + 8/2 = 5 + 4 = 9$$
+By the time `print` is *called*, it will be `print (9)`. 
+
+## Homework
+
+* Get familiar with the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations) and take a peek at the [programming languages section](https://en.wikipedia.org/wiki/Order_of_operations#Programming_languages).
+*
