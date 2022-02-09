@@ -22,14 +22,17 @@ You also don't need to install anything in your computer, yet. I'll provide an i
 
 Sometimes the code is not clear or needs a little bit (or a lot 👀) of explanation. That's when _comments_ come in. In Haskell, you can comment a single line of code by using a double-dash like this:
 
-```Haskell
-
+```hs
+-- comment
+main :: IO ()
+main =  do
+print ("You'll write your code here")
 ```
 
 Or, if you want to comment multiple lines at the same time, you can add a `{-` at the beginning and a `-}` at the end like this:
 
-```Haskell
-
+```hs
+print(5 + 8 / 2);
 ```
 
 I'll be using comments heavily to explain concepts inside the code. Now, let's go learn about our first _type_.
@@ -38,7 +41,7 @@ I'll be using comments heavily to explain concepts inside the code. Now, let's g
 
 The first thing that we're going to learn are that _characters_ in Haskell are written between single quotes like this:
 
-```Haskell
+```js
 
 ```
 
@@ -49,13 +52,13 @@ This one was easy, so we won't waste more time on it.
 
 _Strings_ represent — like the name suggest — strings of characters. You can use _Strings_ to write messages, alphanumeric values, symbols, etc. They are written with double quotes like this:
 
-```Haskell
+```js
 
 ```
 
 In Haskell, single _characters_ and _Strings_ are different! These are not the same!:
 
-```Haskell
+```js
 
 ```
 
@@ -74,7 +77,7 @@ I'll provide a special _component_ that can _compile_ and _run_ your _code_. Sai
 
 Our boilerplate looks like this:
 
-```Haskell
+```js
 
 ```
 
@@ -86,19 +89,15 @@ When you _run_ your code, you don't see what's happening. The machine does its t
 
 Python has:
 
-```Python
-
-```
-
 JavaScript has:
 
-```javascript
+```haskell
 
 ```
 
 And Haskell has:
 
-```Haskell
+```js
 
 ```
 
@@ -106,7 +105,7 @@ And Haskell has:
 
 You can show any text by surrounding it by double quotes — like in the previous example. But you can also show numbers like this:
 
-```Haskell
+```js
 
 ```
 
@@ -114,7 +113,7 @@ Awesome! Now, let's run this bad boy! Open the next component — it will have t
 
 Component containing:
 
-```Haskell
+```js
 
 ```
 
@@ -128,7 +127,7 @@ The console shows `4`, nothing fancy here. Let's do something a little bit more 
 
 That's because `print` expects a single element as _parameter_. We'll explain why after we study types and functions. I'm letting you now this now in case you get an error trying things out:
 
-```Haskell
+```js
 
 ```
 
@@ -154,7 +153,7 @@ $$1 + 1 + 1$$
 
 Haskell will reduce it to `3` and then will continue with whatever it needs to do next. So, if we write:
 
-```Haskell
+```js
 
 ```
 

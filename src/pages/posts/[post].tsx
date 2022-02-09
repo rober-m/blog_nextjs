@@ -12,6 +12,12 @@ import PostLayout from '../../components/PostLayout';
 import YouTube from 'react-youtube';
 import { Accordion } from '../../components/Accordion';
 import { PaizaEmbed } from '../../components/PaizaEmbed';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/shades-of-purple.css';
+import hljs from 'highlight.js';
+hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
 	title: string;
@@ -40,6 +46,7 @@ export default function Post({
 	source,
 }: Props) {
 	const content = hydrate(source, { components });
+	content;
 	return (
 		<PostLayout
 			title={title}
@@ -70,7 +77,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
 		},
 	});
-	const mdxSource = await renderToString(content, { components, scope: data });
+	const mdxSource = await renderToString(content, {
+		components,
+		scope: data,
+		mdxOptions: {
+			rehypePlugins: [
+				//@ts-ignore
+				rehypeHighlight,
+				//@ts-ignore
+				rehypeSlug,
+				//@ts-ignore
+				[rehypeAutolinkHeadings, { behavior: 'wrap' }],
+			],
+		},
+	});
 	return {
 		props: {
 			title: data.title,
