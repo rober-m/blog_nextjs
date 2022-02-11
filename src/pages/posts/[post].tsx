@@ -17,6 +17,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/shades-of-purple.css';
 import hljs from 'highlight.js';
+import { ContentInTabs } from '../../components/ContentInTabs';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
@@ -29,7 +30,7 @@ export type Props = {
 	source: MdxRemote.Source;
 };
 
-const components = { YouTube, Accordion, PaizaEmbed };
+const components = { YouTube, Accordion, PaizaEmbed, ContentInTabs };
 const slugToPostContent = ((postContents) => {
 	let hash = {};
 	postContents.forEach((it) => (hash[it.slug] = it));
