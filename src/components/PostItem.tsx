@@ -18,7 +18,11 @@ export default function PostItem({ post, isLesson }: Props) {
 				}
 			>
 				<Date date={parseISO(post.date)} />
-				<h2>{post.title}</h2>
+				<h2>
+					{isLesson
+						? post.title.substring(post.title.indexOf('-') + 1)
+						: post.title}
+				</h2>
 				<style jsx>
 					{`
 						a {
