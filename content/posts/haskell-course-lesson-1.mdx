@@ -1,182 +1,26 @@
 ---
 slug: haskell-course-lesson-1
-title: Lesson 1 - Introduction
-date: 2022-02-08
+title: Haskell Course - Lesson 1 - Introduction and GHCi
+date: 2022-02-11
 author: robertinom
 tags:
   - haskell-course
   - haskell
-  - blockchain
   - programming
 ---
+Some courses start by explaining all the properties of Haskell. Others by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. We won't do that here. Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
 
-# Haskell Course -Lesson 0 - Testing
+This course is geared to people that do not code. The lecture will be written as if the person already knows basic computing skills but nothing about programming. And further explanations will be provided by hovering or clicking in highlights like *this one*.
 
-<ContentInTabs
-	tabs={[
-		{
-			title: 'title1',
-			content: (
-				<p>
-					aaa <b>bold</b>
-				</p>
-			),
-		},
-		{ title: 'title2', content: 'content2' },
-		{ title: 'title3', content: 'content3' },
-	]}
-/>
+Ok. Are you ready? Let's go!
 
-Some courses start by explaining all the properties of Haskell. Others start by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. We won't do that here. Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
 
-This course is geared to people who code but have no CS degree or motivated people that don't code. The lecture itself will be written as if the person already knows basic programming knowledge (what a variable is, what a function is, etc.) and further explanations for people new to coding will be provided by hovering or clicking in special highlights like _this one_.
+## GHCi (Glasgow Haskell Compiler Interactive)
 
-You also don't need to install anything in your computer, yet. I'll provide an interactive way to practice here in the lessons. Ok. Are you ready? Let's go!
+A *compiler* is a *program* that translates code written in one *programming language* into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need *compilers* and *interpreters* because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me). 
 
-## Commenting the code
+The cool thing is that it doesn't matter if you have Windows, macOS, Linux, or whatever. Write Haskell, and the GHC will manage the rest. Cool right?
 
-Sometimes the code is not clear or needs a little bit (or a lot 👀) of explanation. That's when _comments_ come in. In Haskell, you can comment a single line of code by using a double-dash like this:
+GHC (Glasgow Haskell Compiler) is a compiler and interactive environment for Haskell. We can compile programs and use them. Or we can evaluate Haskell expressions on the fly using the interactive environment provided by the GHC (the GHCi).
 
-```hs
--- comment
-main :: IO ()
-main =  do
-print ("You'll write your code here")
-```
-
-Or, if you want to comment multiple lines at the same time, you can add a `{-` at the beginning and a `-}` at the end like this:
-
-```hs
-print(5 + 8 / 2);
-```
-
-I'll be using comments heavily to explain concepts inside the code. Now, let's go learn about our first _type_.
-
-## Characters
-
-The first thing that we're going to learn are that _characters_ in Haskell are written between single quotes like this:
-
-```js
-
-```
-
-Note that, if you write a number surrounded by single quotes (like in the last line), Haskell won't treat it like a number, it will treat it like any other character. So, you can't do math with `'7'`.
-This one was easy, so we won't waste more time on it.
-
-## Strings
-
-_Strings_ represent — like the name suggest — strings of characters. You can use _Strings_ to write messages, alphanumeric values, symbols, etc. They are written with double quotes like this:
-
-```js
-
-```
-
-In Haskell, single _characters_ and _Strings_ are different! These are not the same!:
-
-```js
-
-```
-
-You can write a `String` with a single character (e.g, `"p"`), but you can't write a character with multiple characters (e.g. ~~`'hi'`~~).
-
-Why in the world are these different?
-
-Add meme here.
-
-I'll tell you why... soon. I like to maintain some mystery in first dates 😏.
-Ok, great! We know about Strings and characters. Let's use them so we can get familiar!
-
-## Executing the code
-
-I'll provide a special _component_ that can _compile_ and _run_ your _code_. Said component needs you to respect a specific _boilerplate_. We'll explain what this boilerplate does waaaaaaay into this course (because it's more advanced stuff).
-
-Our boilerplate looks like this:
-
-```js
-
-```
-
-It's just three lines. We'll explain the last line next, the other two we'll explain eventually. For now, think of them as something mysterious you have to write so you can do your thing. We'll se an example in the next section.
-
-## Showing something
-
-When you _run_ your code, you don't see what's happening. The machine does its thing and, if you don't tell it, it won't show anything to you. So, all programming languages come with special ways to tell the computer to show you stuff.
-
-Python has:
-
-JavaScript has:
-
-```haskell
-
-```
-
-And Haskell has:
-
-```js
-
-```
-
-`print` is a _function_ that takes only one _parameter_ and indicates to Haskell that you what to show in the _terminal_ what's next after the white space. (Note that there's a white space before the parenthesis.) We'll learn how Haskell's functions work in future lessons, don't worry. I introduced `print` in this lesson so we can interact with the code easily.
-
-You can show any text by surrounding it by double quotes — like in the previous example. But you can also show numbers like this:
-
-```js
-
-```
-
-Awesome! Now, let's run this bad boy! Open the next component — it will have the code already written — and click on the "Run (Ctrl+Enter)" button:
-
-Component containing:
-
-```js
-
-```
-
-You just run your first Haskell program! 🥳 Super easy! 😃 Now let's play a little!
-
-What happens if we change `print ("Hello World!")` to `print (4)` ? Modify the code inside the component and try it!
-
-The console shows `4`, nothing fancy here. Let's do something a little bit more complicated.
-
-**You can't have two elements at the same time:**
-
-That's because `print` expects a single element as _parameter_. We'll explain why after we study types and functions. I'm letting you now this now in case you get an error trying things out:
-
-```js
-
-```
-
-## Doing some basic math
-
-Here's a few common math operations in Haskell and its correspondent symbol and example:
-
-| Operation      | Haskell Symbol | Example |
-| -------------- | -------------- | ------- |
-| Addition       | +              | 3 + 2   |
-| Subtraction    | \-             | 3 - 2   |
-| Multiplication | \*             | 3 \* 2  |
-| Division       | /              | 3 / 2   |
-
-It's important that you remember that operations have an _order_ (division before addition and such). And in Haskell — the same as in maths — you can alter the order by applying parenthesis:
-$$ 6 + 4 / 2 = 8$$
-
-$$ (6 + 4) / 2 = 5$$
-
-Now comes an important thing to keep in mind: **Haskell will try to reduce expressions until it's no longer possible**. That means that if you write:
-
-$$1 + 1 + 1$$
-
-Haskell will reduce it to `3` and then will continue with whatever it needs to do next. So, if we write:
-
-```js
-
-```
-
-Haskell will reduce the expression inside parenthesis like this:
-$$ 5 + 8/2 = 5 + 4 = 9$$
-By the time `print` is _called_, it will be `print (9)`.
-
-## Homework
-
-- Get familiar with the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations) and take a peek at the [programming languages section](https://en.wikipedia.org/wiki/Order_of_operations#Programming_languages).
--
+For now, we'll use the GHCi. This interactive environment allows us to write code, hit enter, and get the result instantly! ⚡️😄 
