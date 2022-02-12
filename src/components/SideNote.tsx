@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface IProps {
 	content: React.ReactNode;
@@ -9,20 +9,11 @@ interface IProps {
 export const SideNote = ({ content, children, color }: IProps) => {
 	//TODO: load SideNote content from a file
 	const [isOpen, setIsOpen] = useState(false);
-	return (
-		<div
-			className={'group inline-block relative cursor-pointer'}
-			onClick={() => setIsOpen(!isOpen)}
-		>
-			<div
-				className={`z-20 absolute top-8 p-3  bg-gray-50 border border-black rounded-md shadow-md shadow-violet-400 w-96 max-h-60 overflow-y-auto
-				${isOpen ? 'block' : 'hidden'}`}
-			>
-				{content}
-				<div />
-			</div>
 
+	return (
+		<div className={'group inline relative'}>
 			<div
+				onClick={() => setIsOpen(true)}
 				style={{
 					margin: '0 -0.4em',
 					padding: '0.1em 0.4em',
@@ -33,9 +24,22 @@ export const SideNote = ({ content, children, color }: IProps) => {
 					WebkitBoxDecorationBreak: 'clone',
 					boxDecorationBreak: 'clone',
 				}}
-				className={`inline-block`}
+				className={`inline cursor-pointer`}
 			>
 				{children}
+			</div>
+			<div
+				className={`z-20 absolute top-8 p-3  bg-gray-50 border border-black rounded-md shadow-md shadow-violet-400 w-96 max-h-60 overflow-y-auto
+				${isOpen ? 'block' : 'hidden'}`}
+			>
+				<img
+					className='ml-auto w-6 mb-1 cursor-pointer'
+					src='/img/close.svg'
+					onClick={() => setIsOpen(false)}
+				/>
+
+				{content}
+				<div />
 			</div>
 		</div>
 	);
