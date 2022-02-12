@@ -11,13 +11,13 @@ tags:
 
 Some courses start by explaining all the properties of Haskell. Others by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. We won't do that here. Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
 
-This course is geared to people that do not code. The lecture will be written as if the person already knows basic computing skills but nothing about programming. And further explanations will be provided by hovering or clicking in highlights like <SideNote content={<p>paragraph</p>}>this one</SideNote>.
+This course is geared to people that do not code. The lecture will be written as if the person already knows basic computing skills but nothing about programming. And further explanations will be provided by clicking on highlights like <SideNote color='yellow' content={<div>This is a short explanation of the concept highlighted 🤓</div>}>this one</SideNote>.
 
 Ok. Are you ready? Let's go!
 
 ## GHCi (Glasgow Haskell Compiler Interactive)
 
-A <SideNote content={<div><h4 className='font'>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote content={<p>paragraph</p>}>program</SideNote> that translates code written in one _programming language_ into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and _interpreters_ because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
+A <SideNote color='violet' content={<div><h4 className='font'>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<p>paragraph</p>}>program</SideNote> that translates code written in one _programming language_ into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and _interpreters_ because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
 
 The cool thing is that it doesn't matter if you have Windows, macOS, Linux, or whatever. Write Haskell, and the GHC will manage the rest. Cool right?
 
