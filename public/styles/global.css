@@ -31,6 +31,12 @@
 	h3 {
 		@apply text-xl leading-7 mt-3;
 	}
+	h4 {
+		@apply text-lg leading-5 mt-2 font-bold;
+	}
+	h5 {
+		@apply text-lg leading-5 mt-2;
+	}
 	p {
 		@apply mt-5;
 	}
