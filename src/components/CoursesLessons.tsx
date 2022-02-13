@@ -30,7 +30,7 @@ const coursesAbstract: { [x: string]: any }[] = [
 	},
 ];
 
-export default function TagPostList({ posts, tag }: Props) {
+export default function CoursesLessons({ posts, tag }: Props) {
 	return (
 		<div className={'container w-full max-w-5xl mx-auto px-6 flex flex-col'}>
 			<h1 className='text-4xl lg:text-5xl capitalize text-center text-violet-700'>
