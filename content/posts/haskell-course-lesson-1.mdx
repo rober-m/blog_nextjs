@@ -17,10 +17,40 @@ Ok. Are you ready? Let's go!
 
 ## GHCi (Glasgow Haskell Compiler Interactive)
 
-A <SideNote color='violet' content={<div><h4 className='font'>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<div>paragraph</div>}>program</SideNote> that translates code written in one <SideNote content={<div><h4>Programming language</h4><p>A programming language is a formal language used by programmers (developers) to communicate instructions to computers. Usually, programming languages are written in plain text where each word, symbol, and number, has a pre-defined meaning for that specific language.</p><p>Example:</p><img src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png' alt='screenshot of C programming language'/></div>}>programming language</SideNote> into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and _interpreters_ because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
+A <SideNote color='violet' content={<div><h4 className='font'>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<div>paragraph</div>}>program</SideNote> that translates code written in one <SideNote content={<div><h4>Programming language</h4><p>A programming language is a formal language used by programmers (developers) to communicate instructions to computers. Usually, programming languages are written in plain text where each word, symbol, and number, has a pre-defined meaning for that specific language.</p><p>Example:</p><img src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png' alt='screenshot of C programming language'/></div>}>programming language</SideNote> into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and <SideNote content={<div><h4>Intepreters</h4><p>An interpreter is a computer program that directly executes instructions written in a programming or scripting language without requiring them previously to have been compiled into a machine language program.</p></div>}>interpreters</SideNote> because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
 
 The cool thing is that it doesn't matter if you have Windows, macOS, Linux, or whatever. Write Haskell, and the GHC will manage the rest. Cool right?
 
 GHC (Glasgow Haskell Compiler) is a compiler and interactive environment for Haskell. We can compile programs and use them. Or we can evaluate Haskell expressions on the fly using the interactive environment provided by the GHC (the GHCi).
 
 For now, we'll use the GHCi. This interactive environment allows us to write code, hit enter, and get the result instantly! ⚡️😄
+
+## The Terminal/Console/Shell
+
+We'll use the GHCi through our terminal. The terminal is a text-only window through which we can interact with our computer. You write text, hit enter, stuff happen, and you get text as response (most of the time).
+
+Here's how it looks:
+
+<div
+	style={{
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-evenly',
+		marginTop: '1rem',
+	}}
+>
+	<figure style={{ width: '45%' }}>
+		<img src='/img/linux_terminal.png' width='100%' />
+		<figcaption>
+			<i>Linux terminal</i>
+		</figcaption>
+	</figure>
+	<figure style={{ width: '45%' }}>
+		<img src='/img/windows_console.png' width='100%' />
+		<figcaption>
+			<i>Windows console</i>
+		</figcaption>
+	</figure>
+</div>
+
+To open your terminal, follow these instructions:
