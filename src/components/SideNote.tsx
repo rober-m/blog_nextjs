@@ -24,7 +24,7 @@ export const SideNote = ({ content, children, color }: IProps) => {
 					WebkitBoxDecorationBreak: 'clone',
 					boxDecorationBreak: 'clone',
 				}}
-				className={`inline cursor-pointer`}
+				className='inline cursor-pointer'
 			>
 				{children}
 			</div>
@@ -37,8 +37,7 @@ export const SideNote = ({ content, children, color }: IProps) => {
 					src='/img/close.svg'
 					onClick={() => setIsOpen(false)}
 				/>
-
-				{content}
+				<div>{content}</div>
 				<div />
 			</div>
 		</div>
