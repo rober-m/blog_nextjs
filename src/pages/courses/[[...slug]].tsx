@@ -60,18 +60,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = listTags().flatMap((tag) => {
-		const pages = Math.ceil(countPosts(tag.slug) / config.posts_per_page);
-		return Array.from(Array(pages).keys()).map((page) =>
-			page === 0
-				? {
-						params: { slug: [tag.slug] },
-				  }
-				: {
-						params: { slug: [tag.slug, (page + 1).toString()] },
-				  }
-		);
-	});
+	const paths = listTags()
+		// I don't know why I had to filter the tag. Else, it would serve in dev but not built in prod.
+		.filter((tag) => tag.slug === 'haskell-course')
+		.flatMap((tag) => {
+			console.log('getStaticPaths -> tag.slug: ', tag.slug);
+			return { params: { slug: [tag.slug] } };
+		});
 	return {
 		paths: paths,
 		fallback: false,
