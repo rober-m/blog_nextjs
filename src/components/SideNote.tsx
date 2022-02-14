@@ -11,7 +11,7 @@ export const SideNote = ({ content, children, color }: IProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<div className={'group inline relative'}>
+		<div className={'group inline lg:relative '}>
 			<div
 				onClick={() => setIsOpen(true)}
 				style={{
@@ -29,11 +29,11 @@ export const SideNote = ({ content, children, color }: IProps) => {
 				{children}
 			</div>
 			<div
-				className={`z-20 absolute top-8 p-3  bg-gray-50 border border-black rounded-md shadow-md shadow-violet-400 w-96 max-h-60 overflow-y-auto
-				${isOpen ? 'block' : 'hidden'}`}
+				className={`z-20 absolute left-6 mt-7 mr-6 p-3 sm:left-20 sm:mr-20 md:left-40 md:mr-40 lg:-left-48 lg:w-96 bg-gray-50 border border-black rounded-md shadow-md shadow-violet-400  max-h-60 overflow-y-auto
+				${isOpen ? ' inline-block' : 'hidden'}`}
 			>
 				<img
-					className='ml-auto w-6 mb-1 cursor-pointer'
+					className='ml-auto w-6 mb-1 cursor-pointer sticky top-0 right-0'
 					src='/img/close.svg'
 					onClick={() => setIsOpen(false)}
 				/>
