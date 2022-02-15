@@ -43,4 +43,13 @@
 	a {
 		@apply hover:text-violet-600 active:text-violet-600;
 	}
+	li {
+		@apply mt-2;
+	}
+	ul li {
+		@apply list-disc;
+	}
+	ol li {
+		@apply list-decimal;
+	}
 }
