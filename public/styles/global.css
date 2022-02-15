@@ -22,7 +22,7 @@
 	}
 	h1 {
 		@apply text-4xl leading-10 mt-7;
-		@apply text-teal-800;
+		@apply text-violet-900;
 	}
 	h2 {
 		@apply text-3xl leading-10 mt-7;
@@ -41,6 +41,6 @@
 		@apply mt-5;
 	}
 	a {
-		@apply hover:text-teal-600 active:text-teal-600;
+		@apply hover:text-violet-600 active:text-violet-600;
 	}
 }
