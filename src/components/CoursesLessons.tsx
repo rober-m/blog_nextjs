@@ -32,7 +32,7 @@ const coursesAbstract: { [x: string]: any }[] = [
 
 export default function CoursesLessons({ posts, tag }: Props) {
 	return (
-		<div className={'container w-full max-w-5xl mx-auto px-6 flex flex-col'}>
+		<div className={'container w-full max-w-7xl mx-auto px-6 flex flex-col'}>
 			<h1 className='text-4xl lg:text-5xl capitalize text-center text-violet-700'>
 				{tag.name} Lessons
 			</h1>
@@ -48,6 +48,16 @@ export default function CoursesLessons({ posts, tag }: Props) {
 					</li>
 				))}
 			</ul>
+			<p className='text-center bor'>
+				More lessons will be added <b>every few days!</b> 😁{' '}
+				<a
+					className=' underline text-violet-600'
+					href='https://twitter.com/robertinom_en'
+				>
+					Follow me on Twitter 🐦
+				</a>{' '}
+				to be the first to know!
+			</p>
 		</div>
 	);
 }
