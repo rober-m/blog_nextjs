@@ -2,9 +2,11 @@
 	color: #9b9b9b;
 }
 
-.content code {
+.content p code {
 	border-radius: 4px;
-	margin: 1rem 0;
+	padding: 0.2rem 0.4rem;
+	font-size: 85%;
+	background-color: #ddd;
 }
 
 .content p {
