@@ -2,7 +2,8 @@
 	color: #9b9b9b;
 }
 
-.content p code {
+.content p code,
+.content li code {
 	border-radius: 4px;
 	padding: 0.2rem 0.4rem;
 	font-size: 85%;

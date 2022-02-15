@@ -9,27 +9,34 @@ tags:
   - programming
 ---
 
-Some courses start by explaining all the properties of Haskell. Others by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. We won't do that here. Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
+Some courses start by explaining all the properties of Haskell. Others by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. Don't worry — I can hear you hyperventilate — we won't do that here. 🙃 Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
 
-This course is geared to people that do not code. The lecture will be written as if the person already knows basic computing skills but nothing about programming. And further explanations will be provided by clicking on highlights like <SideNote color='yellow' content={<div>This is a short explanation of the concept highlighted! 🤓 Click the X on the note's corner to close it</div>}>this one</SideNote>.
+<Giff url='https://giphy.com/embed/3otWpNbrkJwNaYzYuA' />
 
-Ok. Are you ready? Let's go!
+This course is geared to people that **do NOT code** The lecture will be written as if the person already knows basic computing skills (like installing programs and searching over the internet — 🧓🏼 will have a hard time, but they are welcome! 😃) but nothing about programming. And further explanations will be provided by clicking on highlights like <SideNote color='yellow' content={<div>This is a short explanation of the concept highlighted! 🤓 Click the X on the note's corner to close it</div>}>this one</SideNote>.
+
+Ok. Are you ready? Let's go! 🔥
 
 ## GHCi (Glasgow Haskell Compiler Interactive)
 
-A <SideNote color='violet' content={<div><h4>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<div><h4>Program</h4><p>A computer program is a sequence of instructions in a programming language that a computer can execute or interpret.</p><p>A computer program in its human-readable form is called source code. Source code needs another computer program (compiler or interpreter) to execute because computers can only execute their native machine instructions.</p></div>}>program</SideNote> that translates code written in one <SideNote content={<div><h4>Programming language</h4><p>A programming language is a formal language used by programmers (developers) to communicate instructions to computers. Usually, programming languages are written in plain text where each word, symbol, and number, has a pre-defined meaning for that specific language.</p><p>Example:</p><img src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png' alt='screenshot of C programming language'/></div>}>programming language</SideNote> into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and <SideNote content={<div><h4>Intepreters</h4><p>An interpreter is a computer program that directly executes instructions written in a programming or scripting language without requiring them previously to have been compiled into a machine language program.</p></div>}>interpreters</SideNote> because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
+A <SideNote color='violet' content={<div><h4>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<div><h4>Program</h4><p>A computer program is a sequence of instructions in a programming language that a computer can execute or interpret.</p><p>A computer program in its human-readable form is called source code. Source code needs another computer program (compiler or interpreter) to execute because computers can only execute their native machine instructions.</p></div>}>program</SideNote> that translates code written in one <SideNote content={<div><h4>Programming language</h4><p>A programming language is a formal language used by programmers (developers) to communicate instructions to computers. Usually, programming languages are written in plain text where each word, symbol, and number, has a pre-defined meaning for that specific language.</p><p>Example:</p><img src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png' alt='screenshot of C programming language'/></div>}>programming language</SideNote> into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need compilers and <SideNote content={<div><h4>Intepreters</h4><p>An interpreter is a computer program that directly executes instructions written in a programming or scripting language without requiring them previously to have been compiled into a machine language program.</p></div>}>interpreters</SideNote> because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me 🙈).
 
-The cool thing is that it doesn't matter if you have Windows, macOS, Linux, or whatever. Write Haskell, and the GHC will manage the rest. Cool right?
+The cool thing is that it doesn't matter if you have Windows, macOS, Linux, or whatever. Write Haskell, and the compiler will manage the rest. Cool right?
 
-GHC (Glasgow Haskell Compiler) is a compiler and interactive environment for Haskell. We can compile programs and use them. Or we can evaluate Haskell expressions on the fly using the interactive environment provided by the GHC (the GHCi).
+**GHC (Glasgow Haskell Compiler)** is a compiler and interactive environment for Haskell. Using GHC we can:
 
-For now, we'll use the GHCi. This interactive environment allows us to write code, hit enter, and get the result instantly! ⚡️😄
+- Compile programs and execute them like any other app.
+- Evaluate Haskell expressions on the fly using the interactive environment provided by the GHC (the GHCi).
+
+For now, we'll use the GHCi. This interactive environment allows us to write code, hit enter, and get the result instantly!⚡️⚡️ Allowing us to verify hypotheses faster than a 90' movie hacker.
+
+<Giff url='https://giphy.com/embed/YQitE4YNQNahy' />
 
 ## The Terminal/Console/Shell
 
-Terminal, shell, and command-line are technically different things. But many use those terms interchangeably — especially on programming tutorials. So, keep in mind that if someone says "go to the command-line" or "open the shell," they talk about the terminal app.
+Terminal, shell, and command-line are technically different things. But many use those terms interchangeably — especially in programming tutorials. 🙄 So, keep in mind that if someone says "go to the command-line" or "open the shell," they talk about the terminal app.
 
-We'll use the GHCi through our terminal. The terminal is a text-only window through which we can interact with our computer. You write text, hit enter, stuff happen, and you get text as response (most of the time).
+We'll use the GHCi through our terminal. **The terminal is a text-only window through which we can interact with our computer**. You write text, hit enter, stuff happen, and you get text as response (most of the time).
 
 Here's how it looks:
 
@@ -64,7 +71,7 @@ Here's how it looks:
 	]}
 />
 
-All operating systems have the Terminal already installed.
+All operating systems have a Terminal app already installed.
 
 We won't learn to use the terminal here because we'll only need a single
 
@@ -296,7 +303,13 @@ Let's test if everything is OK. Open your terminal, type `ghci` and hit Enter. Y
 
 The first thing that we'll learn is how to quit using GHCi. On `Prelude>` type `:q` and hit enter. It'll quit GHCi and return you to your terminal. To close your terminal, just close it like any other program.
 
-Awesome! We're ready to start our Haskell journey! 😃
+Awesome! You already took your first steps to become a programmer! We're ready to start our Haskell journey! 😃
+
+<img
+	src='/img/kind_of_a_coder.jpg'
+	with='100%'
+	style={{ margin: '0.5rem 0' }}
+/>
 
 ## Homework
 
@@ -304,8 +317,23 @@ I'll provide some homework and the solution to the previous lesson's homework in
 
 - Search and learn the difference between **source code** and **machine code**. (Searching and finding information is a crucial skill for programmers. We can't — and don't — remember everything about every technology we use. So, if you want to be a great coder, you have to be an expert searcher.)
 - Search and learn the difference between a compiler and an interpreter.
-- Familiarize yourself with the terminal: Search how to use the "cd" and "ls" terminal commands.
+- Familiarize yourself with the terminal: Search how to use the `cd` and `ls` commands.
 
 Don't worry if you don't understand everything. If you "kind of" understand, that's good enough. Each time you encounter the concept, you'll gain a little bit more insight 💪.
 
 That's it! 😄 In the next lesson, we'll learn about Haskell Types! 🤩 See you there!!
+
+<p
+	style={{
+		backgroundColor: '#dbd6fb',
+		padding: '0.5rem 1rem',
+		borderRadius: '4px',
+		color: '#733de4',
+	}}
+>
+	<i>
+		PD: If you find this course valuable, please share it so more people can
+		learn!
+	</i>{' '}
+	😄
+</p>

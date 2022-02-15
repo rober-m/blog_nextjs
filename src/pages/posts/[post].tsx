@@ -19,6 +19,7 @@ import 'highlight.js/styles/shades-of-purple.css';
 import hljs from 'highlight.js';
 import { TabbedContent } from '../../components/TabbedContent';
 import { SideNote } from '../../components/SideNote';
+import { Giff } from '../../components/Giff';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
@@ -31,7 +32,14 @@ export type Props = {
 	source: MdxRemote.Source;
 };
 
-const components = { YouTube, Accordion, PaizaEmbed, TabbedContent, SideNote };
+const components = {
+	YouTube,
+	Accordion,
+	PaizaEmbed,
+	TabbedContent,
+	SideNote,
+	Giff,
+};
 const slugToPostContent = ((postContents) => {
 	let hash = {};
 	postContents.forEach((it) => (hash[it.slug] = it));
