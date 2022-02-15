@@ -10,7 +10,7 @@ type Props = {
 
 const coursesAbstract: { [x: string]: any }[] = [
 	{
-		'Haskell Course': (
+		'Haskell course': (
 			<p>
 				This is a free course for complete beginners provided by{' '}
 				<a className='underline' href='https://twitter.com/robertinom_en'>
