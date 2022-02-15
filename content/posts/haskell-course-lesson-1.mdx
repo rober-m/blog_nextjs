@@ -11,13 +11,13 @@ tags:
 
 Some courses start by explaining all the properties of Haskell. Others by dedicating entire lessons/chapters to the theory behind the language, Category theory (a branch of mathematics), lambda calculus (more maths), etc. We won't do that here. Those approaches have nothing wrong, but they are designed to teach people with previous knowledge of mathematics and computer science — which most don't have.
 
-This course is geared to people that do not code. The lecture will be written as if the person already knows basic computing skills but nothing about programming. And further explanations will be provided by clicking on highlights like <SideNote color='yellow' content={<div>This is a short explanation of the concept highlighted 🤓</div>}>this one</SideNote>.
+This course is geared to people that do not code. The lecture will be written as if the person already knows basic computing skills but nothing about programming. And further explanations will be provided by clicking on highlights like <SideNote color='yellow' content={<div>This is a short explanation of the concept highlighted! 🤓 Click the X on the note's corner to close it</div>}>this one</SideNote>.
 
 Ok. Are you ready? Let's go!
 
 ## GHCi (Glasgow Haskell Compiler Interactive)
 
-A <SideNote color='violet' content={<div><h4 className='font'>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<div>paragraph</div>}>program</SideNote> that translates code written in one <SideNote content={<div><h4>Programming language</h4><p>A programming language is a formal language used by programmers (developers) to communicate instructions to computers. Usually, programming languages are written in plain text where each word, symbol, and number, has a pre-defined meaning for that specific language.</p><p>Example:</p><img src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png' alt='screenshot of C programming language'/></div>}>programming language</SideNote> into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and <SideNote content={<div><h4>Intepreters</h4><p>An interpreter is a computer program that directly executes instructions written in a programming or scripting language without requiring them previously to have been compiled into a machine language program.</p></div>}>interpreters</SideNote> because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
+A <SideNote color='violet' content={<div><h4>Compiler</h4><p>A compiler is a program that translates computer code written in one programming language (the source language) into another language (the target language). The name "compiler" is primarily used for programs that translate source code from a high-level programming language to a lower level language (e.g. assembly language, object code, or machine code) to create an executable program.</p></div>}>compiler</SideNote> is a <SideNote color='red' content={<div>paragraph</div>}>program</SideNote> that translates code written in one <SideNote content={<div><h4>Programming language</h4><p>A programming language is a formal language used by programmers (developers) to communicate instructions to computers. Usually, programming languages are written in plain text where each word, symbol, and number, has a pre-defined meaning for that specific language.</p><p>Example:</p><img src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png' alt='screenshot of C programming language'/></div>}>programming language</SideNote> into another language. In our case, the compiler will translate Haskell into something our computer can understand. We need _compilers_ and <SideNote content={<div><h4>Intepreters</h4><p>An interpreter is a computer program that directly executes instructions written in a programming or scripting language without requiring them previously to have been compiled into a machine language program.</p></div>}>interpreters</SideNote> because computers don't understand our language and don't want to write code in the computer's language like in the old days (trust me).
 
 The cool thing is that it doesn't matter if you have Windows, macOS, Linux, or whatever. Write Haskell, and the GHC will manage the rest. Cool right?
 
@@ -27,30 +27,266 @@ For now, we'll use the GHCi. This interactive environment allows us to write cod
 
 ## The Terminal/Console/Shell
 
+Terminal, shell, and command-line are technically different things. But many use those terms interchangeably — especially on programming tutorials. So, keep in mind that if someone says "go to the command-line" or "open the shell," they talk about the terminal app.
+
 We'll use the GHCi through our terminal. The terminal is a text-only window through which we can interact with our computer. You write text, hit enter, stuff happen, and you get text as response (most of the time).
 
 Here's how it looks:
 
-<div
-	style={{
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-evenly',
-		marginTop: '1rem',
-	}}
->
-	<figure style={{ width: '45%' }}>
-		<img src='/img/linux_terminal.png' width='100%' />
-		<figcaption>
-			<i>Linux terminal</i>
-		</figcaption>
-	</figure>
-	<figure style={{ width: '45%' }}>
-		<img src='/img/windows_console.png' width='100%' />
-		<figcaption>
-			<i>Windows console</i>
-		</figcaption>
-	</figure>
-</div>
+<TabbedContent
+	tabs={[
+		{
+			title: 'Linux Terminal',
+			content: (
+				<figure style={{ width: '300px' }}>
+					<img src='/img/linux_terminal.png' width='100%' />
+					<figcaption>
+						<i>Linux terminal</i>
+					</figcaption>
+				</figure>
+			),
+		},
+		{
+			title: 'Windows Terminal',
+			content: (
+				<figure style={{ width: '300px' }}>
+					<img src='/img/windows_console.png' width='100%' />
+					<figcaption>
+						<i>Windows terminal</i>
+					</figcaption>
+				</figure>
+			),
+		},
+	]}
+/>
 
-To open your terminal, follow these instructions:
+All operating systems have the Terminal already installed.
+
+We won't learn to use the terminal here because we'll only need a single
+
+<SideNote
+	content={
+		<div>
+			<h4>Terminal command</h4>
+			<p>
+				A command is a directive to a computer program to perform a specific
+				task.
+			</p>
+			<p>
+				<b>Examples</b>
+			</p>
+			<p>A command to change directory (cd) to the home directory:</p>
+			<pre
+				style={{
+					backgroundColor: '#EEE',
+					padding: '0.5rem',
+					margin: '0.5rem',
+					borderRadius: '4px',
+				}}
+			>
+				<code>cd /home</code>
+			</pre>
+			<p>A command to list (ls) all files (-a):</p>
+			<pre
+				style={{
+					backgroundColor: '#EEE',
+					padding: '0.5rem',
+					margin: '0.5rem',
+					borderRadius: '4px',
+				}}
+			>
+				<code>ls -a</code>
+			</pre>
+		</div>
+	}
+>
+	command
+</SideNote> for this course. But, if you want to learn to code, you'll eventually
+need to comfortably use your terminal.
+
+## Installing GHCi
+
+GHCi is usually installed with other tools (like Cabal, Stack, and a language server), but we don't need them for now, so we'll only install GHC. You can install the other tools later when you need them.
+
+Each operating system has its own steps. I'll show you the most common ways. Select your OS (operating system) and follow the instructions:
+
+<TabbedContent
+	tabs={[
+		{
+			title: 'Linux',
+			content: (
+				<div>
+					<h4>Installing GHC in Linux</h4>
+					<p>If you rock Linux, you know how this goes:</p>
+					<p>
+						<b>Ubuntu</b>
+					</p>
+					<pre
+						style={{
+							backgroundColor: '#EEE',
+							padding: '0.5rem',
+							margin: '0.5rem',
+							borderRadius: '4px',
+						}}
+					>
+						<code>sudo apt-get ghc</code>
+					</pre>
+					<p>
+						<b>Fedora</b>
+					</p>
+					<pre
+						style={{
+							backgroundColor: '#EEE',
+							padding: '0.5rem',
+							margin: '0.5rem',
+							borderRadius: '4px',
+						}}
+					>
+						<code>sudo dnf install ghc</code>
+					</pre>
+					<p>
+						<b>Other package-managers: </b>
+					</p>
+					<p>
+						<a
+							style={{ textDecorationLine: 'underline' }}
+							href='https://www.haskell.org/downloads/#package-manager'
+						>
+							Follow the official documentation
+						</a>
+					</p>
+					<p>
+						<b>Using distribution packages: </b>
+					</p>
+					<p>
+						<a
+							style={{ textDecorationLine: 'underline' }}
+							href='https://www.haskell.org/ghc/distribution_packages.html'
+						>
+							Follow the official instructions
+						</a>
+					</p>
+				</div>
+			),
+		},
+		{
+			title: 'macOS',
+			content: (
+				<div>
+					<h4>Installing GHC in macOS</h4>
+					<p>
+						<b>
+							Using{' '}
+							<a
+								style={{ textDecorationLine: 'underline' }}
+								href='https://brew.sh/'
+							>
+								Homebrew
+							</a>
+						</b>
+					</p>
+					<p>
+						If you already have Homebrew installed, open the Terminal and run
+						this command:
+					</p>
+					<pre
+						style={{
+							backgroundColor: '#EEE',
+							padding: '0.5rem',
+							margin: '0.5rem',
+							borderRadius: '4px',
+						}}
+					>
+						<code>brew install ghc</code>
+					</pre>
+					<p>
+						<b>Download from the oficial website:</b>
+					</p>
+					<ol>
+						<li>
+							<b>1.</b>{' '}
+							<a
+								style={{ textDecorationLine: 'underline' }}
+								href='https://www.haskell.org/ghc/download_ghc_9_2_1.html#macosx_x86_64'
+							>
+								Go to the official website and download GHC
+							</a>
+						</li>
+						<li>
+							<b>2. </b>Make sure that you have the command line tools package
+							of Xcode 4 or XCode 5 You can find Xcode at{' '}
+							<a
+								style={{ textDecorationLine: 'underline' }}
+								href='http://developer.apple.com/'
+							>
+								Apple developer portal
+							</a>
+							.
+						</li>
+					</ol>
+					<p>
+						<b>Using GHCup (installer):</b>
+					</p>
+					<p>
+						Execute the command provided{' '}
+						<a
+							style={{ textDecorationLine: 'underline' }}
+							href='https://www.haskell.org/ghcup/'
+						>
+							here
+						</a>{' '}
+						and follow the instructions.
+					</p>
+					<p>
+						<b>Troubleshooting:</b>
+					</p>
+					<p>
+						If you have any problems,{' '}
+						<a
+							style={{ textDecorationLine: 'underline' }}
+							href='https://www.youtube.com/results?search_query=install+ghc+macos'
+						>
+							Look up tutorials on YouTube
+						</a>
+					</p>
+				</div>
+			),
+		},
+		{
+			title: 'Windows',
+			content: (
+				<div>
+					<p>
+						<b>Using an installer:</b>
+					</p>
+					<ol>
+						<li>
+							<b>1. </b>
+							Download the installer from the <a
+								style={{ textDecorationLine: 'underline' }}
+								href='https://www.haskell.org/ghc/download_ghc_9_0_2.html#windows64'
+							>
+								official site
+							</a>
+						</li>
+						<li>
+							<b>2. </b>Follow the instructions in the official documentation
+						</li>
+					</ol>
+					<p>
+						<b>Troubleshooting:</b>
+					</p>
+					<p>
+						If you have any problems,{' '}
+						<a
+							style={{ textDecorationLine: 'underline' }}
+							href='https://www.youtube.com/results?search_query=install+ghc+widows'
+						>
+							Look up tutorials on YouTube
+						</a>
+					</p>
+				</div>
+			),
+		},
+	]}
+/>

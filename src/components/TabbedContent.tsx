@@ -29,7 +29,7 @@ export const TabbedContent = ({ tabs }: IProps) => {
 						<TabGroup.TabPanel
 							key={index}
 							index={index}
-							className='p-16 transition-all transform'
+							className=' p-6 transition-all transform w-full max-w-lg'
 							activeClassName='opacity-100 duration-500 translate-x-0'
 							inactiveClassName='absolute opacity-0 -translate-x-2'
 						>
