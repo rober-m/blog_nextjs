@@ -1,14 +1,14 @@
 tags:
   - slug: blockchain
-    name: blockchain
-  - slug: programming
+    name: Blockchain
+  - slug: Programming
     name: programming
   - slug: indie-hacking
-    name: indie_hacking
+    name: Indie Hacking
   - slug: cryptography
-    name: cryptography
+    name: Cryptography
   - slug: protocol
-    name: protocol
+    name: Protocol
   - slug: haskell-course
     name: Haskell Course
   - slug: haskell
