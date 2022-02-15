@@ -29,7 +29,7 @@ export default function Navigation() {
 							</a>
 						</Link>
 					</li>
-					<li>
+					{/* <li>
 						<Link href='/posts'>
 							<a
 								className={
@@ -39,7 +39,7 @@ export default function Navigation() {
 								Blog
 							</a>
 						</Link>
-					</li>
+					</li> */}
 				</ul>
 				<style jsx>
 					{`
