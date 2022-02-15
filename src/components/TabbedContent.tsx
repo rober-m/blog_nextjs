@@ -15,7 +15,7 @@ export const TabbedContent = ({ tabs }: IProps) => {
 							<TabGroup.Tab
 								key={index}
 								index={index}
-								className=' first:rounded-tl-lg last:rounded-tr-lg flex-grow h-12 px-12 transition-colors duration-150'
+								className=' first:rounded-tl-lg last:rounded-tr-lg flex-grow h-12 transition-colors duration-150'
 								activeClassName=' bg-violet-500 text-white'
 								inactiveClassName='bg-white text-black'
 							>
