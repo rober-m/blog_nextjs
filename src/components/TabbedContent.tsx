@@ -5,7 +5,7 @@ interface IProps {
 	tabs: { title: string; content: any }[];
 }
 
-export const ContentInTabs = ({ tabs }: IProps) => {
+export const TabbedContent = ({ tabs }: IProps) => {
 	return (
 		<div className='my-2 flex flex-col justify-center items-center bg-violet-50 border rounded-lg shadow'>
 			<TabGroup numTabs={tabs.length} direction={TabGroup.direction.HORIZONTAL}>
