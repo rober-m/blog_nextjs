@@ -109,7 +109,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			title: data.title,
 			dateString: data.date,
 			slug: data.slug,
-			description: data.description,
+			description: data?.description ?? '',
 			tags: data.tags,
 			author: data.author,
 			source: mdxSource,
