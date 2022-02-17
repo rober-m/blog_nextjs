@@ -41,4 +41,12 @@
 	a {
 		@apply hover:text-violet-600 active:text-violet-600;
 	}
+	::-moz-selection { /* Code for Firefox */
+		color: #009900;
+		background: #bbffbb;
+	}
+	::selection {
+		color: #009900;
+		background: #bbffbb;
+	}
 }
