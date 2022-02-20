@@ -12,6 +12,7 @@ import { SocialList } from './SocialList';
 import TagButton from './TagButton';
 import { getAuthor } from '../lib/authors';
 import { getTag } from '../lib/tags';
+import { RevueEmbed } from './RevueEmbed';
 
 type Props = {
 	title: string;
@@ -31,7 +32,7 @@ export default function PostLayout({
 	tags,
 	description = '',
 	children,
-	image
+	image,
 }: Props) {
 	const keywords = tags.map((it) => getTag(it).name);
 	const authorName = getAuthor(author).name;
@@ -86,6 +87,7 @@ export default function PostLayout({
 					</ul>
 				</article>
 				<footer>
+					<RevueEmbed />
 					<div className={'social-list'}>
 						<SocialList />
 					</div>

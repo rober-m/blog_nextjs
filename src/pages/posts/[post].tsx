@@ -20,6 +20,7 @@ import hljs from 'highlight.js';
 import { TabbedContent } from '../../components/TabbedContent';
 import { SideNote } from '../../components/SideNote';
 import { Giff } from '../../components/Giff';
+import { RevueEmbed } from '../../components/RevueEmbed';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
@@ -40,6 +41,7 @@ const components = {
 	TabbedContent,
 	SideNote,
 	Giff,
+	RevueEmbed,
 };
 const slugToPostContent = ((postContents) => {
 	let hash = {};
@@ -55,7 +57,7 @@ export default function Post({
 	author,
 	description = '',
 	source,
-	image
+	image,
 }: Props) {
 	const content = hydrate(source, { components });
 	content;
