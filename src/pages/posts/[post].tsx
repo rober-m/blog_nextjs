@@ -21,6 +21,7 @@ import { TabbedContent } from '../../components/TabbedContent';
 import { SideNote } from '../../components/SideNote';
 import { Giff } from '../../components/Giff';
 import { RevueEmbed } from '../../components/RevueEmbed';
+import { ShareOnSocialMedia } from '../../components/ShareOnSocialMedia';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
@@ -42,6 +43,7 @@ const components = {
 	SideNote,
 	Giff,
 	RevueEmbed,
+	ShareOnSocialMedia,
 };
 const slugToPostContent = ((postContents) => {
 	let hash = {};
