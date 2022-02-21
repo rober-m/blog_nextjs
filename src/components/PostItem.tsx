@@ -13,7 +13,7 @@ export default function PostItem({ post, isLesson }: Props) {
 			<a
 				className={
 					isLesson
-						? 'w-full border rounded p-2 border-violet-300 shadow bg-violet-50 mb-4'
+						? 'transition  hover:scale-103 w-full border rounded p-2 border-violet-300 shadow bg-violet-50 mb-4'
 						: ''
 				}
 			>
