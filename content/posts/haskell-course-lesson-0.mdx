@@ -4,9 +4,149 @@ title: Complete Dapp developer guide + Free course to become a Cardano Dapp deve
 date: 2022-02-21
 author: robertinom
 tags:
-  - blockchain
-  - programming
-  - haskell-course
-  - haskell
+    - blockchain
+    - programming
+    - haskell-course
+    - haskell
 ---
-a
+
+So, I heard that you want to develop a Dapp.
+
+<Giff url='https://giphy.com/embed/L3bj6t3opdeNddYCyl' />
+
+If that's the case, you came to the right place. Here, I'll explain everything you need to know to start your journey as a Cardano Dapp/Web3 developer. I'll also provide a link to my free course, but read this before jumping in!
+
+Ok, are you ready? Let's go! 🔥
+
+## What is a Dapp?
+
+<p>
+	A Dapp (Decentralized app) is a <b>software application that runs on a </b>
+	<SideNote
+		content={
+			<div>
+				<h4>Decentralized network</h4>
+				<p>
+					A decentralized network is a collection of interconnected
+					but independent elements — known as nodes — that interact
+					with one another without the need for a centralized power or
+					server.
+				</p>
+				<p>
+					The network is decentralized specifically because the nodes
+					can communicate and work together without the need for a
+					central authority.
+				</p>
+			</div>
+		}
+	>
+		<b>decentralized network</b>
+	</SideNote> (click on the highlight for a pleasant surprise. All the highlights
+	have it! 😃). A Dapp is just like any other software application. It could be
+	a website or an app on your phone or computer. What makes a Dapp different than
+	a traditional app is that it's built on a decentralized network, like Cardano
+	or Ethereum.
+</p>
+
+Running an app in a decentralized network gives you extra possibilities regarding what your app can do. A Dapp can:
+
+-   Mint/burn NFTs
+-   Charge, pay, and redistribute money.
+-   Issue certificates.
+-   Act as an escrow.
+-   Provide loans.
+-   Manage recurrent payments.
+-   Provide a platform for trustless governance.
+-   Manage identities.
+-   And many other things.
+
+And the best of all is that your Dapp will run in a system that is trustless, permissionless, and independent. (And if you use Cardano, it's cheap for your users, too 😜.)
+
+It's not without sacrifices, though. A Dapp is a product of combining many software engineering disciplines. To write a Dapp, you have to:
+
+-   Securely process and manage your user's data.
+-   Securely interact with the blockchain.
+-   And provide a beautiful and easy-to-use interface to make your users so happy that they'll never stop talking about your Dapp.
+
+<Giff url='https://giphy.com/embed/f0Tonnws0PDVYzsbzO' />
+
+## The components that constitute a Dapp.
+
+<blockquote>
+	<p>
+		Yeah yeah yeah... a Dapp is just an app that runs on a decentralized
+		network... cool. The thing is, I also don't know how regular apps work.
+	</p>
+	— Said someone, probably.
+</blockquote>
+
+I got you! Let's have a brief overview of the components that constitute a Dapp.
+
+To create a Dapp, you need three things (two are a must):
+
+-   A front-end.
+-   A way to interact with the blockchain.
+-   A back-end (optional, but usually needed).
+
+### The frontend
+
+The frontend is **the component of the Dapp that a user interacts with**. The visual component. It can be a website, a mobile app, or a desktop app.
+
+<TabbedContent
+	tabs={[
+		{
+			title: 'Mobile',
+			content: (
+				<div>
+					<p>
+						If you want to develop a mobile app, you have to take
+						into account that each platform (mainly Android and iOS)
+						has its own programming languages, set of technologies,
+						and tools.
+					</p>
+					<ul>
+						<li>
+							Android uses Java and Kotlin as{' '}
+							<SideNote content={<div></div>}>
+								programming languages
+							</SideNote>{' '}
+							and AndroidStudio as its main{' '}
+							<SideNote content={<div></div>}>
+								development environment
+							</SideNote>{' '}
+							.
+						</li>
+						<li>
+							iOS uses Objective-C and Swift as programming
+							languages and XCode as the main development
+							environment.
+						</li>
+					</ul>
+					<p>
+						Personally, I develop my mobile apps in Flutter (
+						<SideNote content={<div>aaa</div>}>
+							cross-platform framework
+						</SideNote>
+						) using Dart programming language and VSCode/Vim as my development
+						environments. And I use the platform-specific technologies
+						previously mentioned to write minor platform-specific code.
+						I highly recommend the Flutter framework.
+					</p>
+				</div>
+			),
+		},
+		{
+			title: 'Windows Terminal',
+			content: (
+				<figure style={{ width: '100%' }}>
+					<img
+						style={{ margin: '0 auto' }}
+						src='/img/windows_console.png'
+						alt='Screenshot of a Windows terminal'
+						width='300px'
+					/>
+				</figure>
+			),
+		},
+	]}
+/>
