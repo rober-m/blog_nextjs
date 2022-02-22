@@ -3,6 +3,7 @@ import React from 'react';
 export const RevueEmbed = () => {
 	return (
 		<div id='revue-embed'>
+			<hr className=' mt-4' />
 			<form
 				action='http://newsletter.robertinom.com/add_subscriber'
 				method='post'
@@ -10,7 +11,7 @@ export const RevueEmbed = () => {
 				name='revue-form'
 				target='_blank'
 			>
-				<div className='flex flex-col items-center justify-center py-4'>
+				<div className='flex flex-col items-center justify-center py-2'>
 					<div className='font-bold my-2 text-violet-600 text-justify'>
 						Subscribe to receive updates when I release new lessons
 						and create more free courses! 😃
@@ -52,6 +53,7 @@ export const RevueEmbed = () => {
 						.
 					</div>
 				</div>
+				<hr className='my-4' />
 			</form>
 		</div>
 	);
