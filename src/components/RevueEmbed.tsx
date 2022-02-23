@@ -5,7 +5,7 @@ export const RevueEmbed = () => {
 		<div id='revue-embed'>
 			<hr className=' mt-4' />
 			<form
-				action='http://newsletter.robertinom.com/add_subscriber'
+				action='https://www.getrevue.co/profile/robertinom/add_subscriber'
 				method='post'
 				id='revue-form'
 				name='revue-form'
