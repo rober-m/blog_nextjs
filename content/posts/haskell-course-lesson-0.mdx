@@ -299,6 +299,61 @@ When you communicate with the Cardano blockchain, you can interact with smart co
 
 Done! That's enough to build a Dapp! Write a smart contract, deploy it, and create the frontend to interact with it. _But, wait! There's more! For an extra $99, you get the exclusive..._ **just kidding!** 😆 There really is more, though 🤣.
 
-If you have to interact with the blockchain for everything your app does, some apps will be too expensive to use! An NFT project can get by with just a frontend and a smart contract to mint the NFTs. But, if you — for example — want to create a social media platform that logs everything into the blockchain, your users will have to pay transaction fees for everything they do! Publishing a post? Transaction! 💸 Commenting? Transaction! 💸 Hitting the like button? Transaction! 💸
+If you have to interact with the blockchain for everything your app does, some apps will be too expensive to use! An NFT project can get by with just a frontend and a smart contract to mint the NFTs. But, if you — for example — want to create a social media platform that logs everything into the blockchain, your users will have to pay transaction fees for everything they do! Publishing a post? Transaction! 💸 Commenting? Transaction! 💸 Hitting the like button? Transaction! 💸 No one will use that!
 
-No one will use that! **That's one of the main reasons — but not the only one — you'll still need a backend**.
+**That's one of the main reasons — but not the only one — you'll still need a backend**.
+
+i### The backend
+
+The back end of your Dapp is **everything that happens under the hood** (i.e., everything that isn't frontend).
+
+Some call smart contracts "the backend of Dapps." Well, if you only use smart contracts, that's the case. But most often than not, smart contracts are just a part of what constitutes the backend.
+
+Backends do most of the heavy lifting:
+
+-   **Databases is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. There are a ton of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc. Even though there are dozens of options, programmers usually pick a few and always use the same.
+-   **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example:
+-   **Communication** with other backends.
+-   Manage the **identity** and **permissions** of the user.
+-   Other tasks like **sending emails and notifications**, periodically **checking the state of** the blockchain, or other information like stocks, the weather, etc.
+
+Damn! That's a lot to code from scratch! 😱 Lucky us, we don't need to! There are tons of solutions that allow us to go from nothing to a fully functional backend in a matter of hours! 🤩
+
+Here are some tech/services that I use:
+
+-   Firebase
+-   NodeJS
+-   Google Cloud
+-   MySQL
+
+Those are highly performant and easy to set up and use technologies. But there's a catch. Those are centralized backends, which depending on your needs (avoid censorship and stuff like that), may defeat the purpose of your Dapp. One way to combat this is to use a decentralized off-chain storage solution, like [IPFS](https://ipfs.io/).
+
+IPFS is a distributed file system for storing and accessing data. So, rather than storing data in a centralized database, the IPFS system distributes and stores the data in a peer-to-peer network.
+
+**And that's it! With all those tools, you can build the Dapp for your dreams! Now, how can you learn all that? We'll discuss it in the next section! 😃**
+
+## Free course to become a Cardano Dapp developer
+
+Lucky for you, most of what you need to learn is already out there and free to access. Web development has tons of resources for beginners (just search "Web development for beginners"). Mobile and Desktop not so much, but there's some. But for Plutus development, there's almost nothing! The few available resources (Cardano official docs, the Plutus Pioneer Program, and such) are great resources... for experienced developers with substantial Haskell coding experience.
+
+That's the current Achille's heel of the Cardano ecosystem. Relatively very few people have the skillset to even start learning about Plutus!
+
+That's what I intend to fix. I want to fill the gap between people with zero coding experience and currently available resources. And for that, I'm creating a few courses:
+
+1. **Haskell for complete beginners**: Haskell course for people that have never written a line of code before.
+2. **Haskell for Plutus**: Plutus developers utilize many tools and language extensions on top of the default programming language. I'll cover all those in this course.
+3. **Cardano under the hood**: This will be a theoretical course about how Cardano works under the hood and why. This information is critical to being a productive Cardano developer and/or community member.
+
+Anyone that completes those courses will be able to go through current Cardano resources (like the Plutus Pioneer Program) without breaking a sweat.
+
+Creating the courses will be challenging. It'll take a lot of time and effort. So, please, bear with me while I do my best.
+
+I'm working in the **Haskell for complete beginners** course as I'm publishing this. And because I don't want to work in obscurity for months, **I'll be releasing each lesson as soon as it's done**. So you'll be able to go along and finish the courses as soon as I finish creating them 😂.
+
+The courses will be text-based. That way, I can create, update, and improve them faster. I also coded my own platform (the one you are using right now) to build all the features I want to use (like the highlight thing and the tabs).
+
+#### How do I get started?
+
+**You don't need to sign up or pay anything**. But if you want to know each time I release a lesson, you can follow me on [Twitter](https://twitter.com/robertinom_en) or sign up for the newsletter that I just created for this exact reason (below). Else, you can periodically check the course [here](https://robertinom.com/courses/haskell-course).
+
+**Let's build some Cardano Dapps together!! 😄**
