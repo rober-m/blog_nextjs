@@ -107,6 +107,17 @@
 	}
 }
 
+@media (min-width: 1024px) {
+	.content img:active,
+	.content img:focus,
+	.content img:hover {
+		scale: 1.5;
+		z-index: 20;
+		box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
+			0 6px 20px 0 rgba(124, 58, 236, 0.19);
+	}
+}
+
 @media (min-width: 769px) {
 	.content h2,
 	.content h3,
