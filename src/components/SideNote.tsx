@@ -33,7 +33,8 @@ export const SideNote = ({ content, children, color }: IProps) => {
 				${isOpen ? ' inline-block' : 'hidden'}`}
 			>
 				<img
-					className='ml-auto w-6 mb-1 cursor-pointer sticky top-0 right-0'
+					id='side-note-cross'
+					className='ml-auto w-6 mb-1 cursor-pointer sticky top-0 right-0 hover:sticky'
 					src='/img/close.svg'
 					onClick={() => setIsOpen(false)}
 				/>

@@ -94,9 +94,9 @@
 }
 
 @media (max-width: 1024px) {
-	.content img:active,
-	.content img:focus,
-	.content img:hover {
+	.content img:active:not([id*='side-note-cross']),
+	.content img:focus:not([id*='side-note-cross']),
+	.content img:hover:not([id*='side-note-cross']) {
 		position: absolute;
 		left: 0;
 		z-index: 20;
@@ -108,9 +108,9 @@
 }
 
 @media (min-width: 1024px) {
-	.content img:active,
-	.content img:focus,
-	.content img:hover {
+	.content img:active:not([id*='side-note-cross']),
+	.content img:focus:not([id*='side-note-cross']),
+	.content img:hover:not([id*='side-note-cross']) {
 		scale: 1.5;
 		z-index: 20;
 		box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
