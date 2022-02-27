@@ -29,7 +29,7 @@ export const SideNote = ({ content, children, color }: IProps) => {
 				{children}
 			</div>
 			<div
-				className={`z-20 absolute left-6 mt-7 mr-6 p-3 sm:left-20 sm:mr-20 md:left-40 md:mr-40 lg:-left-48 lg:w-96 bg-gray-50 border border-black rounded-md shadow-md shadow-violet-400  max-h-60 overflow-y-auto
+				className={`z-20 absolute left-6 mt-7 mr-6 p-3 sm:left-20 sm:mr-20 md:left-40 md:min-w-[350px] md:mr-40 lg:-left-48 lg:w-96 bg-gray-50 border border-black rounded-md shadow-md shadow-violet-400 max-h-60 overflow-y-auto
 				${isOpen ? ' inline-block' : 'hidden'}`}
 			>
 				<img
