@@ -13,26 +13,18 @@ export default function PostItem({ post, isLesson }: Props) {
 			<a
 				className={
 					isLesson
-						? 'transition  hover:scale-103 w-full border rounded p-2 border-violet-300 shadow bg-violet-50 mb-4'
+						? 'transition inline-block  hover:scale-103 w-full border rounded p-2 border-violet-300 shadow bg-violet-50 mb-4'
 						: ''
 				}
 			>
 				<Date date={parseISO(post.date)} />
-				<h2 className='text-2xl lg:text-3xl'>
+				<h2 className='m-0 text-xl xl:text-2xl'>
 					{isLesson
 						? post.title.substring(post.title.indexOf('-') + 1)
 						: post.title}
 				</h2>
 				<style jsx>
 					{`
-						a {
-							color: #222;
-							display: inline-block;
-						}
-						h2 {
-							margin: 0;
-							font-weight: 500;
-						}
 						h2:before {
 							display: none;
 						}
