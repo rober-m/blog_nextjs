@@ -42,7 +42,7 @@ export default function CoursesLessons({ posts, tag }: Props) {
 				</div>
 			)}
 			<ul>
-				{posts.map((it, i) => (
+				{posts.sort((a,b) => a.slug.localeCompare(b.slug)).map((it, i) => (
 					<li key={i}>
 						<PostItem post={it} isLesson />
 					</li>
