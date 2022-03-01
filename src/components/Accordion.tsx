@@ -31,7 +31,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 			>
 				<p className='my-0 ml-3 mr-auto font-medium text-left'>{title}</p>
 				<img
-					src='/img/chevron-up.svg'
+					src='/images/chevron-up.svg'
 					alt='Chevron icon'
 					className={`${rotate} w-6 mr-4`}
 				/>
