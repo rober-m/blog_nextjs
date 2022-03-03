@@ -1,16 +1,15 @@
 ---
 slug: haskell-course-lesson-0
 title: Complete Dapp developer guide + Free course to become a Cardano developer
-date: 2022-02-21
+date: 2022-03-03
 author: robertinom
 image: /images/cardano_dapp_course.jpg
 tags:
-    - blockchain
-    - programming
-    - haskell-course
-    - haskell
+  - blockchain
+  - programming
+  - haskell-course
+  - haskell
 ---
-
 So, I heard that you want to develop a Dapp.
 
 <Giff url='https://giphy.com/embed/L3bj6t3opdeNddYCyl' />
@@ -51,23 +50,23 @@ Ok, are you ready? Let's go! 🔥
 
 Running an app in a decentralized network gives you extra possibilities regarding what your app can do. A Dapp can:
 
--   Mint/burn NFTs
--   Charge, pay, and redistribute money.
--   Issue certificates.
--   Act as an escrow.
--   Provide loans.
--   Manage recurrent payments.
--   Provide a platform for trustless governance.
--   Manage identities.
--   And many other things.
+* Mint/burn NFTs
+* Charge, pay, and redistribute money.
+* Issue certificates.
+* Act as an escrow.
+* Provide loans.
+* Manage recurrent payments.
+* Provide a platform for trustless governance.
+* Manage identities.
+* And many other things.
 
 And the best of all is that **your Dapp will run in a system that is trustless, permissionless, and independent**. (And if you use Cardano, it's cheap for your users, too 😜.)
 
 It's not without sacrifices, though. **A Dapp is a product of combining many software engineering disciplines**. To write a Dapp, you have to:
 
--   Securely process and manage your user's data.
--   Securely interact with the blockchain.
--   And provide a beautiful and easy-to-use interface to make your users so happy that they'll never stop talking about your Dapp.
+* Securely process and manage your user's data.
+* Securely interact with the blockchain.
+* And provide a beautiful and easy-to-use interface to make your users so happy that they'll never stop talking about your Dapp.
 
 <Giff url='https://giphy.com/embed/f0Tonnws0PDVYzsbzO' />
 
@@ -85,9 +84,9 @@ I got you! Let's have a brief overview of the components that constitute a Dapp.
 
 To create a Dapp, you need three things (two are a must):
 
--   A frontend.
--   A way to interact with the blockchain.
--   A backend (optional, but usually needed).
+* A frontend.
+* A way to interact with the blockchain.
+* A backend (optional, but usually needed).
 
 ### The frontend
 
@@ -259,7 +258,7 @@ The frontend is **the component of a Dapp users interact with**. The visual comp
 	]}
 />
 
-If it seems like a lot, it's because it _is_ a lot. That's why **most companies/projects start with the one that better fits its use-case** and then add the rest when/if needed.
+If it seems like a lot, it's because it *is* a lot. That's why **most companies/projects start with the one that better fits its use-case** and then add the rest when/if needed.
 
 If you're unsure which one to pick, pick web (more reach and easier to access talent). Make sure that your frontend is mobile-friendly, beautiful, and fast, and you're golden!
 
@@ -269,35 +268,38 @@ Once your frontend is working, you have a beautiful Dapp that doesn't do anythin
 
 ### The interaction with the blockchain
 
-Blockchains are just a bunch of _nodes_ (servers/computers) that interact following a specific set of rules. **If you want to talk to the blockchain, all you have to do is interact with one of its nodes**, and the node will propagate your interaction with the rest of the nodes. That's it!
+Blockchains are just a bunch of *nodes* (servers/computers) that interact following a specific set of rules. **If you want to talk to the blockchain, all you have to do is interact with one of its nodes**, and the node will propagate your interaction with the rest of the nodes. That's it!
 
 There are two main ways to interact with a node:
 
--   **Spin up your own node:** If you have your own node, your Dapp can talk with it directly! Anyone can do it (although I don't recommend it unless you know what you are doing).
--   **Use a third-party API:** Some companies will maintain Cardano nodes for you and provide an
-    <SideNote
-    	content={
-    		<div>
-    			<h4>Application Programming Interface (API)</h4>
-    			<p>
-    				<b>
-    					Software used to communicate between computers or
-    					programs.
-    				</b>
-    			</p>
-    			<p>
-    				User interfaces are created to allow people to interact with
-    				programs, and APIs are created so other software can
-    				interact with the software that provides the API
-    			</p>
-    		</div>
-    	}
-    >
-    	{' '}
-    	API
-    </SideNote> so you can talk to them! (Way easier — and cheaper — than spinning
-    up your own node!) Usually, you pay only for the request you made. So if no one
-    uses your Dapp, you pay nothing, and if everyone uses it, you pay proportionally.
+* **Spin up your own node:** If you have your own node, your Dapp can talk with it directly! Anyone can do it (although I don't recommend it unless you know what you are doing).
+* **Use a third-party API:** Some companies will maintain Cardano nodes for you and provide an
+  <SideNote
+  	content={
+  		<div>
+  			<h4>Application Programming Interface (API)</h4>
+  			<p>
+  				<b>
+  					Software used to communicate between computers or
+  					programs.
+  				</b>
+  			</p>
+  			<p>
+  				User interfaces are created to allow people to interact with
+  				programs, and APIs are created so other software can
+  				interact with the software that provides the API
+  			</p>
+  		</div>
+  	}
+
+  ```
+  {' '}
+  API
+  ```
+
+  </SideNote> so you can talk to them! (Way easier — and cheaper — than spinning
+  up your own node!) Usually, you pay only for the request you made. So if no one
+  uses your Dapp, you pay nothing, and if everyone uses it, you pay proportionally.
 
 The Cardano blockchain runs something called "**smart contracts**" (I'll leave the details for the course). Smart contracts are **automated digital agreements**. They are self-executing, incorruptible, unalterable, and don't require any actions or the presence of third parties.
 
@@ -305,11 +307,11 @@ When you communicate with the Cardano blockchain, you can interact with smart co
 
 **Plutus is the smart contract platform of the Cardano blockchain**. It allows you to write applications that interact with the Cardano blockchain. To write Plutus contracts, you have to know:
 
--   **Haskell**: Haskell is the programming language for Plutus contracts. It's a functional programming language that very few can use. ("Haskell for complete beginners" is one of the free courses 😉.)
--   **Blockchain protocols**: You have to know how the Cardano blockchain itself works under the hood (node communication, the eUTxO model, etc.).
--   How to use all the **Cardano ecosystem and Plutus tools**.
+* **Haskell**: Haskell is the programming language for Plutus contracts. It's a functional programming language that very few can use. ("Haskell for complete beginners" is one of the free courses 😉.)
+* **Blockchain protocols**: You have to know how the Cardano blockchain itself works under the hood (node communication, the eUTxO model, etc.).
+* How to use all the **Cardano ecosystem and Plutus tools**.
 
-Done! That's enough to build a Dapp! Write a smart contract, deploy it, and create the frontend to interact with it. _But, wait! There's more! For an extra $99, you get the exclusive..._ **just kidding!** 😆 There really is more, though 🤣.
+Done! That's enough to build a Dapp! Write a smart contract, deploy it, and create the frontend to interact with it. *But, wait! There's more! For an extra $99, you get the exclusive...* **just kidding!** 😆 There really is more, though 🤣.
 
 **If you have to interact with the blockchain for everything your app does, some apps will be too expensive to use!** An NFT project can get by with just a frontend and a smart contract to mint the NFTs. But, if you — for example — want to create a social media platform that logs everything into the blockchain, your users will have to pay transaction fees for everything they do! Publishing a post? Transaction! 💸 Commenting? Transaction! 💸 Hitting the like button? Transaction! 💸
 
@@ -325,21 +327,21 @@ Some call smart contracts "the backend of Dapps." Well, if you only use smart co
 
 Backends do most of the heavy lifting:
 
--   **The database is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. **There are tons of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc.** Even though there are dozens of options, programmers usually pick a few and always use the same.
--   **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example (hover to zoom): <img src='/images/backend_logic.png' alt='backend logic' />
--   **Communication** with other backends.
--   Manage the **identity** and **permissions** of the user.
--   Other tasks like **sending emails and notifications**, periodically **checking the state of** the blockchain, or other information like stocks, the weather, etc.
+* **The database is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. **There are tons of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc.** Even though there are dozens of options, programmers usually pick a few and always use the same.
+* **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example (hover to zoom): <img src='/images/backend_logic.png' alt='backend logic' />
+* **Communication** with other backends.
+* Manage the **identity** and **permissions** of the user.
+* Other tasks like **sending emails and notifications**, periodically **checking the state of** the blockchain, or other information like stocks, the weather, etc.
 
 **That's a lot to code from scratch! 😱 Lucky us, we don't need to! 😁** There are tons of solutions that allow us to go from nothing to a fully functional backend in a matter of days!
 
 Here are some tech/services that I use:
 
--   Firebase
--   Google Cloud
--   AWS (Amazon Web Services)
+* Firebase
+* Google Cloud
+* AWS (Amazon Web Services)
 
-Those are highly performant and easy to set up and use. But there's a catch. Those are **centralized backends**, which depending on your needs (_avoid censorship and stuff like that_), may defeat the purpose of your Dapp. One way to combat this is to use a **decentralized off-chain storage** solution, like IPFS.
+Those are highly performant and easy to set up and use. But there's a catch. Those are **centralized backends**, which depending on your needs (*avoid censorship and stuff like that*), may defeat the purpose of your Dapp. One way to combat this is to use a **decentralized off-chain storage** solution, like IPFS.
 
 **IPFS (InterPlanetary File System) is a distributed file system for storing and accessing data**. So, rather than storing data in a centralized database, the IPFS system distributes and stores the data in a peer-to-peer network.
 
@@ -365,9 +367,9 @@ You can learn all three (frontend, backend, blockchain) simultaneously. But, it'
 
 A better approach would be: **Choose one, become good at it, and advance to the next one, or partner up with your counterparts**. There are virtually no cons, and the pros are obvious:
 
--   A significantly **shorter period and effort** until you become good enough to produce production-quality code.
--   Once you master one, you could get a job (full-time or part-time) and **earn a lot of money** while learning the other in your free time.
--   Once you master one, you can partner up with your counterparts. You'll be able to **start building in 1/3 of the time** (the time it takes you to learn just the one), and (because you'll be 3) **it'll take ~1/3 of the time to finish**.
+* A significantly **shorter period and effort** until you become good enough to produce production-quality code.
+* Once you master one, you could get a job (full-time or part-time) and **earn a lot of money** while learning the other in your free time.
+* Once you master one, you can partner up with your counterparts. You'll be able to **start building in 1/3 of the time** (the time it takes you to learn just the one), and (because you'll be 3) **it'll take ~1/3 of the time to finish**.
 
 Now, **which one should you start with?** That's like choosing a starter in Pokemon. They're all great options, and you can't go wrong with either one (except for Squirtle, don't pick Squirtle).
 
