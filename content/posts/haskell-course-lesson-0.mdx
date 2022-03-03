@@ -1,6 +1,6 @@
 ---
 slug: haskell-course-lesson-0
-title: Complete Dapp developer guide + Free course to become a Cardano Dapp developer
+title: Complete Dapp developer guide + Free course to become a Cardano developer
 date: 2022-02-21
 author: robertinom
 image: /images/cardano_dapp_course.jpg
@@ -259,18 +259,9 @@ The frontend is **the component of a Dapp users interact with**. The visual comp
 	]}
 />
 
-And now is when you go:
+If it seems like a lot, it's because it _is_ a lot. That's why **most companies/projects start with the one that better fits its use-case** and then add the rest when/if needed.
 
-<blockquote>
-	<p>"That's so much! I'll take ages to learn all that!"</p> — Every coder
-	when starting their coding journey.
-</blockquote>
-
-If it seems like a lot, it's because it is a lot. But **you don't need to learn all that at once**.
-You can pick one technology (\*cough\* web \*cough\*) and build your Dapp
-with that. And if (more like "when," cause this is addictive) you get interested
-in another tech, you'll learn it much faster!
-**SO...MUCH...FASTER! 🏎💨**
+If you're unsure which one to pick, pick web (more reach and easier to access talent). Make sure that your frontend is mobile-friendly, beautiful, and fast, and you're golden!
 
 <Giff url='https://giphy.com/embed/3ov9jWu7BuHufyLs7m' />
 
@@ -320,7 +311,7 @@ When you communicate with the Cardano blockchain, you can interact with smart co
 
 Done! That's enough to build a Dapp! Write a smart contract, deploy it, and create the frontend to interact with it. _But, wait! There's more! For an extra $99, you get the exclusive..._ **just kidding!** 😆 There really is more, though 🤣.
 
-If you have to interact with the blockchain for everything your app does, some apps will be too expensive to use! An NFT project can get by with just a frontend and a smart contract to mint the NFTs. But, if you — for example — want to create a social media platform that logs everything into the blockchain, your users will have to pay transaction fees for everything they do! Publishing a post? Transaction! 💸 Commenting? Transaction! 💸 Hitting the like button? Transaction! 💸
+**If you have to interact with the blockchain for everything your app does, some apps will be too expensive to use!** An NFT project can get by with just a frontend and a smart contract to mint the NFTs. But, if you — for example — want to create a social media platform that logs everything into the blockchain, your users will have to pay transaction fees for everything they do! Publishing a post? Transaction! 💸 Commenting? Transaction! 💸 Hitting the like button? Transaction! 💸
 
 <Giff url='https://giphy.com/embed/12QCczVAjPAfvi' />
 
@@ -334,13 +325,13 @@ Some call smart contracts "the backend of Dapps." Well, if you only use smart co
 
 Backends do most of the heavy lifting:
 
--   **The database is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. There are a ton of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc. Even though there are dozens of options, programmers usually pick a few and always use the same.
--   **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example: <img src='/images/backend_logic.png' alt='backend logic' />
+-   **The database is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. **There are tons of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc.** Even though there are dozens of options, programmers usually pick a few and always use the same.
+-   **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example (hover to zoom): <img src='/images/backend_logic.png' alt='backend logic' />
 -   **Communication** with other backends.
 -   Manage the **identity** and **permissions** of the user.
 -   Other tasks like **sending emails and notifications**, periodically **checking the state of** the blockchain, or other information like stocks, the weather, etc.
 
-**That's a lot to code from scratch! 😱 Lucky us, we don't need to! 😁** There are tons of solutions that allow us to go from nothing to a fully functional backend in a matter of days (or even hours)!
+**That's a lot to code from scratch! 😱 Lucky us, we don't need to! 😁** There are tons of solutions that allow us to go from nothing to a fully functional backend in a matter of days!
 
 Here are some tech/services that I use:
 
@@ -352,11 +343,45 @@ Those are highly performant and easy to set up and use. But there's a catch. Tho
 
 **IPFS (InterPlanetary File System) is a distributed file system for storing and accessing data**. So, rather than storing data in a centralized database, the IPFS system distributes and stores the data in a peer-to-peer network.
 
-**And that's it! With all those tools, you can build the Dapp for your dreams! Now, how can you learn all that? We'll discuss it in the next section! 😃**
+### Putting everything together
 
-## Free course to become a Cardano Dapp developer
+Once you have all that, you have to connect everything together. Usually, your frontend and/or backend will communicate through HTTP requests. And your frontend and backend will communicate with the blockchain via a third-party API or via your node.
 
-Lucky for you, most of what you need to learn is already out there and free to access. Web development has tons of resources for beginners (just search **"Web development for beginners"**). Mobile and Desktop not so much, but still a lot. But **for Plutus development, there's almost nothing!** The few available resources (Cardano official docs, the Plutus Pioneer Program, and such) are great resources... for experienced developers with substantial Haskell coding experience.
+**And that's it! With all those tools, you can build the Dapp for your dreams!**
+
+And now is when you go:
+
+<blockquote>
+	<p>
+		"And that's it? Are you kidding me? That's so much! It'll take ages to
+		learn all that!"
+	</p>{' '}
+	— Every coder when starting their coding journey.
+</blockquote>
+
+**Yes**. That's one of the main reasons **most projects need several coders**. The usual is that a coder specializes in one of those three components and works with others to build the Dapp.
+
+You can learn all three (frontend, backend, blockchain) simultaneously. But, it'll take a lot of time and effort until you can produce production-quality code in all three.
+
+A better approach would be: **Choose one, become good at it, and advance to the next one, or partner up with your counterparts**. There are virtually no cons, and the pros are obvious:
+
+-   A significantly **shorter period and effort** until you become good enough to produce production-quality code.
+-   Once you master one, you could get a job (full-time or part-time) and **earn a lot of money** while learning the other in your free time.
+-   Once you master one, you can partner up with your counterparts. You'll be able to **start building in 1/3 of the time** (the time it takes you to learn just the one), and (because you'll be 3) **it'll take ~1/3 of the time to finish**.
+
+Now, **which one should you start with?** That's like choosing a starter in Pokemon. They're all great options, and you can't go wrong with either one (except for Squirtle, don't pick Squirtle).
+
+<Giff url='https://giphy.com/embed/TC8AiZrjV2Qo0' />
+
+The caveat is that **if you don't have many technical skills, starting with backend development will be significantly harder**. But not impossible.
+
+If you pick frontend or backend, <a href='https://www.freecodecamp.org/' target='_blank'>Frecodecamp</a> is a good starting point. You can also search "web development for beginners" on YouTube.
+
+If you want to start with blockchain development, well, **that's why I'm here for!** I'm creating many free courses just for that! I'll explain in detail in the final section.
+
+## Free course to become a Cardano developer
+
+As we saw, most of what you need to learn is already out there and free to access. **Except for Cardano and Plutus.** The few available resources (Cardano official docs, the Plutus Pioneer Program, and such) are great resources. But only for experienced developers with substantial Haskell coding experience.
 
 That's the current Achille's heel of the Cardano ecosystem. **Few people have the skillset to even start learning about Plutus!**
 
@@ -381,7 +406,7 @@ And for that, I'm creating a few courses:
 	</mark>
 </p>
 
-Creating the courses will be challenging. It'll take a lot of time and effort. So, please, bear with me while I do my best.
+Creating the courses will be challenging. It'll take a lot of time and effort, but we'll get there! 💪
 
 I'm working in the **Haskell for complete beginners** course as I'm publishing this. And because I don't want to work in obscurity for months, **I'll be releasing each lesson as soon as it's done**. So you'll be able to go along and finish the courses as soon as I finish creating them 😂.
 
