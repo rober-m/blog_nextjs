@@ -2,6 +2,12 @@
 	color: #9b9b9b;
 }
 
+.content pre,
+.content code {
+	border-radius: 4px;
+	margin: 1rem 0;
+}
+
 .content p code,
 .content li code {
 	border-radius: 4px;
