@@ -120,6 +120,9 @@ collections:
         displayFields:
           - 'authors.*.name'
         valueField: 'authors.*.slug'
+      - label: 'Featured Image'
+        name: 'thumbnail'
+        widget: 'image'
       - label: Tags
         label_singular: 'Tag'
         name: 'tags'
