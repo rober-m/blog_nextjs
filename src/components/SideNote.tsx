@@ -33,7 +33,7 @@ export const SideNote = ({ content, children, color }: IProps) => {
 				${isOpen ? ' inline-block' : 'hidden'}`}
 			>
 				<img
-					id='side-note-cross'
+					id='do-not-zoom'
 					className='ml-auto w-6 mb-1 cursor-pointer sticky top-0 right-0 hover:sticky'
 					src='/images/close.svg'
 					onClick={() => setIsOpen(false)}
