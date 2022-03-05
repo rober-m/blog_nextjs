@@ -8,7 +8,7 @@
 		"start": "npm run generate-admin-css && next start",
 		"export": "npm run generate-admin-css && next build && next export -o ./dist",
 		"test": "jest",
-		"generate-admin-css": "npx tailwindcss -c tailwind.config.js -o public/admin/compiled_tailwind.css -m"
+		"generate-admin-css": "npx tailwindcss -c tailwind.config.js -o public/styles/ct.css -m"
 	},
 	"dependencies": {
 		"@mapbox/rehype-prism": "^0.6.0",
