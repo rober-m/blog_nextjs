@@ -8,7 +8,7 @@ interface AccordionProps {
 export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 	const [active, setActive] = useState(false);
 	const [height, setHeight] = useState('0px');
-	const [rotate, setRotate] = useState('transform duration-700 ease');
+	const [rotate, setRotate] = useState('transform duration-300 ease');
 
 	const contentSpace = useRef(null);
 
@@ -20,8 +20,8 @@ export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 			);
 		setRotate(
 			active
-				? 'transform duration-500 ease'
-				: 'transform duration-500 ease rotate-180'
+				? 'transform duration-300 ease'
+				: 'transform duration-300 ease rotate-180'
 		);
 	}
 
@@ -46,7 +46,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 			<div
 				ref={contentSpace}
 				style={{ maxHeight: `${height}` }}
-				className=' rounded-b overflow-y-hidden transition-max-height duration-700 ease-in-out bg-violet-100'
+				className=' rounded-b overflow-y-hidden transition-max-height duration-300 ease-in-out bg-violet-100'
 			>
 				<div className='px-4 pb-3'>{content}</div>
 			</div>
