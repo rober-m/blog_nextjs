@@ -10,7 +10,7 @@ type Props = {
   keywords?: string[];
   date: Date;
   author?: string;
-  image?: string;
+  thumbnail?: string;
   description?: string;
 };
 export default function JsonLdMeta({
@@ -19,7 +19,7 @@ export default function JsonLdMeta({
   keywords,
   date,
   author,
-  image,
+  thumbnail,
   description,
 }: Props) {
   return (
@@ -33,7 +33,7 @@ export default function JsonLdMeta({
           keywords: keywords ? undefined : keywords.join(","),
           datePublished: formatISO(date),
           author: author,
-          image: image,
+          image: thumbnail,
           description: description,
         })}
       />

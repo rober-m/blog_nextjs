@@ -5,13 +5,13 @@ type Props = {
   url: string;
   title?: string;
   description?: string;
-  image?: string;
+  thumbnail?: string;
 };
 export default function OpenGraphMeta({
   url,
   title,
   description,
-  image,
+  thumbnail,
 }: Props) {
   return (
     <Head>
@@ -27,7 +27,7 @@ export default function OpenGraphMeta({
       />
       <meta
         property="og:image"
-        content={image ? config.base_url + image : config.base_url + "/og_image.png"}
+        content={thumbnail ? config.base_url + thumbnail : config.base_url + "/og_image.png"}
       />
       <meta property="og:type" content="article" />
     </Head>

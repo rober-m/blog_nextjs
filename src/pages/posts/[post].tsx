@@ -32,7 +32,7 @@ export type Props = {
 	author: string;
 	description?: string;
 	source: MdxRemote.Source;
-	image: string;
+	thumbnail: string;
 };
 
 const components = {
@@ -59,7 +59,7 @@ export default function Post({
 	author,
 	description = '',
 	source,
-	image,
+	thumbnail,
 }: Props) {
 	const content = hydrate(source, { components });
 	content;
@@ -71,7 +71,7 @@ export default function Post({
 			tags={tags}
 			author={author}
 			description={description}
-			image={image}
+			thumbnail={thumbnail}
 		>
 			{content}
 		</PostLayout>
@@ -117,7 +117,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			tags: data.tags,
 			author: data.author,
 			source: mdxSource,
-			image: data?.image ?? '',
+			thumbnail: data?.thumbnail ?? '',
 		},
 	};
 };

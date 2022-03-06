@@ -22,7 +22,7 @@ type Props = {
 	author: string;
 	description?: string;
 	children: React.ReactNode;
-	image?: string;
+	thumbnail?: string;
 };
 export default function PostLayout({
 	title,
@@ -32,7 +32,7 @@ export default function PostLayout({
 	tags,
 	description = '',
 	children,
-	image,
+	thumbnail,
 }: Props) {
 	const keywords = tags.map((it) => getTag(it).name);
 	const authorName = getAuthor(author).name;
@@ -53,7 +53,7 @@ export default function PostLayout({
 				url={`/posts/${slug}`}
 				title={title}
 				description={description}
-				image={image}
+				thumbnail={thumbnail}
 			/>
 			<JsonLdMeta
 				url={`/posts/${slug}`}
@@ -62,7 +62,7 @@ export default function PostLayout({
 				date={date}
 				author={authorName}
 				description={description}
-				image={image}
+				thumbnail={thumbnail}
 			/>
 			<div className={'container z-0 mx-auto px-6 w-full max-w-xl'}>
 				<article>
