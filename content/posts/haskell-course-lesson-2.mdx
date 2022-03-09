@@ -16,7 +16,7 @@ Types are **attributes that constraint the values a piece of code can have**. Fo
 -   9999695939294
 -   0.5
 
-But, if you try to add a character in there, like this: `6A3` (instead of `63`), the compiler/interpreter will yell at you: "That's not a number, you imbecile!" (you got a sassy one, my condolences).
+But, if you try to add a character in there, like this: `6A3` (instead of `63`), the compiler/<SideNote content={<p>What? You still don't know what an interpreter is? This was last week's homework! 🤣 It's ok, I don't like homework either. Here you go: <a href='https://en.wikipedia.org/wiki/Interpreter_(computing)' target='_blank'>Interpreter.</a></p>}>interpreter</SideNote> will yell at you: "That's not a number, you imbecile!" (you got a sassy one, my condolences).
 
 What your compiler/interpreter did just there is called "**type checking**." Some languages have more strongly enforced type checking, some less.
 
@@ -24,15 +24,35 @@ First, we'll see an overview of the concepts, and then, we'll talk specifically 
 
 ## Type checking
 
-Type checking is the process of verifying and enforcing the constraints of types.
+<p>
+	<mark>
+		Type checking is the process of verifying and enforcing the constraints
+		of types.
+	</mark>
+</p>
 
-**What does this mean?** It means that each type has its own constraints (E.g., you can't do math with letters. Unless... 🤔 No, no, you can't), and this process checks that those constraints are respected. 
+**What does this mean?** It means that each type has its own constraints (E.g., you can't do math with letters. Unless... 🤔 No, no, you can't), and this process checks that those constraints are respected.
 
 <p>
-	<b>Why would you do this?</b> To avoid preventable mistakes. If further along in
-	your program, you want to add up some numbers and one of them has a
-	letter, the program wouldn't know what to do, and it would crash on you.
-	Those are preventable mistakes{' '}
+	<b>Why would you do this?</b> To avoid preventable mistakes. If further
+	along in your program, you want to add up some numbers and one of them has a
+	letter, the program wouldn't know what to do, and it would{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Crash (programming)</h4>
+				<p>
+					A <b>crash</b>, or <b>system crash</b>, occurs when a
+					program such as a software application or an operating
+					system stops functioning properly and exits (stops
+					executing/running).
+				</p>
+			</div>
+		}
+	>
+		crash
+	</SideNote>{' '}
+	on you. Those are preventable mistakes{' '}
 	<SideNote
 		content={
 			<div>
@@ -42,22 +62,26 @@ Type checking is the process of verifying and enforcing the constraints of types
 					errors that produce an incorrect, unexpected, or unintended
 					result or behaviour in the program.
 				</p>
-				<p></p>
+				<p>
+					{' '}
+					Once encountered, those bugs have to be resolved.
+					<b>Debugging</b> is the process of finding and fixing bugs
+				</p>
 			</div>
 		}
 	>
-		bugs,
+		(bugs)
 	</SideNote>
-	{' '} and the compiler/interpreter helps you avoid them.
+	, and the compiler/interpreter helps you avoid them.
 </p>
 
 Usually, this is done automatically. But not all languages do this the same way. There are two main distinctions regarding as to **WHEN** the types are checked.
 
 ### Dynamically typed languages
 
-**Dynamically typed languages check the types in run-time**. Run-time is the very last thing that you do with a program. It's the stage when you run your program to test it or use it.
+**Dynamically typed languages check the types at run-time**. Run-time is the very last thing that you do with a program. It's the stage when you run your program to test it or use it.
 
-Meaning that you won't know if your types are correct until you actually use the program. And if your types are wrong, your program will crash.
+Meaning that **you won't know if your types are correct until you actually use the program**. And if your types are wrong, your program will crash.
 
 Common examples of dynamically-typed languages include JavaScript, Python, Objective-C, and PHP.
 
@@ -65,28 +89,35 @@ The counterpart of dynamically typed languages are **statically typed** language
 
 ### Statically typed languages
 
-**Statically typed languages check the types in compile-time**. Meaning that you'll know if your types are wrong as soon as you compile your program (and some IDEs will show you the exact place where the error occurs). Which leads to a safer (and more optimized) code.
+**Statically typed languages check the types at compile-time**. Meaning that you'll know if your types are wrong as soon as you compile your program (and some IDEs will show you the exact place where the error occurs). Which leads to a safer and more optimized code.
 
 Common examples of statically-typed languages include Java, C, and C++.
 
+It sounds like all programming languages should be statically typed, but it's not that simple. **Both statically and dynamically typed languages have their pros and cons.** In some cases, you want to use dynamically typed languages (E.g., quick prototyping), and in others, you want to use statically typed languages (E.g., writing robust and optimized programs).
+
+That's our overview of the general concepts. Now let's see how Haskell fits into all of this.
+
 ## Haskell type system
 
-**Haskell is statically typed**. And, in Haskell, **Everything has a type**.
+<p>
+	<mark>Haskell is statically typed</mark>. And, in Haskell,{' '}
+	<b>Everything has a type</b>.
+</p>
 
 <Giff url='https://giphy.com/embed/AO3giAtLPH4MIuugsB' />
 
-And not only that. In some programming languages, each time you write a piece of code, you have to indicate the types. But not in Haskell! Haskell is smarter than other languages because it has **type inference**.
+And not only that. In some programming languages, each time you write a piece of code, you have to indicate the types. But not in Haskell! Haskell is smarter than other languages 🤓 because it has **type inference**.
 
 **Type inference allows Haskell to infer the types on its own**. If you write something like `3 + 4`, Haskell will know that the result of that expression is a number, and it will treat like it without the need for you to specify anything.
 
-**That allows the compiler to comprehend and reason quite a lot about your program**. Providing you with a pretty effective bug-catching assistant. 🤓
+**That allows the compiler to comprehend and reason _quite a lot_ about your program**. Providing you with a pretty effective bug-catching assistant. 💪
 (You still have to write sensible code though, you can't expect the compiler to do all the work. 😜)
 
 <Giff url='https://giphy.com/embed/3o7ZesJdQccI0sO3fy' />
 
-But what if the code is ambiguous or can have more than one type? (we'll see examples in future lessons). Haskell will try to infer the type, and if it can't, It will... you guessed it... yell at you to specify it. 😂
+But what if the code is ambiguous or can have more than one type? (we'll see examples in future lessons). Haskell will try to infer the type, and if it can't, it will — you guessed it — **yell at you** to specify it. 😂
 
-To see the type of a piece of code, we use the `::` operator.
+But how do you know/set the type? To see and specify the type of a piece of code, we use the `::` operator.
 
 ## The :: operator
 
@@ -101,13 +132,13 @@ Here's how it looks:
 🥐 :: Food   -- This reads as: 🥐 has type of Food
 ```
 
-Obviously, those are not standard Haskell types. We'll explore the properties of the most common Haskell types in the following few lectures.
+Obviously, those are not standard Haskell types. We'll explore the properties of the most common Haskell types and the use of the `::` operator in practice in the following lectures.
 
 And that's it for today! 🙃 Make sure to do the homework and solidify today's concepts! 🤓
 
 ## Homework
 
-1. Answer these questions in your head and open them to check your answer:
+1. Answer these questions in your head and open them to check your answer (repeat every few minutes until you get all of them right):
 
 <Accordion
 	title='What are types?'
