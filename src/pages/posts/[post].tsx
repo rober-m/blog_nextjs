@@ -22,6 +22,7 @@ import { SideNote } from '../../components/SideNote';
 import { Giff } from '../../components/Giff';
 import { RevueEmbed } from '../../components/RevueEmbed';
 import { ShareOnSocialMedia } from '../../components/ShareOnSocialMedia';
+import { LessonNavigationButtons } from '../../components/LessonNavigationButtons';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
@@ -44,6 +45,7 @@ const components = {
 	Giff,
 	RevueEmbed,
 	ShareOnSocialMedia,
+	LessonNavigationButtons,
 };
 const slugToPostContent = ((postContents) => {
 	let hash = {};
@@ -99,11 +101,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		scope: data,
 		mdxOptions: {
 			rehypePlugins: [
-				//@ts-ignore
 				rehypeHighlight,
-				//@ts-ignore
 				rehypeSlug,
-				//@ts-ignore
 				[rehypeAutolinkHeadings, { behavior: 'wrap' }],
 			],
 		},

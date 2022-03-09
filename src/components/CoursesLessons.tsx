@@ -13,7 +13,10 @@ const coursesAbstract: { [x: string]: any }[] = [
 		'Haskell course': (
 			<p>
 				This is a free course for complete beginners provided by{' '}
-				<a className='underline' href='https://twitter.com/robertinom_en'>
+				<a
+					className='underline text-violet-400'
+					href='https://twitter.com/robertinom_en'
+				>
 					Robertino Martinez
 				</a>
 				.
@@ -24,7 +27,9 @@ const coursesAbstract: { [x: string]: any }[] = [
 		'Other Course': (
 			<p>
 				This course is a free course for complete beginners provided by{' '}
-				<a href='https://twitter.com/robertinom_en'>Robertino Martinez</a>
+				<a href='https://twitter.com/robertinom_en'>
+					Robertino Martinez
+				</a>
 			</p>
 		),
 	},
@@ -32,7 +37,9 @@ const coursesAbstract: { [x: string]: any }[] = [
 
 export default function CoursesLessons({ posts, tag }: Props) {
 	return (
-		<div className={'container w-full max-w-7xl mx-auto px-6 flex flex-col'}>
+		<div
+			className={'container w-full max-w-7xl mx-auto px-6 flex flex-col'}
+		>
 			<h1 className='text-4xl lg:text-5xl capitalize text-center text-violet-700'>
 				{tag.name} Lessons
 			</h1>
@@ -42,11 +49,13 @@ export default function CoursesLessons({ posts, tag }: Props) {
 				</div>
 			)}
 			<ul>
-				{posts.sort((a,b) => a.slug.localeCompare(b.slug)).map((it, i) => (
-					<li key={i}>
-						<PostItem post={it} isLesson />
-					</li>
-				))}
+				{posts
+					.sort((a, b) => a.slug.localeCompare(b.slug))
+					.map((it, i) => (
+						<li key={i}>
+							<PostItem post={it} isLesson />
+						</li>
+					))}
 			</ul>
 			<p className='text-center bor'>
 				More lessons will be added <b>every few days!</b> 😁{' '}
