@@ -26,11 +26,13 @@ First, we'll see an overview of the concepts, and then, we'll talk specifically 
 
 Type checking is the process of verifying and enforcing the constraints of types.
 
+**What does this mean?** It means that each type has its own constraints (E.g., you can't do math with letters. Unless... 🤔 No, no, you can't), and this process checks that those constraints are respected. 
+
 <p>
-	Why would you do this? To avoid preventable mistakes. If further along in
+	<b>Why would you do this?</b> To avoid preventable mistakes. If further along in
 	your program, you want to add up some numbers and one of them has a
-	character, the program wouldn't know what to do, and it would crash on you.
-	It helps to avoid{' '}
+	letter, the program wouldn't know what to do, and it would crash on you.
+	Those are preventable mistakes{' '}
 	<SideNote
 		content={
 			<div>
@@ -44,15 +46,16 @@ Type checking is the process of verifying and enforcing the constraints of types
 			</div>
 		}
 	>
-		bugs
+		bugs,
 	</SideNote>
+	{' '} and the compiler/interpreter helps you avoid them.
 </p>
 
 Usually, this is done automatically. But not all languages do this the same way. There are two main distinctions regarding as to **WHEN** the types are checked.
 
 ### Dynamically typed languages
 
-**Dynamically typed languages check the types in runt-time**. Run-time is the very last thing that you do with a program. It's the stage when you run your program to test it or use it.
+**Dynamically typed languages check the types in run-time**. Run-time is the very last thing that you do with a program. It's the stage when you run your program to test it or use it.
 
 Meaning that you won't know if your types are correct until you actually use the program. And if your types are wrong, your program will crash.
 
