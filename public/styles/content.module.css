@@ -2,6 +2,12 @@
 	color: #9b9b9b;
 }
 
+.content pre,
+.content code {
+	border-radius: 4px;
+	margin: 1rem 0;
+}
+
 .content p code,
 .content li code {
 	border-radius: 4px;
@@ -94,9 +100,9 @@
 }
 
 @media (max-width: 1024px) {
-	.content img:active:not([id*='side-note-cross']),
-	.content img:focus:not([id*='side-note-cross']),
-	.content img:hover:not([id*='side-note-cross']) {
+	.content img:active:not([id*='do-not-zoom']),
+	.content img:focus:not([id*='do-not-zoom']),
+	.content img:hover:not([id*='do-not-zoom']) {
 		position: absolute;
 		left: 0;
 		z-index: 20;
@@ -108,9 +114,9 @@
 }
 
 @media (min-width: 1024px) {
-	.content img:active:not([id*='side-note-cross']),
-	.content img:focus:not([id*='side-note-cross']),
-	.content img:hover:not([id*='side-note-cross']) {
+	.content img:active:not([id*='do-not-zoom']),
+	.content img:focus:not([id*='do-not-zoom']),
+	.content img:hover:not([id*='do-not-zoom']) {
 		scale: 1.5;
 		z-index: 20;
 		box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),

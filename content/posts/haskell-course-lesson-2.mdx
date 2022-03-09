@@ -1,0 +1,155 @@
+---
+slug: haskell-course-lesson-2
+title: Haskell Course - Lesson 2 - Haskell Type system
+date: 2022-03-10
+author: robertinom
+tags:
+    - haskell-course
+    - haskell
+    - programming
+---
+
+Types are **attributes that constraint the values a piece of code can have**. For example, if you indicate that some data is a number, that data could have any of these values:
+
+-   4
+-   32
+-   9999695939294
+-   0.5
+
+But, if you try to add a character in there, like this: `6A3` (instead of `63`), the compiler/interpreter will yell at you: "That's not a number, you imbecile!" (you got a sassy one, my condolences).
+
+What your compiler/interpreter did just there is called "**type checking**." Some languages have more strongly enforced type checking, some less.
+
+First, we'll see an overview of the concepts, and then, we'll talk specifically about Haskell.
+
+## Type checking
+
+Type checking is the process of verifying and enforcing the constraints of types.
+
+**What does this mean?** It means that each type has its own constraints (E.g., you can't do math with letters. Unless... 🤔 No, no, you can't), and this process checks that those constraints are respected. 
+
+<p>
+	<b>Why would you do this?</b> To avoid preventable mistakes. If further along in
+	your program, you want to add up some numbers and one of them has a
+	letter, the program wouldn't know what to do, and it would crash on you.
+	Those are preventable mistakes{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Bugs (programming)</h4>
+				<p>
+					Bugs are the result of a mistake in the code. They are
+					errors that produce an incorrect, unexpected, or unintended
+					result or behaviour in the program.
+				</p>
+				<p></p>
+			</div>
+		}
+	>
+		bugs,
+	</SideNote>
+	{' '} and the compiler/interpreter helps you avoid them.
+</p>
+
+Usually, this is done automatically. But not all languages do this the same way. There are two main distinctions regarding as to **WHEN** the types are checked.
+
+### Dynamically typed languages
+
+**Dynamically typed languages check the types in run-time**. Run-time is the very last thing that you do with a program. It's the stage when you run your program to test it or use it.
+
+Meaning that you won't know if your types are correct until you actually use the program. And if your types are wrong, your program will crash.
+
+Common examples of dynamically-typed languages include JavaScript, Python, Objective-C, and PHP.
+
+The counterpart of dynamically typed languages are **statically typed** languages.
+
+### Statically typed languages
+
+**Statically typed languages check the types in compile-time**. Meaning that you'll know if your types are wrong as soon as you compile your program (and some IDEs will show you the exact place where the error occurs). Which leads to a safer (and more optimized) code.
+
+Common examples of statically-typed languages include Java, C, and C++.
+
+## Haskell type system
+
+**Haskell is statically typed**. And, in Haskell, **Everything has a type**.
+
+<Giff url='https://giphy.com/embed/AO3giAtLPH4MIuugsB' />
+
+And not only that. In some programming languages, each time you write a piece of code, you have to indicate the types. But not in Haskell! Haskell is smarter than other languages because it has **type inference**.
+
+**Type inference allows Haskell to infer the types on its own**. If you write something like `3 + 4`, Haskell will know that the result of that expression is a number, and it will treat like it without the need for you to specify anything.
+
+**That allows the compiler to comprehend and reason quite a lot about your program**. Providing you with a pretty effective bug-catching assistant. 🤓
+(You still have to write sensible code though, you can't expect the compiler to do all the work. 😜)
+
+<Giff url='https://giphy.com/embed/3o7ZesJdQccI0sO3fy' />
+
+But what if the code is ambiguous or can have more than one type? (we'll see examples in future lessons). Haskell will try to infer the type, and if it can't, It will... you guessed it... yell at you to specify it. 😂
+
+To see the type of a piece of code, we use the `::` operator.
+
+## The :: operator
+
+An operator is a **symbol to perform specific mathematical, relational, or logical operations**. In this case, the `::` operator is used to **show or assign types.**
+
+When you read code with that operator, you can read it as "has type of."
+Here's how it looks:
+
+```hs
+🐬 :: Animal -- This reads as: 🐬 has type of Animal
+
+🥐 :: Food   -- This reads as: 🥐 has type of Food
+```
+
+Obviously, those are not standard Haskell types. We'll explore the properties of the most common Haskell types in the following few lectures.
+
+And that's it for today! 🙃 Make sure to do the homework and solidify today's concepts! 🤓
+
+## Homework
+
+1. Answer these questions in your head and open them to check your answer:
+
+<Accordion
+	title='What are types?'
+	content={
+		<p>Attributes that constraint the values a piece of code can have</p>
+	}
+/>
+<Accordion
+	title='What is type checking?'
+	content={
+		<p>The process of verifying and enforcing the constraints of types.</p>
+	}
+/>
+<Accordion
+	title="What's the difference between dynamically and statically typed languages?"
+	content={
+		<p>
+			Dynamically typed languages check the types at run-time, and
+			statically typed languages, check the types at compile-time.
+		</p>
+	}
+/>
+<Accordion
+	title="What happens if I don't indicate the type in Haskell?"
+	content={
+		<p>
+			Haskell will try to infer the type. And if it can't, it'll ask me to
+			specify it.
+		</p>
+	}
+/>
+<Accordion
+	title='How do you express "USD has type of Currency" in Haskell?'
+	content={
+		<pre>
+			<code className='hljs language-hs'>
+				USD :: <span className='hljs-type'>Currency</span>{' '}
+			</code>
+		</pre>
+	}
+/>
+
+2. Search the difference between **strongly typed languages** and **weakly typed languages**.
+
+In the next lesson, we'll learn about Numbers in Haskell! ➕➖➗✖️ See you there!! 😄
