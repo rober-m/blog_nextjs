@@ -24,6 +24,7 @@ import { RevueEmbed } from '../../components/RevueEmbed';
 import { ShareOnSocialMedia } from '../../components/ShareOnSocialMedia';
 import { LessonNavigationButtons } from '../../components/LessonNavigationButtons';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
+hljs.registerLanguage('Haskell', require('highlight.js/lib/languages/haskell'));
 
 export type Props = {
 	title: string;

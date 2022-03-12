@@ -1,12 +1,154 @@
 ---
 slug: haskell-course-lesson-3
-title: Numbers
+title: Haskell Course - Lesson 3 - Numbers
 date: 2022-03-14
 author: robertinom
 thumbnail: /images/meme-lets-talk-numbers.jpg
+description: 'Third lesson of the "Haskell for complete beginners" course. The Haskell numbers.'
 tags:
-  - programming
-  - haskell-course
-  - haskell
+    - programming
+    - haskell-course
+    - haskell
 ---
-a
+
+## Common numeric types in Haskell
+
+Not all numbers are the same. And in Haskell, we have four different numeric types: `Int`, `Integer`, `Float`, and `Double`.
+
+### `Int` and `Integer`
+
+**Both `Int` and `Integer` are types that represent whole numbers** (i.e., `3` can be an `Int` or `Integer`, but `3.2` can't).
+
+The difference between `Int` and `Integer` is the size of the numbers that it can store. **`Integer` can hold numbers as big or as small as you want. But `Int` has a maximum value of 2<sup>63</sup>** (that's 2x2x2x2x2... 63 times 👀, big enough for most cases, if you ask me) **and a minimum value of -2<sup>63</sup>** (assuming you have a 64-bit CPU).
+
+Don't believe me? I know you wouldn't! It's ok, you can check the limits on your own! Open `ghci` in your terminal (like we saw in lesson 1), write `2^62`, and hit enter:
+
+```hs
+2^62  -- This will give you: 4611686018427387904
+```
+
+Haskell calculates the number for us! Awesome! Now, let's indicate that this number "has type of" `Int` and try again:
+
+```hs
+2^62 :: Int  -- This will also give you: 4611686018427387904
+```
+
+So far, so good. Now, let's try with a bigger number. Let's say 2<sup>64</sup>:
+
+```hs
+2^64 :: Int  -- Oh no! This will give you: 0! 👀
+```
+
+You can try with larger numbers, too! As you can see, numbers greater than 2<sup>63</sup> are too big for `Int` and are lost. But, if we try one of those numbers as `Integer`, we get the correct result:
+
+```hs
+2^69 :: Integer  -- This will give you: 590295810358705651712 😏
+```
+
+There you go! 😎 No more unexpected zeroes.
+
+So, why do we need `Int` if `Integer` can do the same and has no limits? Because `Int` is more efficient. The program runs faster if we use `Int`.
+
+**What does all this mean to you?**
+
+-   If you know you're going to work with small (smaller than ±2<sup>63</sup>) whole numbers, use `Int`. Else, use `Integer`.
+-   If a function returns an `Int` or `Integer`, you can be sure that it'll be a whole number.
+
+But what about the rest of the numbers? The ones that aren't whole?
+
+### `Float` and `Double`
+
+<p>
+	Both <code>Float</code> and <code>Doube</code> are real{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Floating-point number</h4>
+				<p>
+					A floating-point number is one where the position of the
+					decimal point can "float" rather than being in a fixed
+					position within a number. Examples of floating-point numbers
+					are 1.23, 87.425, and 9039454.2.
+				</p>
+			</div>
+		}
+	>
+		floating-point numbers
+	</SideNote>
+	. They are types that represent real numbers (i.e., 4.7 or 6.001).
+</p>
+
+The difference is the level of precision that they have. `Float` has <SideNote content={<div><h4>Single precision</h4><p>TODO</p></div>}>single precision</SideNote>, and `Double` has (you guessed it) double the `Float`'s precision.
+
+Theoretically, the reasons as to when to use one or de other are somewhat analogous to the `Int` and `Integer` cases. `Double` has double the precision but hogs more memory because it uses twice as many bits to represent numbers.
+
+Recommendation based on real-world use: **Don't use `Float`. Use `Double`.** There's rarely a speed disadvantage in modern computers, and with `Double`, you are much less likely to shoot yourself in the foot with rounding errors.
+
+Let's see what happens if I want to show the first 20 digits of pi (π) in `ghci`:
+
+```hs
+3.14159265358979323846 :: Float  -- Result: 3.1415927
+```
+
+With `Float`, I get 7 digits after the point.
+
+```hs
+3.14159265358979323846 :: Double  -- Result: 3.141592653589793
+```
+
+With `Double` I get 15 digits after the point (~double the previous precision).
+
+What if I don't specify the type?
+
+```hs
+3.14159265358979323846  -- Result: 3.141592653589793
+```
+
+Haskell assumes that you want the best precision possible and infers that you want to use a `Double`.
+
+Ok. Those are Haskells standard numeric types. Now let's do some simple calculations!
+
+## Doing some simple calculations
+
+Here are a few math operations in Haskell and its correspondent symbol and example:
+
+| Operation      | Haskell Symbol | Example |
+| -------------- | -------------- | ------- |
+| Addition       | +              | 3 + 2   |
+| Subtraction    | -              | 3 - 2   |
+| Multiplication | \*             | 3 \* 2  |
+| Division       | /              | 3 / 2   |
+| Exponential    | ^              | 4 ^ 3   |
+
+<p>
+	<mark>Remember that operations have an order</mark> (division before
+	addition and such). And in Haskell — the same as in maths — you can alter
+	the order by applying parenthesis:
+</p>
+
+-   6 + 4 / 2 = 8
+
+-   (6 + 4) / 2 = 5
+
+<p
+	style={{
+		backgroundColor: '#dbd6fb',
+		padding: '0.5rem 1rem',
+		borderRadius: '4px',
+		color: '#733de4',
+	}}
+>
+	<i>
+		PD: If you find this course valuable, please{' '}
+		<a
+			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+			target='_blank'
+		>
+			share it
+		</a>{' '}
+		so more people can learn!
+	</i>{' '}
+	😄
+</p>
+
+<LessonNavigationButtons />
