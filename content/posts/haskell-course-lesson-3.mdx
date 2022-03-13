@@ -11,6 +11,8 @@ tags:
     - haskell
 ---
 
+We'll study numbers first because they are one of the most useful types in Haskell. After this lesson, you'll understand 4 new types and learn how to use Haskell as your personal calculator. 🤓
+
 ## Common numeric types in Haskell
 
 Not all numbers are the same. And in Haskell, we have four different numeric types: `Int`, `Integer`, `Float`, and `Double`.
@@ -19,9 +21,13 @@ Not all numbers are the same. And in Haskell, we have four different numeric typ
 
 **Both `Int` and `Integer` are types that represent whole numbers** (i.e., `3` can be an `Int` or `Integer`, but `3.2` can't).
 
-The difference between `Int` and `Integer` is the size of the numbers that it can store. **`Integer` can hold numbers as big or as small as you want. But `Int` has a maximum value of 2<sup>63</sup>** (that's 2x2x2x2x2... 63 times 👀, big enough for most cases, if you ask me) **and a minimum value of -2<sup>63</sup>** (assuming you have a 64-bit CPU).
+The difference between `Int` and `Integer` is the size of the numbers that it can store. **`Integer` can hold numbers as big or small as your computer can handle. But `Int` has a maximum value of 2<sup>63</sup>** (that's 2x2x2x2x2... 63 times 👀, big enough for most cases, if you ask me) **and a minimum value of -2<sup>63</sup>**.
 
-Don't believe me? I know you wouldn't! It's ok, you can check the limits on your own! Open `ghci` in your terminal (like we saw in lesson 1), write `2^62`, and hit enter:
+I assume that you can do the math in your head to know how big is that number.
+
+<Giff url='https://giphy.com/embed/APqEbxBsVlkWSuFpth' />
+
+Just kidding 🤣 , we can ask Haskell to do the math for us. Open `ghci` in your terminal (like we saw in lesson 1), write `2^62`, and hit enter:
 
 ```hs
 2^62  -- This will give you: 4611686018427387904
@@ -47,14 +53,14 @@ You can try with larger numbers, too! As you can see, numbers greater than 2<sup
 
 There you go! 😎 No more unexpected zeroes.
 
-So, why do we need `Int` if `Integer` can do the same and has no limits? Because `Int` is more efficient. The program runs faster if we use `Int`.
+So, **why do we need `Int` if `Integer` can do the same and has no limits?** Because `Int` is more efficient. The program runs faster if we use `Int`.
 
 **What does all this mean to you?**
 
 -   If you know you're going to work with small (smaller than ±2<sup>63</sup>) whole numbers, use `Int`. Else, use `Integer`.
 -   If a function returns an `Int` or `Integer`, you can be sure that it'll be a whole number.
 
-But what about the rest of the numbers? The ones that aren't whole?
+But what about the rest of the numbers? What about numbers with decimal point (with fractional value) like 4.5?
 
 ### `Float` and `Double`
 
@@ -75,14 +81,34 @@ But what about the rest of the numbers? The ones that aren't whole?
 	>
 		floating-point numbers
 	</SideNote>
-	. They are types that represent real numbers (i.e., 4.7 or 6.001).
+	. They are types that represent real numbers, whole and fractional (i.e., 4.7
+	or 6.001).
 </p>
 
-The difference is the level of precision that they have. `Float` has <SideNote content={<div><h4>Single precision</h4><p>TODO</p></div>}>single precision</SideNote>, and `Double` has (you guessed it) double the `Float`'s precision.
+<p>
+	The difference is the level of precision that they have. <code>Float</code>{' '}
+	has{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Single precision floating-point</h4>
+				<p>
+					Basic format of floating-point number that uses ~7 decimal
+					digits to represent the number. Usually occupying 32 bits in
+					computre memory.
+				</p>
+			</div>
+		}
+	>
+		single precision
+	</SideNote>
+	, and <code>Double</code> has (you guessed it) double the <code>Float</code>'s
+	precision.
+</p>
 
 Theoretically, the reasons as to when to use one or de other are somewhat analogous to the `Int` and `Integer` cases. `Double` has double the precision but hogs more memory because it uses twice as many bits to represent numbers.
 
-Recommendation based on real-world use: **Don't use `Float`. Use `Double`.** There's rarely a speed disadvantage in modern computers, and with `Double`, you are much less likely to shoot yourself in the foot with rounding errors.
+Recommendation based on real-world use: <mark>Don't use `Float`. Use `Double`.</mark> There's rarely a speed disadvantage in modern computers, and **with `Double`, you are much less likely to shoot yourself in the foot with rounding errors**.
 
 Let's see what happens if I want to show the first 20 digits of pi (π) in `ghci`:
 
@@ -96,9 +122,9 @@ With `Float`, I get 7 digits after the point.
 3.14159265358979323846 :: Double  -- Result: 3.141592653589793
 ```
 
-With `Double` I get 15 digits after the point (~double the previous precision).
+With `Double` I get 15 digits after the point (double the previous precision).
 
-What if I don't specify the type?
+And what if I don't specify the type?
 
 ```hs
 3.14159265358979323846  -- Result: 3.141592653589793
@@ -107,6 +133,8 @@ What if I don't specify the type?
 Haskell assumes that you want the best precision possible and infers that you want to use a `Double`.
 
 Ok. Those are Haskells standard numeric types. Now let's do some simple calculations!
+
+<Giff url='https://giphy.com/embed/HBWbIuHvXI2Eo' />
 
 ## Doing some simple calculations
 
@@ -122,13 +150,102 @@ Here are a few math operations in Haskell and its correspondent symbol and examp
 
 <p>
 	<mark>Remember that operations have an order</mark> (division before
-	addition and such). And in Haskell — the same as in maths — you can alter
-	the order by applying parenthesis:
+	addition and such). And in Haskell—the same as in maths—you can alter the
+	order by applying parenthesis:
 </p>
 
 -   6 + 4 / 2 = 8
 
 -   (6 + 4) / 2 = 5
+
+Now, we can use `ghci` as our personal calculator.
+
+### Calculating the volume of a cube
+
+The formula to calculate the volume of a cube is <code>volume = side<sup>3</sup></code>. This means that to obtain the volume of a cube, we just need to calculate the cube of its side. If we have a cube with 2 meters (2m) of side length, the volume of the cube will be: <code>side<sup>3</sup> = 2<sup>3</sup> = 8</code>.
+
+And to calculate the volume of a cube of side length 3m, we have to write:
+
+```Haskell
+3^3  -- That will give me a volume of  27m3
+```
+
+Note: _You can navigate through everything you executed in `ghci` using your arrow keys! Up goes back to previous expressions, and down goes forward to newer expressions_.
+
+Ok, that was the warm-up.
+
+<Accordion
+	title='Using GHCi answer: What is the volume of a cube with sides of length 8m?'
+	content={
+		<p>
+			<code>8^3</code> = 512m<sup>3</sup>
+		</p>
+	}
+/>
+
+I know, I know. That was too easy. Let's do something more interesting.
+
+### Increasing the difficulty
+
+I'll provide the expression in the form of a sentence, and you have to translate it into a valid Haskell expression in GHCi and check the result:
+
+<Accordion
+	title='Divide by 3 the result of subtracting 13 to 22'
+	content={
+		<p>
+			<code>(22-13)/3</code> = 3.0
+		</p>
+	}
+/>
+
+<Accordion
+	title='Add up the results of dividing 12 by 4 and the result of 4 squared'
+	content={
+		<p>
+			<code>12/4 + 4^2</code> = 19.0
+		</p>
+	}
+/>
+
+<Accordion
+	title='Subtract the result of multiplying 943 by 500 to the result of multiplying 3 by itself nine times.'
+	content={
+		<p>
+			<code>3^9 - 943*500</code> = -451817
+		</p>
+	}
+/>
+
+Notice that Haskell returns the first and second results as a floating-point number (`.0`) even if the results are whole numbers. But, in the last one, Haskell returns a whole number (without `.0`). Why is that?
+
+Because Haskell knows (before calculating the result) that if you add two whole numbers, the result will always be a whole number. Same with subtraction and exponential. But there are many cases when a division of whole numbers gives you fractional numbers (i.e., `3/2` gives you `1.5`). So, Haskell makes sure that the division never fails by transforming the numbers to `Float` or `Double` before dividing.
+
+We'll learn the specifics of how Haskell does this in the "Type classes" lesson.
+
+Ok, we're going to stop here. But you're not done yet! Make sure to complete this week's homework! See ya in the next lesson! 💪😄
+
+## Homework
+
+1. Get familiar with the [order of operations](https://en.wikipedia.org/wiki/Order_of_operations) and take a peek at the [programming languages section](https://en.wikipedia.org/wiki/Order_of_operations#Programming_languages).
+
+### 2. Fahrenheit to Celsius
+
+Celsius (ºC)—also referred to as centigrade—is the most common non-scientific unit of temperature. But, the US still uses Fahrenheit (ºF). Let's say that you have friends in the US and, when chatting, they always comment about their temperature in Fahrenheit. You got tired of doing the math in your head, and you decide to use Haskell.
+
+This is the formula to transform from Fahrenheit to Celsius: `Tc = (Tf - 32)*5/9`. Where `Tc` is the temperature in Celsius (the result) and `Tf` is the temperature in Fahrenheit. Using only `ghci` transform the temperatures to Celsius:
+
+-   How many ºC is `100` ºF?
+-   How many ºC is `32` ºF?
+-   How many ºC is `212` ºF?
+
+<p>
+	<mark>
+		You are doing great! Each lesson, you are closer to becoming a
+		full-fledged programmer! 🔥 Next lesson, we'll learn about characters,
+		lists, and Strings. See you there!{' '}
+	</mark>{' '}
+	😄
+</p>
 
 <p
 	style={{
