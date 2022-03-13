@@ -102,8 +102,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		scope: data,
 		mdxOptions: {
 			rehypePlugins: [
+				//@ts-ignore
 				rehypeHighlight,
+				//@ts-ignore
 				rehypeSlug,
+				//@ts-ignore
 				[rehypeAutolinkHeadings, { behavior: 'wrap' }],
 			],
 		},
