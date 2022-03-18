@@ -1,0 +1,309 @@
+---
+slug: haskell-course-lesson-4
+title: Haskell Course - Lesson 4 - Characters, Lists, and Strings
+date: 2022-03-18
+author: robertinom
+thumbnail: /images/meme-hello-world.jpg
+tags:
+    - programming
+    - haskell
+    - haskell-course
+---
+
+In the last lesson, we got familiar with numeric types. In this lesson, we'll learn about common types of text. After this lesson, you'll be able to understand, use, and manipulate text in Haskell easily. Are you ready? Let's go! 💪🔥
+
+## `Char`
+
+<p>
+	`Char` is the type we use to represent a{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Unicode character</h4>
+				<p>
+					The Unicode standard (Unicode) is a set of rules that
+					enforce a way of handling and expressing text. It's needed
+					because computers think in numbers (ones and zeroes), and we
+					have to collectively decide which numbers represent which
+					characters.
+				</p>
+				<p>
+					It's actually a little more complicated (see:{' '}
+					<a href='https://en.wikipedia.org/wiki/Character_encoding'>
+						Character encoding
+					</a>
+					. But for our purpose, we just want to know that we can use almost
+					any symbol that we'll ever need by using Unicode characters.
+					Letters, numbers, and more than 140k+ symbols.
+				</p>
+			</div>
+		}
+	>
+		Unicode character
+	</SideNote>
+	.
+</p>
+
+We write values of type `Char` (Unicode characters) between single quotes. Like this:
+
+```hs
+'a'
+
+'c'
+
+'5'
+```
+
+Note that if you write a number surrounded by single quotes (like in the last expression), Haskell won't treat it like a number. It will treat it like any other character. So, you can't do math with `'7'` (with quotes), but you can with `7` (without quotes).
+
+**Important: You can only write a single character at a time!** This: ~~`'hi'`~~ will make your compiler yell at you. And you don't want to start your relationship with your compiler like that.
+
+This one was easy, so we won't waste more time on it.
+
+I know that you want to write more than one character at a time. I get it. You don't want to sound like a freezing caveman. But before that, we have to learn about lists.
+
+## Lists
+
+<p>
+	Lists are homogeneous{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Data structure</h4>
+				<p>
+					A data structure is a data organization, management, and
+					storage format that enables efficient access and
+					modification. Is a collection of data values, the
+					relationships among them, and the functions or operations
+					that can be applied to the data.
+				</p>
+			</div>
+		}
+	>
+		{' '}
+		data structures
+	</SideNote>
+	. This is just a fancy way of saying that they are lists that store elements
+	of the same type.
+</p>
+
+We represent lists by starting with `[`, writing the elements separated by `,`, and ending with `]`. This is an example of a list with three numbers:
+
+```hs
+[42,404,666]
+```
+
+And this is an example of a list with 5 characters:
+
+```hs
+['h','e','l','l','o']
+```
+
+In this case, the first element of the list is the `Char` of value `'h'`, the second element is the `Char` of value `'e'`, and so on.
+
+### List type
+
+**Important: Lists are homogeneous! That means that you can't have a list with elements of different types!** `[1,'2',3]` will give your compiler a serious migraine! `'2'` is a character, not a number! You can't have both `Int` and `Char` types! You have to choose one or the other.
+
+The type of a list is expressed as the type of the elements that it contains surrounded by squared brackets. A list of type `[Int]` contains numbers of type `Int`. A list of type `[Char]` contains characters of type `Char`.
+
+You can specify the type of a list the same way you can specify the type of an element. Using the `::` operator:
+
+```hs
+-- Option 1:
+[1,2,3] :: [Float] -- Will give you a list of Floats
+-- Option 2:
+[1 :: Float,2,3]   -- Will give you a list of Floats
+```
+
+In _option 1_, we indicate that all the numbers are `Float`.
+
+In _option 2_, we indicate that only the first number is of type `Float`. But, because Haskell can infer the types (remember lesson 2), it knows that all the elements are of type `Float`. How can it tell? If the first element is a `Float` and all the elements of a list are of the same type, then all elements are `Float`s.
+
+Keep in mind that **you can't specify a type that doesn't fit with the elements**. If you have characters as elements and specify a numeric type, you'll get an error.
+
+Usually, it's not needed to specify the type at all. Just let Haskell infer its way through and keep on coding.
+
+We'll see more about lists, but before that, fire up your GHCi, copy and paste the list with 5 characters from before (`['h','e','l','l','o']`), and hit enter 👀.
+
+<Giff url='https://giphy.com/embed/Bp5dwyOW9BwbK' />
+
+That's a `String`! 😄
+
+## Strings
+
+Strings represent lists of characters. You can use the `String` type to write messages, alphanumeric values, symbols, etc. Unlike `Char`s, `String`s are surrounded with **double-quotes** like this:
+
+```hs
+"Hellooooooo!"
+
+"My phone number is 354XXXXXXXX"
+
+"My bank's account password is: NeverGonnaGiveYouUp_NeverGonnaLetYouDown"
+```
+
+<blockquote>
+	Waaaaaaait a minute! You just said that a list of characters is of type{' '}
+	<code>[Char]</code>. And now you're telling me that <code>String</code>{' '}
+	represents a list of characters? Which is it, you trickster?
+</blockquote> — Confused student.
+
+It's both! 😁 Because **`String` and `[Char]` are the same type!** More specifically, `String` is _syntactic sugar_ for `[Char]`. So, you can use them interchangeably.
+
+What you can't use interchangeably in Haskell are single and double-quotes. `String`s (written in double-quotes) are lists of `Char` (written using single quotes). These are not the same!:
+
+```hs
+"A" -- String or [Char]
+'A' -- Char
+```
+
+The first one is the same as `['A']`. And a list that contains the `'A'` element is not the same as just the `'A'` element!
+As you can see, we can write a `String` with a single character (e.g, `"p"`), but you can't write a character with multiple characters (e.g. ~~`'hi'`~~).
+
+<img
+	src='/images/kind_of_a_coder.jpg'
+	with='100%'
+	style={{ margin: '0.5rem 0' }}
+/>
+
+## Fun with Lists
+
+Now that we're familiar with lists and Strings, let's have some fun!
+
+### Accessing lists elements
+
+You can access a specific element inside a list by using its index. Every element has its own index determined by its position inside the list **starting at `0` (zero)**.
+
+So, in this case:
+
+```hs
+['a','b','c']
+```
+
+The index of `'a'` is `0`, the index of `'b'` is `1`, and the index of `'c'` is `2`.
+
+Lists indices start at `0` in almost all programming languages.
+
+<img
+	src='/images/meme-lists-zero.png'
+	with='100%'
+	style={{ margin: '0.5rem 0' }}
+/>
+
+Now, how do we access a specific element using the index? By using the `!!` operator. The `!!` operator has to be written like this (a list to its left and the index of the element we want to its right):
+
+```hs
+['a','b','c'] !! 1 -- This will give us 'b'
+[12,13,16,18] !! 3 -- This will give us 18
+```
+
+<Accordion
+	title='What if we want to take the third element of the String "Covfefe!"? What will it give us?'
+	content={
+		<p>
+			Think about it, and then use GHCi to check your answer. You don't
+			need me to tell you (...kids grow up so fast 😢...).
+		</p>
+	}
+/>
+
+<Accordion
+	title="What about ['g','e','f'] !! 3 ?"
+	content={
+		<p>
+			An error! Because there's no element of index <code>3</code>. The
+			list ends at index <code>2</code> of value <code>'f'</code>! If you
+			try in GHCi, the compiler will tell you that the index is too large.
+		</p>
+	}
+/>
+
+### Concatenation of lists
+
+<p>
+	A common operation with lists is
+	<SideNote
+		content={
+			<div>
+				<h4>String concatenation</h4>
+				<p>
+					Concatenation is the operation of joining two things
+					(usually strings or lists) end-to-end.
+				</p>
+			</div>
+		}
+	>
+		concatenation
+	</SideNote>. Imagine that you have a list with January's clients and a list with
+	February's clients, and you want a single list with all the clients. That's when
+	concatenation shines.{' '}
+</p>
+
+**We concatenate in Haskell by using the `++` operator.** Even though we know that this operator is two `+` one after the other, Haskell doesn't see it that way. For Haskell, `++` is a single thing! It's an operator that concatenates two lists (and only two lists). Nothing to do with `+`.\*\*
+
+We can use the operator like this (try it out in GHCi):
+
+```hs
+[1,2,3] ++ [4,5,6] -- [1,2,3,4,5,6]
+```
+
+<Accordion
+	title='What about "Conca" ++ "tenated" ?'
+	content={
+		<p>
+			Exactly! Strings are lists as well, so we can do all the things that
+			we can do with lists.
+		</p>
+	}
+/>
+
+We can also use the operator as much as needed:
+
+```hs
+"Hello" ++ " " ++ "World!"
+```
+
+This way, you can create complex messages by combining more simple ones.
+
+Ok, that's it for now. We can do many (many many many) more with lists. That's why lists will have their own lesson (maybe two lessons? 🤔).
+
+## Homework
+
+### Solutions for lesson's 3 homework
+
+-   How many ºC is `100` ºF? `(100 - 32) *5/9` = 37.77ºC
+-   How many ºC is `32` ºF? `(32 - 32) *5/9` = 0ºC
+-   How many ºC is `212` ºF? `(212 - 32) *5/9` = 100ºC
+
+### Predict the result of the expressions (use GHCi if needed)
+
+<p>
+	<mark>
+		Next lesson, we'll learn about Booleans and Tuples! Those will be our
+		last types before learning about functions!! 🤩{' '}
+	</mark>{' '}
+	😄
+</p>
+
+<p
+	style={{
+		backgroundColor: '#dbd6fb',
+		padding: '0.5rem 1rem',
+		borderRadius: '4px',
+		color: '#733de4',
+	}}
+>
+	<i>
+		PD: If you find this course valuable, please{' '}
+		<a
+			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+			target='_blank'
+		>
+			share it
+		</a>{' '}
+		so more people can learn!
+	</i>{' '}
+	😄
+</p>
+
+<LessonNavigationButtons />
