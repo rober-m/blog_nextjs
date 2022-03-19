@@ -10,12 +10,12 @@ tags:
     - haskell-course
 ---
 
-In the last lesson, we got familiar with numeric types. In this lesson, we'll learn about common types of text. After this lesson, you'll be able to understand, use, and manipulate text in Haskell easily. Are you ready? Let's go! 💪🔥
+In the last lesson, we got familiar with numeric types. In this lesson, we'll learn about common text types. After this lesson, you'll be able to understand, use, and manipulate text in Haskell easily. Are you ready? Let's go! 💪🔥
 
 ## `Char`
 
 <p>
-	`Char` is the type we use to represent a{' '}
+	<code>Char</code> is the type we use to represent a{' '}
 	<SideNote
 		content={
 			<div>
@@ -39,33 +39,33 @@ In the last lesson, we got familiar with numeric types. In this lesson, we'll le
 			</div>
 		}
 	>
-		Unicode character
-	</SideNote>
-	.
+		Unicode
+	</SideNote>{' '}
+	character.
 </p>
 
 We write values of type `Char` (Unicode characters) between single quotes. Like this:
 
-```hs
+```haskell
 'a'
-
-'c'
-
-'5'
 ```
 
-Note that if you write a number surrounded by single quotes (like in the last expression), Haskell won't treat it like a number. It will treat it like any other character. So, you can't do math with `'7'` (with quotes), but you can with `7` (without quotes).
+<pre>
+	<code className='hljs language-haskell'>'5'</code>
+</pre>
 
-**Important: You can only write a single character at a time!** This: ~~`'hi'`~~ will make your compiler yell at you. And you don't want to start your relationship with your compiler like that.
+**Note that if you write a number surrounded by single quotes (like in the last expression), Haskell won't treat it like a number. It will treat it like any other character.** So, you can't do math with `'7'` (with quotes), but you can with `7` (without quotes).
 
-This one was easy, so we won't waste more time on it.
+**Important: You can only write a single character at a time!** This: ~~`'hi'`~~ will make your compiler yell at you. And you don't want to start the relationship with your compiler like that. 😅
 
-I know that you want to write more than one character at a time. I get it. You don't want to sound like a freezing caveman. But before that, we have to learn about lists.
+This one is easy, so we won't waste more time on it.
+
+I know that you want to write more than one character at a time. I get it. You don't want to sound like a freezing caveman. 🥶 But before that, we have to learn about lists.
 
 ## Lists
 
 <p>
-	Lists are homogeneous{' '}
+	<b>Lists are homogeneous </b>
 	<SideNote
 		content={
 			<div>
@@ -81,10 +81,9 @@ I know that you want to write more than one character at a time. I get it. You d
 		}
 	>
 		{' '}
-		data structures
-	</SideNote>
-	. This is just a fancy way of saying that they are lists that store elements
-	of the same type.
+		<b>data structures</b>
+	</SideNote>. This is just a fancy way of saying that they are lists that store
+	elements of the same type.
 </p>
 
 We represent lists by starting with `[`, writing the elements separated by `,`, and ending with `]`. This is an example of a list with three numbers:
@@ -103,9 +102,9 @@ In this case, the first element of the list is the `Char` of value `'h'`, the se
 
 ### List type
 
-**Important: Lists are homogeneous! That means that you can't have a list with elements of different types!** `[1,'2',3]` will give your compiler a serious migraine! `'2'` is a character, not a number! You can't have both `Int` and `Char` types! You have to choose one or the other.
+**Important: Lists are homogeneous! That means that you can't have a list with elements of different types!** `[1,'2',3]` will give your compiler a serious migraine! `'2'` is a character, not a number! You can't have both `Int` and `Char` types! You have to choose one or the other!
 
-The type of a list is expressed as the type of the elements that it contains surrounded by squared brackets. A list of type `[Int]` contains numbers of type `Int`. A list of type `[Char]` contains characters of type `Char`.
+The type of a list is expressed as **the type of the elements that it contains surrounded by squared brackets.** A list of type `[Int]` contains numbers of type `Int`. A list of type `[Char]` contains elements of type `Char`.
 
 You can specify the type of a list the same way you can specify the type of an element. Using the `::` operator:
 
@@ -143,12 +142,38 @@ Strings represent lists of characters. You can use the `String` type to write me
 ```
 
 <blockquote>
-	Waaaaaaait a minute! You just said that a list of characters is of type{' '}
-	<code>[Char]</code>. And now you're telling me that <code>String</code>{' '}
-	represents a list of characters? Which is it, you trickster?
-</blockquote> — Confused student.
+	<p>
+		Waaaaaaait a minute! You just said that a list of characters is of type{' '}
+		<code>[Char]</code>. And now you're telling me that <code>String</code>{' '}
+		represents a list of characters? Which is it, you trickster?
+	</p>
+	— Weirdly angry student? 😂
+</blockquote>{' '}
 
-It's both! 😁 Because **`String` and `[Char]` are the same type!** More specifically, `String` is _syntactic sugar_ for `[Char]`. So, you can use them interchangeably.
+<p>
+	It's both! 😁 Because{' '}
+	<b>
+		<code>String</code> and <code>[Char]</code> are the same type!
+	</b>{' '}
+	More specifically, <code>String</code> is{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Syntactic sugar</h4>
+				<p>
+					Syntactic sugar is syntax within a programming language that
+					is designed to make things easier to read or to express. It
+					makes the language "sweeter" for human use: things can be
+					expressed more clearly, more concisely, or in an alternative
+					style that some may prefer.
+				</p>
+			</div>
+		}
+	>
+		syntactic sugar
+	</SideNote>{' '}
+	for <code>[Char]</code> So, you can use them interchangeably.
+</p>
 
 What you can't use interchangeably in Haskell are single and double-quotes. `String`s (written in double-quotes) are lists of `Char` (written using single quotes). These are not the same!:
 
@@ -158,21 +183,26 @@ What you can't use interchangeably in Haskell are single and double-quotes. `Str
 ```
 
 The first one is the same as `['A']`. And a list that contains the `'A'` element is not the same as just the `'A'` element!
-As you can see, we can write a `String` with a single character (e.g, `"p"`), but you can't write a character with multiple characters (e.g. ~~`'hi'`~~).
+
+As you can see, we can write a `String` with a single character (e.g, `"p"`), but you can't write a `Char` with multiple characters (e.g. ~~`'hi'`~~).
 
 <img
-	src='/images/kind_of_a_coder.jpg'
+	src='/images/meme-string-char.jpg'
 	with='100%'
 	style={{ margin: '0.5rem 0' }}
 />
-
-## Fun with Lists
+<p className=' text-gray-400 text-right m-0 text-sm'>
+	Courtesy of{' '}
+	<a href='https://www.instagram.com/system32comics/'>System32Comics</a>
+</p>
 
 Now that we're familiar with lists and Strings, let's have some fun!
 
+## Fun with Lists
+
 ### Accessing lists elements
 
-You can access a specific element inside a list by using its index. Every element has its own index determined by its position inside the list **starting at `0` (zero)**.
+You can access a specific element inside a list by using its index. Every element has an index determined by its position inside the list — **starting at `0` (zero)**.
 
 So, in this case:
 
@@ -218,14 +248,16 @@ Now, how do we access a specific element using the index? By using the `!!` oper
 	}
 />
 
+Accessing elements sounds wonderful, but what if you have a bunch of lists? Do you have to access them one by one? Well, you could. But you could also concatenate them first! 👀
+
 ### Concatenation of lists
 
 <p>
-	A common operation with lists is
+	A common operation with lists is{' '}
 	<SideNote
 		content={
 			<div>
-				<h4>String concatenation</h4>
+				<h4>Concatenation</h4>
 				<p>
 					Concatenation is the operation of joining two things
 					(usually strings or lists) end-to-end.
@@ -234,12 +266,13 @@ Now, how do we access a specific element using the index? By using the `!!` oper
 		}
 	>
 		concatenation
-	</SideNote>. Imagine that you have a list with January's clients and a list with
-	February's clients, and you want a single list with all the clients. That's when
-	concatenation shines.{' '}
+	</SideNote>
+	. Imagine that you have a list with January's clients and a list with February's
+	clients, and you want a single list with all the clients. That's when concatenation
+	shines.{' '}
 </p>
 
-**We concatenate in Haskell by using the `++` operator.** Even though we know that this operator is two `+` one after the other, Haskell doesn't see it that way. For Haskell, `++` is a single thing! It's an operator that concatenates two lists (and only two lists). Nothing to do with `+`.\*\*
+**We concatenate in Haskell by using the `++` operator.** Even though we know that this operator is two `+` one after the other, Haskell doesn't see it that way. For Haskell, `++` is a single thing! It's an operator that concatenates two lists (and only two lists). Nothing to do with `+`.
 
 We can use the operator like this (try it out in GHCi):
 
@@ -265,24 +298,70 @@ We can also use the operator as much as needed:
 
 This way, you can create complex messages by combining more simple ones.
 
-Ok, that's it for now. We can do many (many many many) more with lists. That's why lists will have their own lesson (maybe two lessons? 🤔).
+Ok, that's it for now. I have to leave something for next week! 😂
+
+We can do many (many many many) more cool things with lists. That's why lists will have their own lesson (maybe two lessons? 🤔, we'll see). For now, make sure to complete this week's homework! 😄
 
 ## Homework
 
 ### Solutions for lesson's 3 homework
 
--   How many ºC is `100` ºF? `(100 - 32) *5/9` = 37.77ºC
--   How many ºC is `32` ºF? `(32 - 32) *5/9` = 0ºC
--   How many ºC is `212` ºF? `(212 - 32) *5/9` = 100ºC
+-   How many ºC is `100` ºF? ➡️ `(100 - 32) *5/9` = 37.77ºC
+-   How many ºC is `32` ºF? ➡️ `(32 - 32) *5/9` = 0ºC
+-   How many ºC is `212` ºF? ➡️ `(212 - 32) *5/9` = 100ºC
 
 ### Predict the result of the expressions (use GHCi if needed)
 
+<Accordion
+	title="What is the result of concatenating the list [1,2,3] with the list ['a','b','c']?"
+	content={<p>Error! You can't concatenate a lists of different type!</p>}
+/>
+
+<Accordion
+	title='What is the element of index 7 in the list resultant of concatenating [3,7,5,1] with [0,5,1,2,9,8,4]? (hint: use parenthesis to indicate what you want to do first)'
+	content={
+		<div>
+			<p>
+				It's <code>2</code>! The expression to obtain the result is:
+			</p>
+			<p>
+				<code>([3,7,5,1] ++ [0,5,1,2,9,8,4]) !! 7</code>
+			</p>
+		</div>
+	}
+/>
+
+<Accordion
+	title={'What is the result of concatenating "Hello" with \'!\' "?'}
+	content={
+		<p>Error! You can't concatenate a string with a single character!</p>
+	}
+/>
+
+<Accordion
+	title='How can you make sure that the numbers in the list [1,2,3] are floating-point numbers of the maximum precision available?'
+	content={
+		<div>
+			<p>
+				By indicating that they are of type <code>Double</code>:
+			</p>
+			<p>
+				<code>[1,2,3] :: [Double]</code>
+			</p>
+			<p>or</p>
+			<p>
+				<code>[1 :: Double ,2,3]</code>
+			</p>
+		</div>
+	}
+/>
+
 <p>
 	<mark>
-		Next lesson, we'll learn about Booleans and Tuples! Those will be our
-		last types before learning about functions!! 🤩{' '}
+		We're done for today! 👏 Next lesson, we'll learn about Booleans and
+		Tuples! Those will be our last types before learning about functions!!
+		🤩 See you there!!
 	</mark>{' '}
-	😄
 </p>
 
 <p
