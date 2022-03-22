@@ -1,12 +1,514 @@
 ---
 slug: haskell-course-lesson-5
-title: Booleans
+title: Haskell Course - Lesson 5 - Booleans and Equality testing
 date: 2022-03-21
 author: robertinom
-thumbnail: /images/cardano_dapp_course.jpg
+thumbnail: /images/meme-bool.png
 tags:
-  - programming
-  - haskell
-  - haskell-course
+    - programming
+    - haskell
+    - haskell-course
 ---
-a
+
+In this lesson, we'll learn about booleans. What they are and how to use them. We'll also learn how to write conditional statements that execute different pieces of code based on a condition and all the different ways to compare elements in Haskell.
+
+This lesson will be a long one. Make sure to have your coffee ready! ☕️
+
+## The `Bool` type
+
+**The `Bool` type is a data type that can have only two values: `True` and `False`.** That's it! 🤷‍♂️ You can have uncountable values of type `Int` (there are infinite numbers) or `String` (there's an unfathomable combination of characters), but `Bool` has only two values.
+
+I wouldn't blame you if you thought a type with only two values isn't that useful. I wouldn't. But, I would tell you that **you're WRONG!! `Bool` is extremely useful!!**
+
+<Giff url='https://giphy.com/embed/3Fkfrn9g4BZl4A56Dc' />
+
+We can use the `Bool` type in many situations, but the primary use is in **conditional statements**. Statements that execute one piece of code if the value is `True` or another one if the value is `False`.
+
+One of the ways that we can do it in Haskell is using if-else statements.
+
+## If-else statement
+
+<p>
+	In Haskell, the if-else syntax looks like this (this is{' '}
+	<SideNote
+		content={
+			<div>
+				<h4>Pseudocode</h4>
+				<p>
+					Pseudocode literally means "Fake code." It's a
+					plain-language description of the steps in an algorithm or
+					expression. It's intended to provide an easy syntax for
+					humans to read.
+				</p>
+			</div>
+		}
+	>
+		pseudocode
+	</SideNote>
+	, not real code):
+</p>
+
+```haskell
+if <condition> then <doIfConditionIsTrue> else <doIfConditionIsFalse>
+```
+
+This reads as: "If _condition_ is `True`, _then_ run the _doIfConditionIsTrue_ expression. _Else_, run the _doIfConditionIsFalse_ expression."
+
+An example with real code would be something like:
+
+```haskell
+if True then "It's True" else "It's False"
+```
+
+If you copy and paste this expression into GHCi, you'll get `"It's True"`. Because the expression `True` is indeed `True`, elementary my dear Watson! 🕵️
+
+And if you change the `True` to a `False`, you'll get `"It's False"`. Why? Because **the expression after the `then` will only run if the condition (expression after the `if`) is `True`. Else, it will run the expression after the `else`.**
+
+Ok, but if we use the `Bool` value directly, it wouldn't be much of a game-changer. Instead of writing
+
+```haskell
+if True then "It's True" else "It's False"
+```
+
+I can write:
+
+```haskell
+"It's True"
+```
+
+And I'll get the same result. Because `True` will always be `True`. Hence, we'll always execute the expression after `then`.
+
+<blockquote>
+	<p>Not very useful, if I may add 👀</p>— The sassy student
+</blockquote>
+
+<Giff url='https://giphy.com/embed/q90hbwmhv18HK' />
+
+Not very useful indeed. That's why we use equality and inequality testing!
+
+## Equality testing
+
+**Equality testing is — exactly as it sounds like — to test for equality**. You can either test if something is equal to something else or if something is not equal to something else.
+
+We use the `==` symbol for the former and the `/=` symbol for the latter.
+
+To use them, we just have to place two elements of the same type (one at each side of the symbol), and it will return a `Bool` with the result of evaluating the expression:
+
+```haskell
+'a' == 'b'  -- False
+
+94  == 94   -- True
+
+4.8 /= 3.2  -- True
+```
+
+It also works with lists:
+
+```haskell
+
+"Hey!"  == "Hey!"  -- True
+
+[6,8,7] == [6,7,8] -- False
+```
+
+When comparing lists, Haskell checks if the entire lists are equal. **For two lists to be equal, each element has to be of the same value, same type, and in the same position.**
+
+Obviously, equality testing is useless unless at least one of the values is unknown beforehand. (`94 == 94` is essentially the same as `True`). That's why we use them with **variables**.
+
+**Variables are named boxes that we use to store values**. When we use variables, we don't know the value ahead of time, and equality testing will be extremely useful to write code that depends on the value of that variable. We'll work on that in the next lesson. For now, solidify the concept of equality testing with a few exercises:
+
+<Accordion
+	title={
+		<div>
+			Write an if-else that compares if 3 is equal to 5 and shows "It's
+			equal!" if it's true and "It's not equal" if it's false.
+		</div>
+	}
+	content={
+		<p>
+			<code>if 3 == 5 then "It's equal" else "It's not equal"</code>
+		</p>
+	}
+/>
+
+<Accordion
+	title={
+		<div>
+			Write an if-else that compares if 3 is equal to 3.0 and shows "It's
+			equal!" if true and "It's not equal" if false.
+		</div>
+	}
+	content={
+		<p>
+			<code>if 3 == 3.0 then "It's equal" else "It's not equal"</code>
+		</p>
+	}
+/>
+
+<Accordion
+	title={
+		<div>
+			Write an if-else that compares if <code>7 :: Float</code> is equal
+			to <code>7 :: Double</code>
+			and shows "It's equal!" if it's true and "It's not equal" if it's false.
+			(Use parentheseses to make sure you're setting the type before comparing.)
+		</div>
+	}
+	content={
+		<div>
+			<p>The correct way of expressing what I asked for is:</p>
+			<p>
+				<code>
+					if (7 :: Float) == (7 :: Double) then "It's equal" else
+					"It's not equal"
+				</code>
+			</p>
+			<p>
+				But we're getting an error because{' '}
+				<b>You can't compare two elements of different type!</b>
+			</p>
+		</div>
+	}
+/>
+
+<Accordion
+	title={
+		<div>
+			Write an if-else that compares if 5 is equal to '5' and shows "It's
+			equal!" if true and "It's not equal" if false.
+		</div>
+	}
+	content={
+		<div>
+			<p>The correct way of expressing what I asked for is:</p>
+			<p>
+				<code>if 5 == '5' then "It's equal" else "It's not equal"</code>
+			</p>
+			<p>
+				But we're getting an error for the same reason as the previous
+				question.
+				<b>You can't compare two elements of different type!</b>
+			</p>
+		</div>
+	}
+/>
+
+If you're not sure why `3 == 3.0` works and `(7 :: Float) == (7 :: Double)` gives us an error, think about it, and then keep reading.
+
+## Inequality testing
+
+**An inequality is a relation that makes a non-equal comparison between two expressions**.
+
+Assuming `a` and `b` are two elements of the same type, we have four different kinds of inequality:
+
+1.  **`a > b` checks if `a` is greater than `b`.** Examples:
+
+```haskell
+4 > 2    -- evaluates to True
+99 > 102 -- evaluates to False
+5 > 5    -- evaluates to False
+```
+
+2.  **`a >= b` checks if `a` is greater or equal than `b`.** Examples:
+
+```haskell
+4 >= 2    -- evaluates to True
+99 >= 102 -- evaluates to False
+5 >= 5    -- evaluates to True
+```
+
+3.  **`a < b` checks if `a` is less than `b`.** Examples:
+
+```haskell
+4 < 2    -- evaluates to False
+99 < 102 -- evaluates to True
+5 < 5    -- evaluates to False
+```
+
+4.  **`a <= b` checks if `a` is less or equal than `b`.** Examples:
+
+```haskell
+4 <= 2    -- evaluates to False
+99 <= 102 -- evaluates to True
+5 <= 5    -- evaluates to True
+```
+
+That's it! And you can use those inequalities inside if-else statements same as before:
+
+```haskell
+if 4 > 3 then "It's True" else "It's False"
+```
+
+### Numbers
+
+There's an important thing to notice about comparing numbers. Check out what happens if we compare something like this:
+
+```haskell
+(4 :: Int) > (3 :: Float) -- Error! You can't compare elements of different types!
+```
+
+Haskell **can't compare elements of a different type**, including numeric types. But, if we code something like this:
+
+```haskell
+4 > (3 :: Float) -- True
+
+4 > 3.0          -- True
+```
+
+There's no problem! In both cases, Haskell can infer the types in a way that we end up with the same one for both elements. Haskell infers that 4 is a `Float` in the first case. And that both 4 and 3.0 are `Double`s in the second case.
+
+That's the only thing to keep in mind. Everything else is as you'd expect.
+
+Although, **I can't say the same about characters!** 🙈
+
+### Characters
+
+In the `Char` lesson, we learned that Haskell sees them as Unicode characters. Well, it's time to deal with the consequences! 😂
+
+<Giff url='https://giphy.com/embed/IxBSleBYnu0pASk0rY' />
+
+Because Haskell uses Unicode characters, **when we compare `Char` elements, we compare the Unicode order of those elements.** In many cases, it's intuitive. Others not so much.
+
+In the Unicode specification, letters are in alphabetical order. So if we compare them like this:
+
+```haskell
+'a' < 'b' -- True
+
+'b' < 'c' -- True
+
+'a' < 'c' -- True
+```
+
+It makes intuitive sense. In the alphabet, "a" comes before "b," so it's "smaller". Same with uppercase letters:
+
+```haskell
+'Y' < 'Z' -- True
+```
+
+But, — and here comes the trouble — what about:
+
+```haskell
+'A' < 'a'
+```
+
+Which one is smaller? Or are they equal? Let me help you by replacing each letter with its order in the Unicode specification:
+
+```haskell
+65 < 97
+```
+
+Seeing it that way it's easy! `'A'` is smaller (less) than `'a'`!
+
+**That's how Haskell compares characters. It looks at its order in the Unicode specification and compares that order.**
+
+You won't usually have to deal with this — it's not that common to compare characters — but it can trip you up if you encounter it.
+
+Now I'm going to ask you to look up the order in the Unicode specification and to predict the result of a few comparisons. The objective is to consolidate what we just learned and make sure you don't think about it as some complicated, mysterious thing.
+
+Looking up the <a target='_blank' href='https://en.wikipedia.org/wiki/List_of_Unicode_characters#Latin_script'>List of Unicode characters</a> in Wikipedia, predict if it's `True` or `False`. Then, check your response using GHCi:
+
+<Accordion
+	title={
+		<div>
+			<code>'9'</code> is greater than <code>'A'</code>.
+		</div>
+	}
+	content={
+		<p>
+			<code>False</code>, <code>'9'</code> is 57 and <code>'A'</code> is
+			65.
+		</p>
+	}
+/>
+<Accordion
+	title={
+		<div>
+			<code>','</code> is smaller or equal than <code>','</code>.
+		</div>
+	}
+	content={
+		<p>
+			<code>True</code>, <code>','</code> is 44 and <code>','</code> is
+			59.
+		</p>
+	}
+/>
+
+<Accordion
+	title={
+		<div>
+			<code>'a'</code> is equal to <code>'á'</code>.
+		</div>
+	}
+	content={
+		<p>
+			<code>False</code>, <code>'a'</code> is 97 and <code>'á'</code> is
+			225.
+		</p>
+	}
+/>
+
+Ok, that's it. No more manually checking the Unicode specification. **Now, let's learn how lists and Strings are compared. 💪** It's not as intuitive the first time, but then it makes sense.
+
+### Lists and Strings
+
+We already covered that Strings are just lists of characters, so the way they are compared is the same as any other list.
+
+**Haskell compares lists in lexicographical order. This is just a fancy way of saying it compares lists by comparing each element of a list with the correspondent element (in the same position) of the other list.**
+
+For example, if we compare:
+
+```haskell
+[1,2,3] < [1,2,6]
+```
+
+Haskell starts by comparing the first elements of each list (`1` and `1`). If they are the same, it passes to the second elements (`2` and `2`), and so on until one of the lists ends or different elements are found. In this case, `3` and `6` are different, so Haskell compares them: (`3 < 6` ➡️ `True`).
+
+**The order of the two lists is determined by the first pair of differing elements.** Because — following the example — the comparison of the first differing elements evaluates to `True`, then the comparison of the entire list evaluates to `True`.
+
+Let's see a couple more examples:
+
+```haskell
+[3,2,1] > [2,1,0]  -- True because 3 > 2 is True
+
+[1,3,1] >= [1,2,3] -- True because 3 >= 2 is True
+
+"ad" < "aba"       -- False because 'd' < 'b' is False
+
+[7,8] == [7,8,9]   -- False because [] == [9] is False
+```
+
+**If both lists are equal until the end of the shorter one (last example), Haskell ends up comparing nothing to something. And something is always bigger than nothing.**
+
+Sometimes you have to compare more than one thing at the same time. Maybe you need to check if a list is empty and if the first element is equal to something, or something like that. Luckily, we can combine testing expressions!
+
+## Combining testing expressions
+
+We can combine comparisons using the `&&` (AND operator) and `||` (OR operator) operators.
+
+### The `&&` operator
+
+The `&&` (AND) operator returns `True` if both the boolean to its left and right are `True`.
+
+```haskell
+True && True   -- True
+
+True && False  -- False
+
+False && True  -- False
+
+False && False -- False
+```
+
+You can use it to make sure that all the conditions have to be `True` for the code in `then` to be executed:
+
+```haskell
+if True && True then "All True" else "Something is False"
+```
+
+```haskell
+if True && True && False then "All True" else "Something is False"
+```
+
+```haskell
+if ('4' == '4') && ( 7 > 3) then "All True" else "Something is False"
+```
+
+Notice the parenthesis in the last example. They are needed to indicate to Haskell that we want to evaluate the conditions first, get if they are `True` or `False`, and then apply the `&&` operator.
+
+### The `||` operator
+
+The `||` (OR) operator returns `True` if either the boolean to its left or right is `True`.
+
+```haskell
+True || True   -- True
+
+True || False  -- True
+
+False || True  -- True
+
+False || False -- False
+```
+
+You can use it to make sure that at least one of the conditions have to be `True` for the code in `then` to be executed:
+
+```haskell
+if True || False then "At least one True" else "All False"
+```
+
+```haskell
+if False || True || False then "At least one True" else "All False"
+```
+
+```haskell
+if ("Yes" == "No") || ( 7 > 3) then "At least one True" else "All False"
+```
+
+We can also combine the combiners to get extra power!
+
+<Giff url='https://giphy.com/embed/UfaSEmvHQtrEI' />
+
+### Combining the combiners
+
+Lastly, you can use `&&` and `||` together. But, you have to be aware of the complexity. If it's too much, it's better to split the expression in multiple if-else or change to other types of conditional statements altogether. (If-else it's not the only option.)
+
+Let's analyze an example:
+
+```haskell
+if ("Yes" == "No") || ( 7 > 3) && True && False then "At least one True" else "All False"
+```
+
+If you encounter something like this, it's easier to mentally split the conditions around the `||` operator:
+
+First, let's check if either side of the `||` operator is `True`.
+
+`( 7 > 3) && True && False` ➡️ `False`
+
+`("Yes" == "No")` ➡️ `False`
+
+If either one is `True`, then the entire expression will be `True`, and we'll evaluate the code inside `then`. Else, the entire expression is `False` and we evaluate the code inside `else`.
+
+I know it's a lot to take in. Do the homework and play around with the examples to consolidate the concepts. If there's something you can't figure out, <a target='_blank' href='https://twitter.com/robertinom_en'>you know what to do!</a>💪
+
+## Homework
+
+This time, I won't give you the solutions. You should be able to check if you correctly solved the questions by running the code in the GHCi. But if you encounter an error and can't figure it out, don't hesitate to ask!! 😃
+
+1. Write an if-else that compares if "Hey!" is equal to "hey!" and shows "It's equal!" if it's true and "It's not equal" if it's false.
+
+2. Write an if-else that compares if "First" is greater or equal to "Second." If it is, it concatenates "First" and "Second" with a space in between. If it isn't, concatenates "Second" and "First" with a space in between.
+
+3. Create an if-else statement that checks if a number is greater than another number (pick the numbers yourself), multiplies them if it's true, and divides them if it's false.
+
+4. Write an if-else statement that returns the first element of the list [42,14,99] if either the first element or the last one is greater than 50. Else it returns the last one.
+
+<p>
+	<mark>
+		That's it for today! The next lesson will be about tuples, and we're
+		going to design the data structure of a freaking blockchain with them!
+		🤯 See you then!
+	</mark>
+</p>
+
+<p
+	style={{
+		backgroundColor: '#dbd6fb',
+		padding: '0.5rem 1rem',
+		borderRadius: '4px',
+		color: '#733de4',
+	}}
+>
+	<i>
+		PD: If you find this course valuable, please{' '}
+		<a
+			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+			target='_blank'
+		>
+			share it
+		</a>{' '}
+		so more people can learn!
+	</i>{' '}
+	😄
+</p>
+
+<LessonNavigationButtons />
