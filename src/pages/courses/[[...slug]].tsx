@@ -3,22 +3,16 @@ import Layout from '../../components/Layout';
 import BasicMeta from '../../components/meta/BasicMeta';
 import OpenGraphMeta from '../../components/meta/OpenGraphMeta';
 import TwitterCardMeta from '../../components/meta/TwitterCardMeta';
-import config from '../../lib/config';
-import { countPosts, listPostContent, PostContent } from '../../lib/posts';
+import { listPostContent, PostContent } from '../../lib/posts';
 import { getTag, listTags, TagContent } from '../../lib/tags';
 import CoursesLessonsList from '../../components/CoursesLessons';
 
 type Props = {
 	posts: PostContent[];
 	tag: TagContent;
-	page?: string;
-	pagination: {
-		current: number;
-		pages: number;
-	};
 };
-export default function Index({ posts, tag, pagination, page }: Props) {
-	const url = `/courses/${tag.name}` + (page ? `/${page}` : '');
+export default function Index({ posts, tag }: Props) {
+	const url = `/courses/${tag.name}`;
 	const title = tag.name;
 	return (
 		<div>
@@ -37,20 +31,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const [slug, page] = [queries[0], queries[1]];
 	const posts = listPostContent(
 		page ? parseInt(page as string) : 1,
-		config.posts_per_page,
+		undefined,
 		slug
 	);
 	const tag = getTag(slug);
-	const pagination = {
-		current: page ? parseInt(page as string) : 1,
-		pages: Math.ceil(countPosts(slug) / config.posts_per_page),
-	};
 	const props: {
 		posts: PostContent[];
 		tag: TagContent;
-		pagination: { current: number; pages: number };
 		page?: string;
-	} = { posts, tag, pagination };
+	} = { posts, tag };
 	if (page) {
 		props.page = page;
 	}
@@ -64,7 +53,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		// I don't know why I had to filter the tag. Else, it would serve in dev but not built in prod.
 		.filter((tag) => tag.slug === 'haskell-course')
 		.flatMap((tag) => {
-			console.log('getStaticPaths -> tag.slug: ', tag.slug);
 			return { params: { slug: [tag.slug] } };
 		});
 	return {
