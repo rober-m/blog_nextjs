@@ -19,7 +19,7 @@ export default function Index({ posts, tag }: Props) {
       <Layout>
         <BasicMeta url={url} title={title} />
         <OpenGraphMeta url={url} title={title} />
-        <TwitterCardMeta title={title} />
+        <TwitterCardMeta />
         <CoursesLessonsList posts={posts} tag={tag} />
       </Layout>
     </div>

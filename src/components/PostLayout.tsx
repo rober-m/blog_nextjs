@@ -45,10 +45,10 @@ export default function PostLayout({
         description={description}
       />
       <TwitterCardMeta
-        // url={`/posts/${slug}`}
-        title={title}
-        description={description}
-        thumbnail={thumbnail}
+      // url={`/posts/${slug}`}
+      // title={title}
+      // description={description}
+      // thumbnail={thumbnail}
       />
       <OpenGraphMeta
         url={`/posts/${slug}`}
