@@ -1,14 +1,16 @@
 ---
 slug: haskell-course-lesson-6
-title: Haskell Course - Lesson 6 - Tuples
+title: Haskell Course - Lesson 6 - Using Tuples to design a blockchain's data structure
 date: 2022-03-28
 author: robertinom
-thumbnail: /images/meme-hello-world-sized.jpg
+thumbnail: /images/meme-tuples.jpg
 tags:
     - programming
     - haskell
     - haskell-course
 ---
+
+Today we'll learn about tuples and have a taste of what we can do with them by designing a blockchain's data structure. This is the last type that we're going to explore. Hope you like it! 😄
 
 ## Tuples
 **Tuples are structures used to store heterogeneous elements as a single value.**
@@ -50,14 +52,18 @@ A few examples:
 
 As you can see, `('a', True) :: (Char, Bool)`, `(True, 'a') :: (Bool, Char)`, and `('a', True, True) :: (Char, Bool, Bool)` all have different types. As far as the compiler knows, those three tuples are as different between them as `Float` and `Char`.
 
-Did you notice that when you try to create a single-element tuple, GHCi returns just the element? That's because there's no single-element tuple! Having a single-element tuple would provide no extra value. So Haskell ignores the tuple and evaluates only the element.
+Did you notice that if you try to create a single-element tuple, GHCi returns just the element? That's because **there's no single-element tuple!** Having a single-element tuple would provide no extra value. So Haskell ignores the tuple and evaluates only the element.
+
+OK, we have a tuple now. How can I use the elements inside it?
 
 ## Accessing tuple elements
-The elements inside a tuple don't have indices! We can't extract an element inside a tuple by using `!!` like with lists! Although, there is a similarly easy way for pairs (a tuple of two elements) using functions.
+**The elements inside a tuple don't have indices!** We can't extract an element inside a tuple by using `!!` like with lists!
 
-We'll learn more about functions in the next lesson. But we'll take advantage of this opportunity to learn how we can use some that already come with the language.
+Although, there is a similarly easy way for pairs (a tuple of two elements) using functions.
 
-To extract the first element of a pair, you can use the `fst` function like this:
+We'll learn more about functions in the next lesson. But we'll take advantage of this opportunity to learn how we can use some functions that already come with the language.
+
+**To extract the first element of a pair, you can use the `fst` function** like this:
 
 ```haskell
 fst ('a', 23) -- Result: 'a'
@@ -68,7 +74,7 @@ To use the `fst` function, we just need to write the function's name, a space, a
 These are all wrong:
 
 ```haskell
-ft ('a', 23)          -- Error: There's no "ft" function
+ft ('a', 23)          -- Error: There's no "ft" function.
 
 fst ('a', 23, 53)     -- Error: The tuple isn't a pair.
 
@@ -83,7 +89,7 @@ fst     ('a', 23).   -- Result: 'a'
 fst ( 'a',    23  ) -- Result: 'a'
 ```
 
-To extract the second element of a pair, you can use the `snd` function like this:
+**To extract the second element of a pair, you can use the `snd` function** like this:
 
 ```haskell
 snd ('a', 23) -- Result: 23
@@ -93,16 +99,25 @@ snd ('a', 23) -- Result: 23
 
 Tuples of more than two elements are rare. So rare that there aren't any functions like `fst` and `snd` to access individual elements in a tuple of more than 2 elements using standard Haskell. 
 
-We have other options, though, like pattern matching (we'll learn about pattern matching in future lessons) and using external *libraries*. You don't need to worry about it right now. We'll get to it.
+<p> We have other options, though, like pattern matching (we'll learn about pattern matching in future lessons) and using external{' '}
+<SideNote
+  content={
+    <div>
+    <h4>Libraries</h4>
+    <p>A software library consists of pre-written code that a developer can import and use alongside its own code. Typically, a developer might use a library to achieve more functionality, automate a process, or simply save time by avoiding writing code that someone else has already written.</p>
+    </div>
+  }
+>libraries</SideNote>.
+You don't need to worry about it right now. We'll get to it. </p>
 
 ## Comparing tuples
 Comparing tuples is done the same as comparing lists (lexicographically).
 Here are a few examples to help you gain some intuition:
 
 ```haskell
-('a', 1) > ('b', 1) -- False because 'a' > 'b' is False
+('a', 1) > ('b', 1)    -- False because 'a' > 'b' is False
 
-('a', 2) > ('a', 1) -- True because 2 > 1 is True 
+('a', 2) > ('a', 1)    -- True because 2 > 1 is True 
 
 ('a', 1) > ('a', 1, 2) -- Error because tuples are of different types
 ```
@@ -110,22 +125,22 @@ Here are a few examples to help you gain some intuition:
 It's easy once you understand how lists are compared 😎.
 
 **Now, let's put what we learned to good use!**
-I heard that many of my students like blockchains. So, as an example of when tuples are practical, we'll design the data structure of a simple blockchain! 🤯
+I heard that many of my students like blockchains. So, as an example of when tuples are practical, **we'll design the data structure of a simple blockchain! 🤯**
 
-<Giff url="https://giphy.com/embed/dZQR7P1lxgi4mUmsjY"/>
+<Giff url="https://giphy.com/embed/ULyYV5amK2eYM"/>
 
 We won't get too technical, don't worry. It's just a simple exercise.
 
 ## Designing a blockchain's data structure
-Let's design the blockchain data structure from the ground up! This means that we'll make choices about how to format our data. Data can be arranged in many ways. To be a good developer, you'll have to choose those that are efficient and easy to use.
+Let's design the blockchain data structure from the ground up! This means that we'll make choices about how to format our data. Data can be arranged in many ways. **To be a good developer, you'll have to choose those that are efficient and easy to use.**
 
-Let's start with the crucial requirement: To store transactions. Every blockchain needs to have a record of past transactions. Let's see how we can do just that.
+Let's start with the crucial requirement: **To store transactions**. Every blockchain needs to have a record of past transactions. Let's see how we can do just that.
 
 ### Structure of a transaction
 
 We know that we need transactions. So, what is the simplest way you could represent a transaction?
 
-First and foremost, a transaction needs the address of who sent the money and the one who received it. Because addresses are numbers and letters, we'll use strings to represent them. We could create a list with all the data. Something like:
+First and foremost, **a transaction needs the address of who sent the money and the one who received it**. Because addresses are numbers and letters, we'll use strings to represent them. We could create a list with all the data. Something like:
 
 ```haskell
 ["addr_sender","addr_receiver"]
@@ -143,22 +158,107 @@ Oh, bollocks! (We're family-friendly here.) We can't use values of different typ
 ("addr_sender","addr_receiver", 20.0)
 ```
 
-Ahhh 😌 that's the stuff!
+Ahhh 😌 that's the stuff! **On top of accepting values of different types, tuples represent a single thing. One tuple, one transaction. No less, no more.**
 
-The problem we have now is that there's no way to check if someone changed that `20.0` to a `20000.0`. We'd have to trust that no one would change it. But we're building a trustless blockchain! We need a way to publicly verify that only the sender — and no one else — can create a transaction that spends its own money.
+The problem we have now is that there's no way to check if someone changed that `20.0` to a `20000.0`. We'd have to trust that no one would change it. **But we're building a trustless blockchain! We need a way to publicly verify that only the sender — and no one else — can create a transaction that spends its own money.**
 
-That's when *hashes* come in handy!
+<p><b>That's when{' '}</b> <SideNote
+    content={
+      <div>
+        <h4>Hash</h4>
+        <p>A hash is a series of numbers and letters generated using a hashing function. In the case of blockchain hashes, they are generated using cryptographic hash functions.</p>
+        <p>A cryptographic hash function takes an input (a message, a file, or any data) and generates a fixed-length hash in a way that you can't go back from the hash to the input.</p>
+      </div>
+    }>
+    <b>hashes</b>
+    </SideNote> <b>come in handy!</b></p>
 
-We can create a hash based on all the transaction's information plus a secret string that only the sender knows (the private key of the sender).
+We can create **a hash based on all the transaction's information plus a secret string that only the sender knows (the private key of the sender)**. Like some kind of signature that changes based on the contents of the transaction.
+
+With this, if anyone tries to change something, the transaction's hash won't match with the values, and we can invalidate the transaction! 😎 And if someone tries to create an entirely new transaction as someone else, we'll know because they don't have that other person's private key! Double 😎! 
+
+To add the hash, we just need to create a tuple with all the previous values plus a field with the hash:
+
+```haskell
+("addr_sender", "addr_receiver", 20.0, "transaction_hash")
+```
+
+**The one thing left to solve is that someone could copy and paste the exact same transaction.** For example, if we pay some amount to Richard, he could copy and paste the same transaction and repeat it as many times as he wants, and the hash will match the values! 😱
+
+Pffff! Easy fix! **We ad some value that it's unique to a single transaction, like the time it was made or some number.** At this point, we don't care HOW the hash is generated. We care about the data structure and that it's the same regardless of how the hash is generated.
+
+<Giff url="https://giphy.com/embed/xUNd9WbEMv0CGDEK3u"/>
+
+Done then! Now, everybody can write their own transactions, but no one can modify others'. But where exactly are we creating those transactions? Should we verify each transaction at the same time? And who verifies the transactions?
+
+**There are a bunch of ways to do this.** We don't care much about how we do it but about how the data looks. So, — unless you know about blockchain protocols — you'll have to trust that what I say we need is correct. 
+
+### Creating blocks
+
+**We need to put a bunch of transactions together.** We'll call those sets of transactions... Blocks. Because, why not?
+
+What data structure could we use to manage elements of the same type in an orderly fashion? Exactly, lists!
+
+We can have a list that contains all the transactions of a block like this:
+
+```haskell
+[
+    ("Charles","Robertino", 200000000.0 :: Double, "d386d4606b3d4909530fb992d6478ca7")
+   ,("Sam","Daniel", 152.5936, "19f70b538ba14a17ac1ce08045f57a8e")
+   ,("Jeff","Sahra", 92.7032, "f4c655bbe173b37b832f1439e947fa29")
+   ,("Tesla","Elon", 99999999999999999999.9, "4cb7e7f002284fa0a113a26e307c51a7")
+]
+```
+
+<Accordion title="Quick question. What is the type of the list in the last block of code?" content ={<p><code>[([Char], [Char], Double, [Char])]</code></p>}/>
+
+We'll add a hash at the end of the block that it's generated based on all the block's data. Same as when signing transactions. Now, no one can modify the block.
+
+```haskell
+(
+	[
+	    ("Charles","Robertino", 200000000.0 :: Double, "d386d4606b3d4909530fb992d6478ca7")
+	   ,("Sam","Daniel", 152.5936, "19f70b538ba14a17ac1ce08045f57a8e")
+	   ,("Jeff","Sahra", 92.7032, "f4c655bbe173b37b832f1439e947fa29")
+	   ,("Tesla","Elon", 99999999999999999999.9, "4cb7e7f002284fa0a113a26e307c51a7")
+	]
+	,"block_hash"
+)
+```
+
+<Accordion title="Quick question. What is the type of the tuple in the last block of code?" content ={<p><code>([([Char], [Char], Double, [Char])], [Char])</code></p>}/>
 
 
+Finally, **we need to order the blocks to know which one comes before the other**. To do this in a way that no one can tamper with the order, we'll use something new, unexpected, that you'll never see coming!! Just kidding, we'll use hashes again. 😂
 
+When we're creating a block, **we add the hash of the previous block to the information that we use to create the current block's hash**. That way, each block will point to the previous one. Genius! It's like if we're creating a block... Sequence? String? Chain! A BlockChain! 😝
 
+This is how the final version of our blockchain's data structure looks:
 
+```haskell
+(
+	"previous_block_hash"
+	,[
+	    ("Charles","Robertino", 200000000.0 :: Double, "d386d4606b3d4909530fb992d6478ca7")
+	   ,("Sam","Daniel", 152.5936, "19f70b538ba14a17ac1ce08045f57a8e")
+	   ,("Jeff","Sahra", 92.7032, "f4c655bbe173b37b832f1439e947fa29")
+	   ,("Tesla","Elon", 99999999999999999999.9, "4cb7e7f002284fa0a113a26e307c51a7")
+	]
+	,"block_hash"
+)
+```
 
+<Accordion title="Quick question. What is the type of the tuple in the last block of code?" content ={<p><code>([Char], [([Char], [Char], Double, [Char])], [Char])</code></p>}/>
 
+**And that's it! 🥳** Our blockchain will be a bunch of blocks with that data structure. It wasn't that hard, right? And conceptually, this isn't that far from how a real blockchain organizes its data. 🤩
 
+<Giff url="https://giphy.com/embed/VhLaWO8fK1wK2A09Dw"/>
 
+## Homework
+
+1. Redo the final question of the previous lesson but with tuples.
+
+2. Try to identify if you are not sure of something and use GHCi to verify your hypothesis. Real-world information isn't presented as neat as in this course. You need to learn how to explore libraries and languages without guidance. Use previous homework for inspiration and try to explore the subject to gain further insight.
 
 <p>
 	<mark>
