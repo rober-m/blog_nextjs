@@ -1,0 +1,190 @@
+---
+slug: haskell-course-lesson-6
+title: Haskell Course - Lesson 6 - Tuples
+date: 2022-03-28
+author: robertinom
+thumbnail: /images/meme-hello-world-sized.jpg
+tags:
+    - programming
+    - haskell
+    - haskell-course
+---
+
+## Tuples
+**Tuples are structures used to store heterogeneous elements as a single value.**
+
+We represent tuples by starting with an open parenthesis, writing all the elements separated by a comma, and ending with a close parenthesis. This is an example of a tuple with 3 elements:
+
+```haskell
+('a', 3, True)
+```
+
+It sounds a lot like lists, but there are two key differences:
+
+- **Tuples can store elements of different types:** As you can see in the previous example, tuples can store elements of different types, while lists can't.
+- **Tuples have a fixed size:** You can increase the size of lists by concatenation or other means, but you can't increase or reduce the size of a tuple. Once you indicate that a tuple has N elements, it will always have N elements.
+
+And those key differences are reflected in the tuple's type.
+
+### Tuple type
+The type of a tuple depends of:
+- The type of its elements.
+- The order of the elements.
+- The quantity of the elements.
+
+A few examples:
+
+```haskell
+(1::Int, 2::Float, 3::Double) -- (Int, Float, Double)
+
+('x', 3::Int, 'y')            -- (Char, Int, Char)
+       
+(True, False, "Helooooo")     -- (Bool, Bool, [Char])
+
+([1,2,3]::[Float], 'x', 'y')  -- ([Float], Char, Char)
+
+("Hey what's up!")            -- [Char]
+        
+('s').                        -- Char
+```
+
+As you can see, `('a', True) :: (Char, Bool)`, `(True, 'a') :: (Bool, Char)`, and `('a', True, True) :: (Char, Bool, Bool)` all have different types. As far as the compiler knows, those three tuples are as different between them as `Float` and `Char`.
+
+Did you notice that when you try to create a single-element tuple, GHCi returns just the element? That's because there's no single-element tuple! Having a single-element tuple would provide no extra value. So Haskell ignores the tuple and evaluates only the element.
+
+## Accessing tuple elements
+The elements inside a tuple don't have indices! We can't extract an element inside a tuple by using `!!` like with lists! Although, there is a similarly easy way for pairs (a tuple of two elements) using functions.
+
+We'll learn more about functions in the next lesson. But we'll take advantage of this opportunity to learn how we can use some that already come with the language.
+
+To extract the first element of a pair, you can use the `fst` function like this:
+
+```haskell
+fst ('a', 23) -- Result: 'a'
+```
+
+To use the `fst` function, we just need to write the function's name, a space, and the pair.
+
+These are all wrong:
+
+```haskell
+ft ('a', 23)          -- Error: There's no "ft" function
+
+fst ('a', 23, 53)     -- Error: The tuple isn't a pair.
+
+fst ('a',23) ('b',42) -- Error: There are two pairs.
+```
+
+These are all right (you can play around with spaces):
+
+```haskell
+fst     ('a', 23).   -- Result: 'a'
+
+fst ( 'a',    23  ) -- Result: 'a'
+```
+
+To extract the second element of a pair, you can use the `snd` function like this:
+
+```haskell
+snd ('a', 23) -- Result: 23
+```
+
+`snd` follows the same exact rules as `fst`.
+
+Tuples of more than two elements are rare. So rare that there aren't any functions like `fst` and `snd` to access individual elements in a tuple of more than 2 elements using standard Haskell. 
+
+We have other options, though, like pattern matching (we'll learn about pattern matching in future lessons) and using external *libraries*. You don't need to worry about it right now. We'll get to it.
+
+## Comparing tuples
+Comparing tuples is done the same as comparing lists (lexicographically).
+Here are a few examples to help you gain some intuition:
+
+```haskell
+('a', 1) > ('b', 1) -- False because 'a' > 'b' is False
+
+('a', 2) > ('a', 1) -- True because 2 > 1 is True 
+
+('a', 1) > ('a', 1, 2) -- Error because tuples are of different types
+```
+
+It's easy once you understand how lists are compared 😎.
+
+**Now, let's put what we learned to good use!**
+I heard that many of my students like blockchains. So, as an example of when tuples are practical, we'll design the data structure of a simple blockchain! 🤯
+
+<Giff url="https://giphy.com/embed/dZQR7P1lxgi4mUmsjY"/>
+
+We won't get too technical, don't worry. It's just a simple exercise.
+
+## Designing a blockchain's data structure
+Let's design the blockchain data structure from the ground up! This means that we'll make choices about how to format our data. Data can be arranged in many ways. To be a good developer, you'll have to choose those that are efficient and easy to use.
+
+Let's start with the crucial requirement: To store transactions. Every blockchain needs to have a record of past transactions. Let's see how we can do just that.
+
+### Structure of a transaction
+
+We know that we need transactions. So, what is the simplest way you could represent a transaction?
+
+First and foremost, a transaction needs the address of who sent the money and the one who received it. Because addresses are numbers and letters, we'll use strings to represent them. We could create a list with all the data. Something like:
+
+```haskell
+["addr_sender","addr_receiver"]
+```
+
+But wait! How much was transferred? We have to add that!
+
+```haskell
+["addr_sender","addr_receiver", 20.0] -- Error! Lists can't have more than one type
+```
+
+Oh, bollocks! (We're family-friendly here.) We can't use values of different types with lists! No problemo! We can use tuples:
+
+```haskell
+("addr_sender","addr_receiver", 20.0)
+```
+
+Ahhh 😌 that's the stuff!
+
+The problem we have now is that there's no way to check if someone changed that `20.0` to a `20000.0`. We'd have to trust that no one would change it. But we're building a trustless blockchain! We need a way to publicly verify that only the sender — and no one else — can create a transaction that spends its own money.
+
+That's when *hashes* come in handy!
+
+We can create a hash based on all the transaction's information plus a secret string that only the sender knows (the private key of the sender).
+
+
+
+
+
+
+
+
+
+
+<p>
+	<mark>
+  This is the last lesson before functions, so you mustn't have major holes in what we covered until now. (Except for the blockchain-related knowledge of the final section. That's not important for the course.) Let me know if you need help with something! 
+  </mark>{' '}💪
+</p>
+
+<p
+	style={{
+		backgroundColor: '#dbd6fb',
+		padding: '0.5rem 1rem',
+		borderRadius: '4px',
+		color: '#733de4',
+	}}
+>
+	<i>
+		PD: If you find this course valuable, please{' '}
+		<a
+			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+			target='_blank'
+		>
+			share it
+		</a>{' '}
+		so more people can learn!
+	</i>{' '}
+	😄
+</p>
+
+<LessonNavigationButtons />
