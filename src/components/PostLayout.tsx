@@ -15,87 +15,88 @@ import { getTag } from '../lib/tags';
 import { RevueEmbed } from './RevueEmbed';
 
 type Props = {
-	title: string;
-	date: Date;
-	slug: string;
-	tags: string[];
-	author: string;
-	description?: string;
-	children: React.ReactNode;
-	thumbnail?: string;
+  title: string;
+  date: Date;
+  slug: string;
+  tags: string[];
+  author: string;
+  description?: string;
+  children: React.ReactNode;
+  thumbnail?: string;
 };
 export default function PostLayout({
-	title,
-	date,
-	slug,
-	author,
-	tags,
-	description = '',
-	children,
-	thumbnail,
+  title,
+  date,
+  slug,
+  author,
+  tags,
+  description = '',
+  children,
+  thumbnail,
 }: Props) {
-	const keywords = tags.map((it) => getTag(it).name);
-	const authorName = getAuthor(author).name;
-	return (
-		<Layout>
-			<BasicMeta
-				url={`/posts/${slug}`}
-				title={title}
-				keywords={keywords}
-				description={description}
-			/>
-			<TwitterCardMeta
-				url={`/posts/${slug}`}
-				title={title}
-				description={description}
-			/>
-			<OpenGraphMeta
-				url={`/posts/${slug}`}
-				title={title}
-				description={description}
-				thumbnail={thumbnail}
-			/>
-			<JsonLdMeta
-				url={`/posts/${slug}`}
-				title={title}
-				keywords={keywords}
-				date={date}
-				author={authorName}
-				description={description}
-				thumbnail={thumbnail}
-			/>
-			<div className={'container z-0 mx-auto px-6 w-full max-w-xl'}>
-				<article>
-					<header>
-						<h1>{title}</h1>
-						<div className={'metadata'}>
-							<div>
-								<Date date={date} />
-							</div>
-							<div>
-								<Author author={getAuthor(author)} />
-							</div>
-						</div>
-					</header>
-					<div className={styles.content}>{children}</div>
-					<ul className={'tag-list'}>
-						{tags.map((it, i) => (
-							<li key={i}>
-								<TagButton tag={getTag(it)} />
-							</li>
-						))}
-					</ul>
-				</article>
-				<footer>
-					<RevueEmbed />
-					<div className={'social-list'}>
-						<SocialList />
-					</div>
-					<Copyright />
-				</footer>
-			</div>
-			<style jsx>
-				{`
+  const keywords = tags.map((it) => getTag(it).name);
+  const authorName = getAuthor(author).name;
+  return (
+    <Layout>
+      <BasicMeta
+        url={`/posts/${slug}`}
+        title={title}
+        keywords={keywords}
+        description={description}
+      />
+      <TwitterCardMeta
+        url={`/posts/${slug}`}
+        title={title}
+        description={description}
+        thumbnail={thumbnail}
+      />
+      <OpenGraphMeta
+        url={`/posts/${slug}`}
+        title={title}
+        description={description}
+        thumbnail={thumbnail}
+      />
+      <JsonLdMeta
+        url={`/posts/${slug}`}
+        title={title}
+        keywords={keywords}
+        date={date}
+        author={authorName}
+        description={description}
+        thumbnail={thumbnail}
+      />
+      <div className={'container z-0 mx-auto px-6 w-full max-w-xl'}>
+        <article>
+          <header>
+            <h1>{title}</h1>
+            <div className={'metadata'}>
+              <div>
+                <Date date={date} />
+              </div>
+              <div>
+                <Author author={getAuthor(author)} />
+              </div>
+            </div>
+          </header>
+          <div className={styles.content}>{children}</div>
+          <ul className={'tag-list'}>
+            {tags.map((it, i) => (
+              <li key={i}>
+                <TagButton tag={getTag(it)} />
+              </li>
+            ))}
+          </ul>
+        </article>
+        <footer>
+          <RevueEmbed />
+          <div className={'social-list'}>
+            <SocialList />
+          </div>
+          <Copyright />
+        </footer>
+      </div>
+      <style jsx>
+        {`
 					.metadata div {
 						display: inline-block;
 						margin-right: 0.5rem;
@@ -129,7 +130,7 @@ export default function PostLayout({
 						}
 					}
 				`}
-			</style>
-		</Layout>
-	);
+      </style>
+    </Layout>
+  );
 }
