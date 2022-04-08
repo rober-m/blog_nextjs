@@ -1,0 +1,752 @@
+---
+slug: haskell-course-lesson-7
+title: Haskell Course - Lesson 7 - Functions, Variables, and Signatures
+date: 2022-04-07
+author: robertinom
+thumbnail: /images/meme-all-functions.jpg
+tags:
+  - programming
+  - haskell
+  - haskell-course
+---
+
+<p>
+  Haskell is a{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Functional programming language</h4>
+        <p>
+          Functional programming is a way of programming where programs are
+          constructed by applying and composing functions. Function definitions
+          are trees of expressions that map values to other values rather than a
+          sequence of imperative statements like in imperative languages.
+        </p>
+      </div>
+    }
+  >
+    {' '}
+    functional programming language
+  </SideNote>
+  , which means that we'll code programs and applications by creating and <SideNote
+    content={
+      <div>
+        <h4>Function Composition</h4>
+        <p>
+          Function composition is the act of combining simple functions into
+          more complicated ones.
+        </p>
+        <p>
+          Like the usual composition of functions in mathematics, the result of
+          each function is passed as the argument of the next, and the result of
+          the last one is the result of the whole.{' '}
+        </p>
+        <p>
+          {' '}
+          For example, suppose we have two functions <code>
+            <i>f</i>
+          </code> and <code>
+            <i>g</i>
+          </code>, as in <code>
+            <i>y = f(x)</i>
+          </code> and
+          <code>
+            <i>z = g(y)</i>
+          </code>
+          . Composing them means we first compute <code>
+            <i>y = f(x)</i>
+          </code>, and then use <code>
+            <i>y</i>
+          </code> to compute <code>
+            <i>z = g(y)</i>
+          </code>.
+        </p>
+      </div>
+    }
+  >
+    composing functions
+  </SideNote>. (Remember to click on the purple words for extra context.) On top
+  of that, Haskell is a <SideNote
+    content={
+      <div>
+        <h4>Purely Functional language</h4>
+        <p>
+          Purely functional programming languages treat all computations as the
+          evaluation of mathematical functions.
+        </p>
+        <p>
+          Purely functional programming consists of ensuring that functions will
+          only depend on their arguments, regardless of any global or local
+          state. Like in mathematics.
+        </p>
+        <p>
+          In mathematics, the expression{' '}
+          <code>
+            <i>y = x + 1</i>
+          </code>{' '}
+          means that the value of{' '}
+          <code>
+            <i>y</i>
+          </code>{' '}
+          is a function that depends on{' '}
+          <code>
+            <i>x</i>
+          </code>
+          . For a specific <code>
+            <i>x</i>
+          </code> (e.g., <code>
+            <i>3</i>
+          </code>), the value of <code>
+            <i>y</i>
+          </code> will always be the same (e.g, <code>
+            <i>y = 3 + 1 = 4</i>
+          </code>). No matter if you're in Italy or Spain, if it's 1994 or 2022,
+          or if you have other equations in the notebook. <code>
+            <i>y</i>
+          </code> will care about the value of <code>
+            <i>x</i>
+          </code> and nothing else. That's a pure function, and that's how Haskell
+          works.
+        </p>
+      </div>
+    }
+  >
+    purely functional
+  </SideNote> language. That's why functions are so critical to understand. They're
+  the backbone of the entire language! Luckily, they're not hard to learn 😁! Let's
+  dive in!{' '}
+</p>
+
+## Functions
+
+**A function is an expression that performs a specific task packaged as a unit.**
+(It'll make more sense as you keep reading.)
+
+### Declaring functions
+
+This is an expression to declare a function that checks if a number is greater than 18:
+
+```haskell
+greaterThan18 x = x > 18
+```
+
+- `greaterThan18` is the name of the function. When declaring a function, choose a name that makes it easy to know what it does.
+- `x` is a symbol serving as a placeholder that'll be replaced by a value when we call (use) the function. It's called a **parameter**.
+- The `=` operator assigns the `x > 18` expression to the `greaterThan18` name.
+
+To the left of the `=` sign, we write the function's name and parameters. And to the right, the expression that'll be contained by this function.
+
+We can write complex expressions and "package" them inside a simple and reusable name. **Reusable** is the keyword here. Instead of writing the same complex code, again and again, we just write the name of the function that contains it. (Convenient for lazy people like me! 😝)
+
+<BlockNote type='warning'>
+  IMPORTANT: Function names have to start with a lower-case letter!
+</BlockNote>
+
+Cool, we have a function. Now, let's use it!
+
+### Using functions
+
+Super simple! To use this function, we just have to write the name, a space, and write a number:
+
+```haskell
+greaterThan18 30  -- True
+```
+
+When that expression is executed, Haskell replaces all the `x` with `30`, and `greaterThan18 30` becomes `30 > 18`. Then, it evaluates the expression, returning `True`.
+
+Let's explore a little bit more this concept of parameter and result.
+
+### Function parameters and result
+
+Both when defining the function and when using it, **parameters are separated by spaces**:
+
+```haskell
+add2numbers a b = a + b
+```
+
+```haskell
+add2numbers 1 2   -- 3
+```
+
+**The order of the parameters matters:**
+
+```haskell
+greeting name lastname = "We meet again, " ++ name ++ " " ++ lastname ++ "!"
+```
+
+When using the function, `name` will always be the first parameter and `lastname` the second.
+
+```haskell
+greeting "James" "Bond" -- "We meet again, James Bond!"
+```
+
+```haskell
+greeting "Bond" "James" -- "We meet again, Bond James!"
+```
+
+**A function has to ALWAYS return a result:**
+
+A function will return the final result of evaluating the expression on the right side of `=`. And it always has to return something.
+
+Imagine that we create a function to check the age of people that comes to our restaurant, and we do something like:
+
+```haskell
+wrongFunciton x = if x < 250 then "You can come in" -- ERROR
+```
+
+There's no way anyone would be older than 250 years! 🧓🏼 But Haskell doesn't care! **If the possibility of not returning something exists, the compiler will yell at you to fix it!** It doesn't matter if it'll ever happen. We have to be ready for anything!
+
+So we fix it:
+
+```haskell
+correctFunciton x = if x < 250 then "You can come in" else "Zombieeeeeee!!! 🧟"
+```
+
+Done! Also, **a function can have as many parameters as needed:**
+
+```haskell
+add6numbers u v w x y z = u + v + w + x + y + z
+```
+
+```haskell
+add6numbers  1 2 3 4 5 6  -- 21
+```
+
+OK, we saw that functions can take as many parameters as needed, but _how low can you go?_ 😳
+
+## Names/Definitions
+
+Take a look at this function:
+
+```haskell
+name = "Daniel"
+```
+
+If we don't have parameters, we have a function that always returns the same exact value, no matter what! 👀
+
+**The kind of function that doesn't take parameters is called a _definition_ or a _name_.**
+
+Because we can't change the value of a definition (the expression on the right side of the `=` always evaluates to the same result), `name` and `"Daniel"` are essentially the same thing. And we can use them interchangeably.
+
+**This is what in most programming languages is called a variable.** But, "variable" doesn't always mean the same.
+
+When talking about **programming in general**, a variable is like a box that contains a value. And the variable's name is written on the side of the box. For example:
+
+```haskell
+x = 3
+```
+
+The symbol before the `=` is the variable's name. And the value after the `=` is the variable's value. `x = 3` means: I have a "box" named `x` that has a `3` inside it.
+
+Now, after declaring this variable, we can use it the same way we would use the `3`:
+
+```haskell
+x = 3
+7 + x   --- This will give us 10
+```
+
+And—**in most programming languages**—you can later change your mind and replace the value inside the box:
+
+```haskell
+x = 3
+7 + x   --- This will give us 10
+x = 5
+7 + x   --- This will give us 12
+```
+
+**OOOOOOOOhhhhhh but not with Haskell, no, no, no! Once you tell Haskell that `x` means `3`, it will mean `3` forever! Haskell doesn't mess around with undecided people, so you better be sure when you declare a variable!**
+
+<Giff url='https://giphy.com/embed/j4lJOuwvAzyRcnWrFi' />
+
+Haskell's concept of variable is different from most programming languages. Haskell has variables but in the mathematical sense. And you don't see variables changing value halfway through a problem!
+
+<blockquote>
+  <p>
+    Professor: A train leaves Venice at 7:00 pm, averaging 80 mph. Another train
+    headed in the same direction leaves Venice at 10:00 pm, averaging 100 mph.
+    At what time will the second train overtake the first train?
+  </p>
+</blockquote>
+
+And then, halfway through the problem:
+
+<blockquote>
+  <p>Now the first train goes 85mph! Go!</p>
+</blockquote>
+
+Wait, what? Which is it? Those are two different problems! 😡
+
+😂 As you can see, you don't change values halfway through a math problem, and you don't change definitions halfway through a Haskell program. **In technical terms, Haskell variables are _immutable_.** They vary only based on the data we enter into a program (i.e., `speed = 80`). We can't define `speed` two times in the same code, but we could change the value by changing the definition.
+
+<BlockNote>
+  Note that GHCi doesn't stop you from redefining variables or functions, but
+  that's because of a particular way that GHCi works under the hood. This is
+  really convenient for testing things quickly. But when writing a Haskell
+  program, the compiler will yell at you if you dare.
+</BlockNote>
+
+OK, great! We know about functions and variables. Now let's learn about their types!
+
+### Type signatures
+
+Because variables and the value they contain are interchangeable, it follows that they also have the same type! Let's look at a few examples (Try to guess the type before checking):
+
+```haskell
+name = "Lars"
+```
+
+<Accordion
+  title="What's the type of the previous expression?"
+  content={
+    <pre>
+      <code>name :: [Char]</code>
+    </pre>
+  }
+/>
+
+```haskell
+expr1 = 5 + (4 :: Float)
+```
+
+<Accordion
+  title="What's the type of the previous expression?"
+  content={
+    <div>
+      <pre>
+        <code>expr1 :: Float</code>
+      </pre>
+      <p>
+        It has a type of Float because the value returned by the expression on
+        the right side of <code>=</code> evaluates to a Float of value{' '}
+        <code>9.0</code>.
+      </p>
+    </div>
+  }
+/>
+
+```haskell
+expr2 = if True then 5 else (7 :: Int)
+```
+
+<Accordion
+  title="What's the type of the previous expression?"
+  content={
+    <div>
+      <pre>
+        <code>expr2 :: Int</code>
+      </pre>
+      <p>
+        It has a type of Int because the value returned by the expression on the
+        right side of <code>=</code> evaluates to an Int of value <code>5</code>
+        .
+      </p>
+      <p>
+        How does Haskell know that 5 is an Int? Because we indicated that 7 was
+        an Int and Haskell understood that the expression is meant to return an
+        Int. So it correctly infers that 5 is an Int.
+      </p>
+    </div>
+  }
+/>
+
+As you can see, It's not that hard to know the type of a variable. **It's just the type of value that it returns after evaluating the expression that it contains.** Easy enough. Let's step it up a notch by learning about function types!
+
+## Function's type signatures
+
+Functions have types, too! Although they are somewhat different:
+
+```haskell
+simpleGreeting :: [Char] -> [Char]
+simpleGreeting name = "Hi, " ++ name ++ "!"
+```
+
+The line before the function's declaration is the function's type signature. And it represents the function's type. This is how we write signatures:
+
+- We start with the function's name and the type operator (`simpleGreeting ::`) to indicate that we're defining the type of that specific function.
+- We add the parameter types separated by the `->` symbol.
+- When we run out of parameters, we add a final `->` and add the return type.
+
+Here's how we read the last signature: "`simpleGreeeting` takes a value of type `[Char]` and returns a value of type `[Char]`."
+
+Easy enough. But what about a function with multiple values?:
+
+```haskell
+complexGreeting :: [Char] -> [Char] -> [Char]
+complexGreeting name lastname = "We meet again, " ++ name ++ " " ++ lastname ++ "!"
+```
+
+Here's how we read that signature: "`complexGreeting` takes a value of type `[Char]`, then another value of type `[Char]`, and returns a value of type `[Char]`."
+
+Basically, **the type after the last `->` is always the return type**, and all the types before are parameter types separated by `->`. It's that simple.
+
+<BlockNote>
+  When you encounter function signatures for the first time, it feels like they
+  could've done a better job with the symbols. But it'll make perfect sense once
+  you learn about curried functions (in the distant future, no need to
+  overcomplicate things now).
+</BlockNote>
+
+Let's practice a little!
+
+A function that multiplies a number by two:
+
+```Haskell
+multByTwo x = x * (2 :: Float)
+```
+
+<Accordion
+  title="What's the type of the previous expression?"
+  content={
+    <pre>
+      <code>multByTwo :: Float -> Float</code>
+    </pre>
+  }
+/>
+
+A function that—given the radius and the height—calculates the volume of a cylinder:
+
+```Haskell
+volumeOfACylinder r h = pi * r^2 * (h :: Float)
+```
+
+(`pi` is a variable that represents the number `π`, and comes with Haskell.)
+
+<Accordion
+  title="What's the type of the previous expression?"
+  content={
+    <pre>
+      <code>volumeOfACylinder :: Float -> Float -> Float</code>
+    </pre>
+  }
+/>
+
+The great thing about types (remember from lesson 2) is that they protect us from ourselves! **If we say that a function takes an input of type `[Char]`, Haskell will check that we meet that requirement each time we use that function.** If we pass a `Double`, the compiler will yell at us to correct that mistake!
+
+**But now we have a problem! 🤨** What if we want to use `volumeOfACylinder` with `Double`s? We know that it'll work because they're still fractional numbers, and the formula will provide the correct answer. 🤔
+
+We _could_ create a new function that does the same but specifies `(h :: Double)`. Something like:
+
+```Haskell
+volumeOfACylinder2 r h = pi * r^2 * (h :: Double)
+```
+
+The thing is, if we do this for every function that could work with multiple types, we'll sit on LOTS AND LOTS of duplicated code! 😖 That goes against one of the fundamental coding principles: DRY (Don't Repeat Yourself). So, what should we do? 🤔
+
+**Polymorphic values to the rescue! 🦸**
+
+## Polymorphic values
+
+Polymorphic means something that has multiple forms. **And a polymorphic value is a value that can have multiple types.**
+
+For example, **the `fst` and `snd` functions that we used in the last lesson were polymorphic.** If you think about it, which type should they have? We know that the input value is a pair (a tuple of two elements) and that it returns the first one.
+
+So, if we use it for this pair: `('a', True)` we'd need a `fst` with a signature like this:
+
+```haskell
+fst :: (Char, Bool) -> Char
+```
+
+It takes a tuple of type `(Char, Bool)` and returns the first value (`Char`). But what if we need to use it for a different pair like: `(Double, [Char])`? Should we create a new function? No! **We specify a signature with type variables**, like this:
+
+```haskell
+fst :: (a, b) -> a
+```
+
+That signature reads: "The `fst` function takes a pair of type `(a, b)` and returns a value of type `a`."
+
+**`a` and `b` are type variables, meaning they can be of any type. And no matter the type, the value returned by `fst` has to be of the same type as the first element of the pair (because they are both of type `a`).**
+
+By using type variables, we can use the `fst` function with pairs of any type (polymorphic values)!
+
+Notice that `a` and `b` both CAN be of any type AND different types from each other. But they don't HAVE to be. You can use `fst` on a tuple with values of the same type: `('a','b') :: (Char, Char)`.
+
+<BlockNote type='warning'>
+  IMPORTANT: Specific types (i.e., <code>Char</code>, <code>Bool</code>,{' '}
+  <code>Int</code>) start with capital letters. But polymorphic types start with
+  lower case letters. We can use longer names for polymorphic types, but the
+  usual is to use single letters (i.e., <code>a</code>, <code>b</code>,{' '}
+  <code>c</code>).
+</BlockNote>
+
+<Accordion
+  title={
+    <div>
+      Based on what we just learned, what's the type of <code>snd</code>?
+    </div>
+  }
+  content={
+    <pre>
+      <code>snd :: (a, b) -> b</code>
+    </pre>
+  }
+/>
+
+Awesome! Let's seize the opportunity to learn two more functions that are native to the Haskell language: `head` and `tail`.
+
+### `head` and `tail`
+
+<Accordion
+  title={
+    <div>
+      What's the type signature of a function that takes a list and returns the
+      first element of that list? Let's call this function: <code>head</code>.
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>head :: [a] -> a</code>
+      </pre>
+      <p>
+        We don't care about the specific types. We're just extracting an
+        element. So, the parameter is a polymorphic list (a list of any type,
+        let's call it <code>[a]</code>). And the result has to be an element of
+        the same type as the elements on the list. That's why it has to be{' '}
+        <code>a</code>.
+      </p>
+    </div>
+  }
+/>
+
+We saw that the function takes a polymorphic list, and **this is a function that comes with Haskell!** So let's fire up GHCi and test it!
+
+```Haskell
+head [1,2,3,4] -- This will give us 1
+```
+
+```Haskell
+head "Helooo!" -- This will give us 'H'
+```
+
+```Haskell
+head [True, False, False, True] -- This will give us True
+```
+
+<Accordion
+  title={
+    <div>
+      Now, guess the type of a function that takes a list and returns{' '}
+      <b>all the elements of a list EXCEPT the first one</b> Let's call this
+      function:
+      <code>tail</code>.
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>tail :: [a] -> [a]</code>
+      </pre>
+    </div>
+  }
+/>
+
+As you can see, `tail` returns what `head` discards and vice versa. An example of how `tail` works:
+
+```Haskell
+tail [1,2,3,4] -- Will give us [2,3,4]
+```
+
+```Haskell
+tail "Helooo!" -- This will give us "elooo!"
+```
+
+Two more functions under our belt! 💪 We're on fire! 🔥 These look like they won't be practical, but trust me, they are!
+
+Now that you know all about type signatures, I can let you in on a little secret 🙊 you can check the type of any expression using commands! 😬
+
+## The `:t` and `:?` commands
+
+GHCi has commands the same as the terminal. (We learned about commands in lesson 1.) And you already know a GHCi command! It's `:q` (or `:quit`), the command to exit GHCi!
+
+GHCi has a ton of commands, and they all start with `:` (colon) and are lower-cased. Today we'll learn two new commands: `:t` and `:?`.
+
+### The `:t` command
+
+**The `:t` command shows the type of the expression that comes after it. Like this:**
+
+```haskell
+:t 'a'   -- 'a' :: Char
+```
+
+It also works with native functions:
+
+```haskell
+:t head  -- head :: [a] -> a
+```
+
+And you can use it to find out the type of a function that you created! (Haskell can infer the types):
+
+Create the function in GHCi:
+
+```haskell
+complexGreeting name lastname = "We meet again, " ++ name ++ " " ++ lastname ++ "!"
+```
+
+And check its type:
+
+```haskell
+:t complexGreeting -- complexGreeting :: [Char] -> [Char] -> [Char]
+```
+
+You can also write a complex expression right after the command:
+
+```haskell
+:t if True then 5 else (7 :: Int) -- if True then 5 else (7 :: Int) :: Int
+```
+
+<BlockNote type='warning'>
+  This command is useful when learning new functions and libraries because it
+  allows us to explore the types to understand them better.
+</BlockNote>
+
+As a spoiler of future lessons, check `:t 4` 👀.
+
+<blockquote>
+  <p>
+    What's that <code>=></code> in the type? What's <code>Num</code>? And why
+    it's a polymorphic type if it's a number? 😫 What is going on????"
+  </p>
+  — Overly dramatic student
+</blockquote>
+
+**😂 That's a class constraint.** We'll learn about it shortly (maybe in the next lesson). So don't worry about it for now. 👍
+
+The `:t` command is just one of many! A good way to learn about the rest is using `:?`
+
+### The `:?` command
+
+**The `:?` command displays the list of all the commands that you have available inside GHCi. It's a great way to explore what you can do with it!**
+
+Run it and take a look at the other available commands. Right now, most won't make sense because they're used with things that we'll learn in the future, but take a look anyway and get familiarized with the ones that can be useful to you now. Like `:i` and `:show bindings`.
+
+OK, before we go, I have one last confession to make. It's all functions!
+
+## It's all functions
+
+Now comes the big reveal. We've been using functions for a long time now! `==` is a function, `>=` is a function, `+` is a function, `/` is a function, `++` is a function, **everything that we use so far that takes something and produces another thing has been a function! 🤯**
+
+<img className='my-4' src='/images/meme-all-functions.jpg' />
+
+Don't believe me? Check the types for yourself! (use parenthesis):
+
+```haskell
+:t (++)  -- (++) :: [a] -> [a] -> [a]
+```
+
+From now on, remember that everything that we'll learn about functions applies to all the native functions too!! 😁
+
+OK, that's enough new stuff for one day! 😂 But the class is not over!
+
+<p>
+  <mark>
+    We learned a lot, and now we have to consolidate the information. Make sure
+    to do the homework and ask if you have any questions. 💪
+  </mark>
+</p>
+
+## Homework
+
+### Signature writing practice.
+
+Figure out (without GHCi) the signatures of these functions:
+
+<Accordion
+  title='A constant that contains some text, like a name or an address'
+  content={
+    <pre>
+      <code>const :: String</code>
+    </pre>
+  }
+/>
+<Accordion
+  title="A function to check if a list has something. It takes a list, and it returns true if there's at least one element inside and false otherwise."
+  content={
+    <pre>
+      <code>fun :: [a] -> Bool</code>
+    </pre>
+  }
+/>
+
+<Accordion
+  title='A function that takes a list of elements and an element of the same type and returns true if that element is inside that list and false otherwise'
+  content={
+    <pre>
+      <code>fun :: [a] -> a -> Bool</code>
+    </pre>
+  }
+/>
+
+<Accordion
+  title="A function that takes an element modifies it and doesn't return anything."
+  content={
+    <p>
+      DOUBLE TRICK QUESTION! 🤪 You can't modify a variable, and you must return
+      something!
+    </p>
+  }
+/>
+
+### Functions practice
+
+<Accordion
+  title='Remember the expression that we used to convert from Fahrenheit to Celsius? Create a function that takes Fahrenheit as a parameter and returns Celsius.'
+  content={
+    <pre>
+      <code>fToC x = (x - 32)*5/9</code>
+    </pre>
+  }
+/>
+
+<Accordion
+  title='Write a function that takes a list and returns the first element of a list multiplied by two.'
+  content={
+    <div>
+      <pre>
+        <code>func l = (head l) * 2</code>
+      </pre>
+      <p>(It also works without parenthesis. But this way is more explicit.)</p>
+    </div>
+  }
+/>
+
+<Accordion
+  title='Write a function that takes a temperature in Fahrenheit and another in Celsius and checks if they are the same. Use the first function that we just created (fToC)!'
+  content={
+    <div>
+      <pre>
+        <code>theSame f c = c == (fToC f)</code>
+      </pre>
+      <p>Use examples:</p>
+      <pre>
+        <code>theSame 32 0 -- True</code>
+      </pre>
+      <pre>
+        <code>theSame 0 32 -- False</code>
+      </pre>
+      <pre>
+        <code>theSame 212 100 -- True</code>
+      </pre>
+      <pre>
+        <code>theSame 100 37.77 -- False</code>
+      </pre>
+      <pre>
+        <code>theSame 100 37.77777777777778 -- True</code>
+      </pre>
+    </div>
+  }
+/>
+
+Play around with functions! Make something cool, and (if you want) let me know! 😃
+
+<p>
+  <mark>
+    I know today we covered a lot. Take your time to explore the ideas, and feel
+    free to ask any questions! 😄 Next lesson will either be type classes, more
+    about functions, or we'll write our first Haskell script. I'm not sure yet.
+    If you have any preferences, let me know on Twitter! 😃 Else, see you next
+    week! 💪 Have a great one!
+  </mark>
+</p>
+
+<ShareOnSocialMedia />
+<LessonNavigationButtons />

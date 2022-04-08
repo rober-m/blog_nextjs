@@ -1,165 +1,164 @@
 .content time {
-	color: #9b9b9b;
+  color: #9b9b9b;
 }
 
 .content pre,
 .content code {
-	border-radius: 4px;
-	margin: 1rem 0;
+  border-radius: 4px;
+  margin: 1rem 0;
 }
 
 .content p code,
 .content li code {
-	border-radius: 4px;
-	padding: 0.2rem 0.4rem;
-	font-size: 85%;
-	background-color: #ddd;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-size: 85%;
+  background-color: #ddd;
 }
 
 .content p {
-	text-align: justify;
+  text-align: justify;
 }
 
 .content blockquote {
-	font-style: italic;
-	font-size: 1rem;
-	margin: 1rem 0;
-	padding: 1.5rem;
-	background-color: #f6ecff;
-	box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
-		0 6px 20px 0 rgba(124, 58, 236, 0.19);
+  font-style: italic;
+  font-size: 1rem;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background-color: #f6ecff;
+  box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
+    0 6px 20px 0 rgba(124, 58, 236, 0.19);
 }
 
 .content blockquote::before {
-	position: absolute;
-	content: '\201C';
-	font-size: 6em;
-	font-family: roboto, serif;
-	line-height: 3.1rem;
-	margin-top: 0em;
-	margin-left: -0.2em;
-	z-index: 1;
-	color: rgb(124, 58, 236);
+  position: absolute;
+  content: '\201C';
+  font-size: 6em;
+  font-family: roboto, serif;
+  line-height: 3.1rem;
+  margin-top: 0em;
+  margin-left: -0.2em;
+  z-index: 1;
+  color: rgb(124, 58, 236);
 }
 
 .content table {
-	max-width: 100%;
-	border-spacing: 0;
-	margin-top: 1.5rem;
-	text-align: center;
+  max-width: 100%;
+  border-spacing: 0;
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
 .content table thead {
-	background: #f7f7f7;
+  background: #f7f7f7;
 }
 
 .content table th {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .content table th,
 .content table td {
-	padding: 0.5em 1em;
-	border: 1px double #eee;
+  padding: 0.5em 1em;
+  border: 1px double #eee;
 }
 
 .content ol,
 .content ul {
-	padding: 0 0 0 1.5rem;
-	margin: 1.5rem 0 0 0;
+  padding: 0 0 0 1.5rem;
+  margin: 1.5rem 0 0 0;
 }
 
 .content ol li,
 .content ul li {
-	line-height: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .content li ol,
 .content li ul {
-	margin: 0;
+  margin: 0;
 }
 
 .content li {
-	margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .content ul {
-	list-style: disc;
+  list-style: disc;
 }
 
 .content ol {
-	list-style: decimal;
+  list-style: decimal;
 }
 
 .content abbr[title] {
-	text-decoration: underline double;
+  text-decoration: underline double;
 }
 
 .content kbd {
-	font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Ubuntu Mono', monospace;
 }
 
 @media (max-width: 1024px) {
-	.content img:active:not([id*='do-not-zoom']),
-	.content img:focus:not([id*='do-not-zoom']),
-	.content img:hover:not([id*='do-not-zoom']) {
-		position: absolute;
-		left: 0;
-		z-index: 20;
-		width: 100%;
-		outline: none;
-		box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
-			0 6px 20px 0 rgba(124, 58, 236, 0.19);
-	}
+  .content img:active:not([id*='do-not-zoom']),
+  .content img:focus:not([id*='do-not-zoom']),
+  .content img:hover:not([id*='do-not-zoom']) {
+    position: absolute;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
+      0 6px 20px 0 rgba(124, 58, 236, 0.19);
+  }
 }
 
 @media (min-width: 1024px) {
-	.content img:active:not([id*='do-not-zoom']),
-	.content img:focus:not([id*='do-not-zoom']),
-	.content img:hover:not([id*='do-not-zoom']) {
-		scale: 1.5;
-		z-index: 20;
-		box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
-			0 6px 20px 0 rgba(124, 58, 236, 0.19);
-	}
+  .content img:active:not([id*='do-not-zoom']),
+  .content img:focus:not([id*='do-not-zoom']),
+  .content img:hover:not([id*='do-not-zoom']) {
+    scale: 1.5;
+    z-index: 20;
+    box-shadow: 0 4px 8px 0 rgba(124, 58, 236, 0.2),
+      0 6px 20px 0 rgba(124, 58, 236, 0.19);
+  }
 }
 
 @media (min-width: 769px) {
-	.content h2,
-	.content h3,
-	.content h4,
-	.content h5 {
-		position: relative;
-	}
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5 {
+    position: relative;
+  }
 }
 
 .content h3 {
-	font-weight: bold;
-	font-size: 1.5rem;
-	margin-top: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 .content h4 {
-	font-weight: bold;
-	font-size: 1.2rem;
-	margin-top: 1.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 .content a {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .content h2 a,
 .content h3 a,
 .content h4 a,
 .content h5 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .content mark {
-	background-color: #f9f1ff;
-	padding: 0.3rem 0rem;
-	border-radius: 4px;
-	font-weight: bold;
-	font-style: italic;
+  background-color: #f9f1ff;
+  padding: 0.3rem 0rem;
+  border-radius: 4px;
+  font-weight: bold;
 }

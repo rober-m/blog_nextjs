@@ -5,14 +5,15 @@ date: 2022-03-28
 author: robertinom
 thumbnail: /images/meme-tuples-sized.jpg
 tags:
-    - programming
-    - haskell
-    - haskell-course
+  - programming
+  - haskell
+  - haskell-course
 ---
 
 Today we'll learn about tuples and have a taste of what we can do with them by designing a blockchain's data structure. This is the last type that we're going to explore. Hope you like it! 😄
 
 ## Tuples
+
 **Tuples are structures used to store heterogeneous elements as a single value.**
 
 We represent tuples by starting with an open parenthesis, writing all the elements separated by a comma, and ending with a close parenthesis. This is an example of a tuple with 3 elements:
@@ -29,7 +30,9 @@ It sounds a lot like lists, but there are two key differences:
 And those key differences are reflected in the tuple's type.
 
 ### Tuple type
+
 The type of a tuple depends of:
+
 - The type of its elements.
 - The order of the elements.
 - The quantity of the elements.
@@ -40,13 +43,13 @@ A few examples:
 (1::Int, 2::Float, 3::Double) -- (Int, Float, Double)
 
 ('x', 3::Int, 'y')            -- (Char, Int, Char)
-       
+
 (True, False, "Helooooo")     -- (Bool, Bool, [Char])
 
 ([1,2,3]::[Float], 'x', 'y')  -- ([Float], Char, Char)
 
 ("Hey what's up!")            -- [Char]
-        
+
 ('s').                        -- Char
 ```
 
@@ -57,6 +60,7 @@ Did you notice that if you try to create a single-element tuple, GHCi returns ju
 OK, we have a tuple now. How can I use the elements inside it?
 
 ## Accessing tuple elements
+
 **The elements inside a tuple don't have indices!** We can't extract an element inside a tuple by using `!!` like with lists!
 
 Although, there is a similarly easy way for pairs (a tuple of two elements) using functions.
@@ -97,27 +101,38 @@ snd ('a', 23) -- Result: 23
 
 `snd` follows the same exact rules as `fst`.
 
-Tuples of more than two elements are rare. So rare that there aren't any functions like `fst` and `snd` to access individual elements in a tuple of more than 2 elements using standard Haskell. 
+Tuples of more than two elements are rare. So rare that there aren't any functions like `fst` and `snd` to access individual elements in a tuple of more than 2 elements using standard Haskell.
 
-<p> We have other options, though, like pattern matching (we'll learn about pattern matching in future lessons) and using external{' '}
-<SideNote
-  content={
-    <div>
-    <h4>Libraries</h4>
-    <p>A software library consists of pre-written code that a developer can import and use alongside its own code. Typically, a developer might use a library to achieve more functionality, automate a process, or simply save time by avoiding writing code that someone else has already written.</p>
-    </div>
-  }
->libraries</SideNote>.
-You don't need to worry about it right now. We'll get to it. </p>
+<p>
+  {' '}
+  We have other options, though, like pattern matching (we'll learn about pattern
+  matching in future lessons) and using external <SideNote
+    content={
+      <div>
+        <h4>Libraries</h4>
+        <p>
+          A software library consists of pre-written code that a developer can
+          import and use alongside its own code. Typically, a developer might
+          use a library to achieve more functionality, automate a process, or
+          simply save time by avoiding writing code that someone else has
+          already written.
+        </p>
+      </div>
+    }
+  >
+    libraries
+  </SideNote>. You don't need to worry about it right now. We'll get to it.{' '}
+</p>
 
 ## Comparing tuples
+
 Comparing tuples is done the same as comparing lists (lexicographically).
 Here are a few examples to help you gain some intuition:
 
 ```haskell
 ('a', 1) > ('b', 1)    -- False because 'a' > 'b' is False
 
-('a', 2) > ('a', 1)    -- True because 2 > 1 is True 
+('a', 2) > ('a', 1)    -- True because 2 > 1 is True
 
 ('a', 1) > ('a', 1, 2) -- Error because tuples are of different types
 ```
@@ -127,11 +142,12 @@ It's easy once you understand how lists are compared 😎.
 **Now, let's put what we learned to good use!**
 I heard that many of my students like blockchains. So, as an example of when tuples are practical, **we'll design the data structure of a simple blockchain! 🤯**
 
-<Giff url="https://giphy.com/embed/ULyYV5amK2eYM"/>
+<Giff url='https://giphy.com/embed/ULyYV5amK2eYM' />
 
 We won't get too technical, don't worry. It's just a simple exercise.
 
 ## Designing a blockchain's data structure
+
 Let's design the blockchain data structure from the ground up! This means that we'll make choices about how to format our data. Data can be arranged in many ways. **To be a good developer, you'll have to choose those that are efficient and easy to use.**
 
 Let's start with the crucial requirement: **To store transactions**. Every blockchain needs to have a record of past transactions. Let's see how we can do just that.
@@ -162,20 +178,33 @@ Ahhh 😌 that's the stuff! **On top of accepting values of different types, tup
 
 The problem we have now is that there's no way to check if someone changed that `20.0` to a `20000.0`. We'd have to trust that no one would change it. **But we're building a trustless blockchain! We need a way to publicly verify that only the sender — and no one else — can create a transaction that spends its own money.**
 
-<p><b>That's when{' '}</b> <SideNote
+<p>
+  <b>That's when </b>{' '}
+  <SideNote
     content={
       <div>
         <h4>Hash</h4>
-        <p>A hash is a series of numbers and letters generated using a hashing function. In the case of blockchain hashes, they are generated using cryptographic hash functions.</p>
-        <p>A cryptographic hash function takes an input (a message, a file, or any data) and generates a fixed-length hash in a way that you can't go back from the hash to the input.</p>
+        <p>
+          A hash is a series of numbers and letters generated using a hashing
+          function. In the case of blockchain hashes, they are generated using
+          cryptographic hash functions.
+        </p>
+        <p>
+          A cryptographic hash function takes an input (a message, a file, or
+          any data) and generates a fixed-length hash in a way that you can't go
+          back from the hash to the input.
+        </p>
       </div>
-    }>
+    }
+  >
     <b>hashes</b>
-    </SideNote> <b>come in handy!</b></p>
+  </SideNote>{' '}
+  <b>come in handy!</b>
+</p>
 
 We can create **a hash based on all the transaction's information plus a secret string that only the sender knows (the private key of the sender)**. Like some kind of signature that changes based on the contents of the transaction.
 
-With this, if anyone tries to change something, the transaction's hash won't match with the values, and we can invalidate the transaction! 😎 And if someone tries to create an entirely new transaction as someone else, we'll know because they don't have that other person's private key! Double 😎! 
+With this, if anyone tries to change something, the transaction's hash won't match with the values, and we can invalidate the transaction! 😎 And if someone tries to create an entirely new transaction as someone else, we'll know because they don't have that other person's private key! Double 😎!
 
 To add the hash, we just need to create a tuple with all the previous values plus a field with the hash:
 
@@ -187,11 +216,11 @@ To add the hash, we just need to create a tuple with all the previous values plu
 
 Pffff! Easy fix! **We ad some value that it's unique to a single transaction, like the time it was made or some number.** At this point, we don't care HOW the hash is generated. We care about the data structure and that it's the same regardless of how the hash is generated.
 
-<Giff url="https://giphy.com/embed/xUNd9WbEMv0CGDEK3u"/>
+<Giff url='https://giphy.com/embed/xUNd9WbEMv0CGDEK3u' />
 
 Done then! Now, everybody can write their own transactions, but no one can modify others'. But where exactly are we creating those transactions? Should we verify each transaction at the same time? And who verifies the transactions?
 
-**There are a bunch of ways to do this.** We don't care much about how we do it but about how the data looks. So, — unless you know about blockchain protocols — you'll have to trust that what I say we need is correct. 
+**There are a bunch of ways to do this.** We don't care much about how we do it but about how the data looks. So, — unless you know about blockchain protocols — you'll have to trust that what I say we need is correct.
 
 ### Creating blocks
 
@@ -210,7 +239,14 @@ We can have a list that contains all the transactions of a block like this:
 ]
 ```
 
-<Accordion title="Quick question. What is the type of the list in the last block of code?" content ={<p><code>[([Char], [Char], Double, [Char])]</code></p>}/>
+<Accordion
+  title='Quick question. What is the type of the list in the last block of code?'
+  content={
+    <p>
+      <code>[([Char], [Char], Double, [Char])]</code>
+    </p>
+  }
+/>
 
 We'll add a hash at the end of the block that it's generated based on all the block's data. Same as when signing transactions. Now, no one can modify the block.
 
@@ -226,8 +262,14 @@ We'll add a hash at the end of the block that it's generated based on all the bl
 )
 ```
 
-<Accordion title="Quick question. What is the type of the tuple in the last block of code?" content ={<p><code>([([Char], [Char], Double, [Char])], [Char])</code></p>}/>
-
+<Accordion
+  title='Quick question. What is the type of the tuple in the last block of code?'
+  content={
+    <p>
+      <code>([([Char], [Char], Double, [Char])], [Char])</code>
+    </p>
+  }
+/>
 
 Finally, **we need to order the blocks to know which one comes before the other**. To do this in a way that no one can tamper with the order, we'll use something new, unexpected, that you'll never see coming!! Just kidding, we'll use hashes again. 😂
 
@@ -248,11 +290,18 @@ This is how the final version of our blockchain's data structure looks:
 )
 ```
 
-<Accordion title="Quick question. What is the type of the tuple in the last block of code?" content ={<p><code>([Char], [([Char], [Char], Double, [Char])], [Char])</code></p>}/>
+<Accordion
+  title='Quick question. What is the type of the tuple in the last block of code?'
+  content={
+    <p>
+      <code>([Char], [([Char], [Char], Double, [Char])], [Char])</code>
+    </p>
+  }
+/>
 
 **And that's it! 🥳** Our blockchain will be a bunch of blocks with that data structure. It wasn't that hard, right? And conceptually, this isn't that far from how a real blockchain organizes its data. 🤩
 
-<Giff url="https://giphy.com/embed/VhLaWO8fK1wK2A09Dw"/>
+<Giff url='https://giphy.com/embed/VhLaWO8fK1wK2A09Dw' />
 
 ## Homework
 
@@ -261,30 +310,14 @@ This is how the final version of our blockchain's data structure looks:
 2. Try to identify if you are not sure of something and use GHCi to verify your hypothesis. Real-world information isn't presented as neat as in this course. You need to learn how to explore libraries and languages without guidance. Use previous homework for inspiration and try to explore the subject to gain further insight.
 
 <p>
-	<mark>
-  This is the last lesson before functions, so you mustn't have major holes in what we covered until now. (Except for the blockchain-related knowledge of the final section. That's not important for the course.) Let me know if you need help with something! 
-  </mark>{' '}💪
+  <mark>
+    This is the last lesson before functions, so you mustn't have major holes in
+    what we covered until now. (Except for the blockchain-related knowledge of
+    the final section. That's not important for the course.) Let me know if you
+    need help with something!
+  </mark>{' '}
+  💪
 </p>
 
-<p
-	style={{
-		backgroundColor: '#dbd6fb',
-		padding: '0.5rem 1rem',
-		borderRadius: '4px',
-		color: '#733de4',
-	}}
->
-	<i>
-		PD: If you find this course valuable, please{' '}
-		<a
-			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
-			target='_blank'
-		>
-			share it
-		</a>{' '}
-		so more people can learn!
-	</i>{' '}
-	😄
-</p>
-
-<LessonNavigationButtons />
+<ShareOnSocialMedia />
+<LessonNavigationButtons nextLesson='haskell-course-lesson-7' />
