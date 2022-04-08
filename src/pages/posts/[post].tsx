@@ -23,104 +23,108 @@ import { Giff } from '../../components/Giff';
 import { RevueEmbed } from '../../components/RevueEmbed';
 import { ShareOnSocialMedia } from '../../components/ShareOnSocialMedia';
 import { LessonNavigationButtons } from '../../components/LessonNavigationButtons';
+import { BlockNote } from '../../components/BlockNote';
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 hljs.registerLanguage('Haskell', require('highlight.js/lib/languages/haskell'));
+hljs.registerLanguage('haskell', require('highlight.js/lib/languages/haskell'));
+hljs.registerLanguage('latex', require('highlight.js/lib/languages/latex'));
 
 export type Props = {
-	title: string;
-	dateString: string;
-	slug: string;
-	tags: string[];
-	author: string;
-	description?: string;
-	source: MdxRemote.Source;
-	thumbnail: string;
+  title: string;
+  dateString: string;
+  slug: string;
+  tags: string[];
+  author: string;
+  description?: string;
+  source: MdxRemote.Source;
+  thumbnail: string;
 };
 
 const components = {
-	YouTube,
-	Accordion,
-	PaizaEmbed,
-	TabbedContent,
-	SideNote,
-	Giff,
-	RevueEmbed,
-	ShareOnSocialMedia,
-	LessonNavigationButtons,
+  YouTube,
+  Accordion,
+  PaizaEmbed,
+  TabbedContent,
+  SideNote,
+  Giff,
+  RevueEmbed,
+  ShareOnSocialMedia,
+  LessonNavigationButtons,
+  BlockNote,
 };
 const slugToPostContent = ((postContents) => {
-	let hash = {};
-	postContents.forEach((it) => (hash[it.slug] = it));
-	return hash;
+  let hash = {};
+  postContents.forEach((it) => (hash[it.slug] = it));
+  return hash;
 })(fetchPostContent());
 
 export default function Post({
-	title,
-	dateString,
-	slug,
-	tags,
-	author,
-	description = '',
-	source,
-	thumbnail,
+  title,
+  dateString,
+  slug,
+  tags,
+  author,
+  description = '',
+  source,
+  thumbnail,
 }: Props) {
-	const content = hydrate(source, { components });
-	content;
-	return (
-		<PostLayout
-			title={title}
-			date={parseISO(dateString)}
-			slug={slug}
-			tags={tags}
-			author={author}
-			description={description}
-			thumbnail={thumbnail}
-		>
-			{content}
-		</PostLayout>
-	);
+  const content = hydrate(source, { components });
+  content;
+  return (
+    <PostLayout
+      title={title}
+      date={parseISO(dateString)}
+      slug={slug}
+      tags={tags}
+      author={author}
+      description={description}
+      thumbnail={thumbnail}
+    >
+      {content}
+    </PostLayout>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = fetchPostContent().map((it) => '/posts/' + it.slug);
-	return {
-		paths,
-		fallback: false,
-	};
+  const paths = fetchPostContent().map((it) => '/posts/' + it.slug);
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const slug = params.post as string;
-	const source = fs.readFileSync(slugToPostContent[slug].fullPath, 'utf8');
-	const { content, data } = matter(source, {
-		engines: {
-			yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
-		},
-	});
-	const mdxSource = await renderToString(content, {
-		components,
-		scope: data,
-		mdxOptions: {
-			rehypePlugins: [
-				//@ts-ignore
-				rehypeHighlight,
-				//@ts-ignore
-				rehypeSlug,
-				//@ts-ignore
-				[rehypeAutolinkHeadings, { behavior: 'wrap' }],
-			],
-		},
-	});
-	return {
-		props: {
-			title: data.title,
-			dateString: data.date,
-			slug: data.slug,
-			description: data?.description ?? '',
-			tags: data.tags,
-			author: data.author,
-			source: mdxSource,
-			thumbnail: data?.thumbnail ?? '',
-		},
-	};
+  const slug = params.post as string;
+  const source = fs.readFileSync(slugToPostContent[slug].fullPath, 'utf8');
+  const { content, data } = matter(source, {
+    engines: {
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
+    },
+  });
+  const mdxSource = await renderToString(content, {
+    components,
+    scope: data,
+    mdxOptions: {
+      rehypePlugins: [
+        //@ts-ignore
+        rehypeHighlight,
+        //@ts-ignore
+        rehypeSlug,
+        //@ts-ignore
+        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      ],
+    },
+  });
+  return {
+    props: {
+      title: data.title,
+      dateString: data.date,
+      slug: data.slug,
+      description: data?.description ?? '',
+      tags: data.tags,
+      author: data.author,
+      source: mdxSource,
+      thumbnail: data?.thumbnail ?? '',
+    },
+  };
 };
