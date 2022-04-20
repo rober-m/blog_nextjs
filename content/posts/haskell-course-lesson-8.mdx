@@ -1,0 +1,505 @@
+---
+slug: haskell-course-lesson-8
+title: Haskell Course - Lesson 8 - Intro to Type classes
+date: 2022-04-17
+author: robertinom
+thumbnail: /images/meme-all-functions-nochange.jpg
+tags:
+    - programming
+    - haskell
+    - haskell-course
+---
+
+Many beginners struggle with type classes. That's because it's a more abstract concept than the ones we have learned so far. But don't worry. We'll see many examples and repeat our reasoning in different circumstances to hone in on the intuitive understanding of the concepts. Hope you like it! 😄
+
+<blockquote>
+    <p>
+        First of all, let's set things straight. You said that functions are
+        used by writing first their name and then their parameters separated by
+        spaces. So, how come the <code>==</code> and others like this have one
+        parameter before their name and one after?
+    </p>
+    — The guy that sits in the front row in every class.
+</blockquote>
+
+Sorry about that, I didn't notice I overlooked it last lesson 😅. Sure, let's see that first!
+
+## Prefix and Infix functions
+
+<BlockNote>
+    I'll probably move this section to the functions lessons in the future.
+</BlockNote>
+
+Prefix and infix are the two ways of calling functions.
+
+Because we don't waste time, we'll learn these concepts while using a new native function: `elem`. The `elem` function takes a value and a list of values of the same type and returns `True` if the value is inside the list and `False` if it isn't.
+
+### Prefix functions
+
+Prefix functions are called (used) writing, first their name and then their parameters separated by spaces. For example:
+
+```haskell
+elem 3 [1,2,3]   -- True
+elem 3 [1,2]     -- False
+```
+
+If a function's name has letters and numbers, it's considered a prefix function by default.
+
+### Infix functions
+
+Infix functions are called by writing their name sandwiched between their parameters. Like the `+` function:
+
+```haskell
+2 + 3  -- 5
+```
+
+If a function's name has only special characters ( +, /, =, and such), it's considered an infix function by default.
+
+It's not that infix functions are special. We can easily use a prefix function as an infix function using the infix notation.
+
+### Infix notation
+
+To use a prefix function like an infix function, we just have to surround its name with backticks:
+
+```haskell
+3 `elem` [1,2,3] -- True
+3 `elem` [1,2]   -- False
+```
+
+You could write prefix functions with more than two parameters as infix functions. But I advise against it since you have to add extra parenthesis, and it doesn't read nicely.
+
+There's also a way to do the inverse (infix to prefix) using the prefix notation.
+
+### Prefix notation
+
+To use an infix function like a prefix function, we just have to surround its name with parenthesis:
+
+```haskell
+(+) 2 3      -- 5
+
+(==) 'a' 'b' -- False
+```
+
+It looks less intuitive in these cases. But it's proper in certain circumstances that we may encounter in this course.
+
+OK, with that out of the way, we can see what the heck type classes are.
+
+<BlockNote>
+    This is an introduction to type classes, so we won't learn how to create
+    type classes nor make a type an instance of a type class. The objective of
+    this lesson is to understand what they are so we can use the native type
+    classes that come with Haskell.
+</BlockNote>
+
+## Type Classes
+
+<BlockNote type='warning'>
+    If you search for "class" or "classes" as a programming concept, you could
+    get more confused. Most responses will be about{' '}
+    <SideNote
+        content={
+            <div className='text-gray-800 not-italic'>
+                <h4>Object-oriented programming</h4>
+                <p>
+                    Object-oriented programming (OOP) is a computer programming
+                    model that organizes software design around data—or
+                    objects—rather than functions and logic.
+                </p>
+                <p>
+                    In OOP, computer programs are designed by making them out of
+                    objects that interact with one another.
+                </p>
+            </div>
+        }
+    >
+        object-oriented programming (OOP)
+    </SideNote>
+    , and "class" in OOP is a different thing. Make sure to add the "type" and "Haskell"
+    keywords to your search!
+</BlockNote>
+
+**Type classes are interfaces that define some behavior.** They are like clubs that types can belong to if they have what it takes! 😈
+
+If you meet a guy that belongs to the advanced-drawing club, you know that he can draw. Why? Because it's one of the requirements to enter the club!
+
+Type classes are the same. They have particular behaviors (functions). If a type implements and supports the behaviors of a type class, then the type is an **Instance** of that type class (a member of that club).
+
+<img src='/images/meme_instance_of_my_class_type.jpg' className='my-4' />
+
+Let's explore a few examples:
+
+## The `Eq` type class
+
+The `Eq` type class is all about equality. The types that are instances of the `Eq` type class can say if two values of its type are equal or different by using the `==` (equal) and `/=` (not equal) functions.
+
+Looking at the type signatures of `==` and `/=`, we can learn more:
+
+```haskell
+(==) :: Eq a => a -> a -> Bool
+
+(/=) :: Eq a => a -> a -> Bool
+```
+
+The `=>` symbol is the `class constraint` symbol. As you guessed, it indicates that a polymorphic type is **constrained** to be an instance of a type class. (In this case, the type `a` has to be an instance of the type class `Eq`.) So, we're constraining (limiting) the types that you can pass to these two functions, from all the types to only those that are instances of the `Eq` type class.
+
+It's like a bouncer that lets you in if you're a type that belongs to the `Eq` club.
+
+How is this useful to you? Because you can use polymorphic types and still protect yourself from passing the wrong type. 😎 For example, imagine you create this function:
+
+```haskell
+func x y = if x == y then x else y
+```
+
+You don't do math, manipulate strings, or do anything type-dependent. So you can use type variables. **But you do check if the values are equal. So you want to make sure that this function only accepts values that can be checked for equality.** That's what the `Eq` type class is here for. To block you from using types that can't be compared.
+
+Because `==` has the `Eq a` constraint and `func` uses `==` inside, our type signature automatically inherits that constraint:
+
+```haskell
+func :: Eq a => a -> a -> a
+```
+
+Remember the Booleans lesson? We used `==` and `/=` to compare values of type `Char`, `Int`, `String`, etc. That's because all those types are instances of the `Eq` type class. And Haskell already knows how to check if the values of all those types are equal or not.
+
+So far, all the types we learned are instances of this class type (except for functions).
+
+You can't do much with types that only belong to the `Eq` type class. You can only tell if they are the same exact value or not. Luckily, `Eq` is not the only club in town!
+
+## The `Ord` type class
+
+The `Ord` type class is all about order. The types that are instances of the `Ord` type class can order their values and say which value is the biggest.
+
+For example, a type that is an instance of the `Ord` type class can use the `>` (greater than) function:
+
+```haskell
+(>) :: Ord a => a -> a -> Bool
+```
+
+We've already used this function in previous lessons. It takes two values of the same type and returns a boolean:
+
+```haskell
+4 > 9 -- False
+```
+
+<p>
+    How are the values ordered? It depends on the type. With numbers, it follows
+    the mathematical order (e.g., `4` comes before `5` and after `3`). With
+    characters, it follows the Unicode order (like we discussed{' '}
+    <a
+        target='_blank'
+        href='https://robertinom.com/posts/haskell-course-lesson-5#characters'
+    >
+        here
+    </a>
+    ). And other types have other rankings.
+</p>
+
+As you can see, each type has its own way of implementing the behaviors (functions) of the type class. And the type class doesn't care, as long as they have them. It makes sense because each type has its own quirks, and a single definition of `==` or `>` can't possibly fit them all.
+
+<BlockNote>
+    We'll learn how to implement our own instances in future lessons.
+</BlockNote>
+
+`Ord` is on an entirely different level than `Eq`. Because for `>` to be effective, the type has to have some sort of ranking. A way to tell if something is greater than another thing. And this opens the doors to many other functions that derive from this capacity. i.e., [all the operators that do inequality testing](link to inequality testing H3), `compare`, `max`, and `min` functions.
+
+We already know how to use inequality operators, so let's dive into the other functions.
+
+### The `min` and `max` functions
+
+The `min` function takes two values of a type that is an instance of `Ord` and returns the minimum of the two:
+
+```haskell
+min :: Ord a => a -> a -> a
+```
+
+Example:
+
+```haskell
+min 12 19 -- 12
+```
+
+The `max` function takes two values of a type that is an instance of `Ord` and returns the maximum of the two:
+
+```haskell
+max :: Ord a => a -> a -> a
+```
+
+Example:
+
+```haskell
+max 12 19 -- 19
+```
+
+And finally, the compare function.
+
+### The `compare` function
+
+Check out the `compare` type signature:
+
+```haskell
+compare :: Ord a => a -> a -> Ordering
+```
+
+The `compare` function takes two values of a type that is an instance of `Ord` and returns a value of type `Ordering`.
+
+Type what?
+
+This is a new type for us. In the same way that `Bool` has only two values (`True` and `False`), the `Ordering` type has only three values: `LT` (lesser than), `EQ` (equal), and `GT` (greater than).
+
+Example:
+
+```haskell
+compare 4 9         -- LT (4 is lesser than 9)
+
+'f' `compare` 'e'   -- GT ('f' is greater than 'e')
+
+True `compare` True -- EQ ( True is equal to True)
+```
+
+Because there's not much we can do with values of the `Ordering` type, compare isn't used as frequently as the other functions.
+
+Again, so far, all the types we learned are instances of this class type (except for functions).
+
+## Doodling before drawing
+
+Sometimes a type has to first be an instance of one type class to be allowed to become an instance of another. Like you have to belong to the doodling club to be allowed to apply to the drawing club.
+
+That's the case with `Eq` and `Ord`.
+
+To order values of a type, for starters, you have to be able to tell if they are equal or not. This tells us that if we have a type that is an instance of `Ord`, it also supports all the `Eq` behavior!
+
+## Numbers
+
+Numeric types are one of the most used types in any programming language. But not all numeric types can do the same thing, so let's learn about their type classes.
+
+We'll start with the most popular club of all: The `Num` type class.
+
+### The `Num` type class
+
+The types that are instances of the `Num` type class can behave like numbers. But not like a specific subset of numbers. The `Num` type class defines the behavior of numbers in general.
+
+For example, numbers that are instances of this class can be (among other things) added, subtracted, or multiplied:
+
+```haskell
+(+) :: Num a => a -> a -> a
+
+(-) :: Num a => a -> a -> a
+
+(*) :: Num a => a -> a -> a
+```
+
+For example:
+
+```haskell
+5 - 1      -- 4
+
+8.9 + 0.1  -- 9.0
+
+'a' - 'b'  -- ERROR! Char is not an instance of Num!
+```
+
+Now we're talking! This is a life savior! Imagine I want to create a function that does some math:
+
+```haskell
+add1 x = x + 1
+```
+
+I don't want to choose a type like `Int` and only allow `Int` values. `Float`, `Double`, and `Integer` types could work perfectly! But, if there were no constraints, I could pass any type! What's the result of `'a' + 1`? Or `True + 1`? It doesn't make any sense! Another great example of type constraints utility.
+
+Because only types that are instances of the `Num` type class can use `+`, and because `Float`, `Double`, `Int`, and `Integer` are all instances of `Num`, we can constraint our function like this:
+
+```haskell
+add1 :: Num a => a -> a
+```
+
+And we can be sure that if Haskell doesn't complain when we use our function, we're safe.
+
+Not only that, we don't even have to manually specify the constraint! If you create that `add1` function in GHCi and check the type, you'll get the exact same type signature by default! Haskell knows that to use `+`, you have to be an instance of the `Num` type, so it infers a type signature for `add1` that blocks any other type from using it. Thanks, Haskell! We love you, you little nerd! 🤓
+
+### The `Integral` type class
+
+By now, you know the drill. The `Num` type class includes all the numbers, and the `Integral` type class only the whole (or integral) numbers. Such as `4`, but not `4.3`.
+
+`Integral` is a more exclusive club than `Num`. Of all the types we studied so far, only `Int` and `Integer` belong to it.
+
+<Giff url='https://giphy.com/embed/xT1R9YYeCajBym9Gfu' />
+
+One of the most well-known `Integral` functions is `div`.
+
+```haskell
+div :: Integral a => a -> a -> a
+```
+
+It takes two values of a type that is an instance of `Integral` and divides them, returning only the whole part of the division.
+
+Examples:
+
+```haskell
+3 `div` 5    -- 0
+
+div 5 2      -- 2
+```
+
+Now, this doesn't mean that `Foat` and `Double` only hang out in the `Num` club. In fact, they have their own club!
+
+### The `Fractional` type class
+
+The `Fractional` type class is all about fractional numbers. The types that are instances of the `Fractional` type class can represent and modify fractional values.
+
+By far, the most valuable function that types that are instances of the`Fractional` type class can use is `/`:
+
+```haskell
+(/) :: Fractional a => a -> a -> a
+```
+
+The all-mighty division. Unlike `div`, we can be more precise about our values because we're using fractional numbers. For example:
+
+```haskell
+10 / 5  -- 2.0
+
+5  / 2  -- 2.5
+
+10 / 3  -- 3.3333333333333335
+```
+
+Which reminds me, what about the function we created to transform from Fahrenheit to Celsius? 🤔
+
+```haskell
+fToC x = (x - 32)*5/9
+```
+
+<Accordion
+    title={
+        <div>
+            Without using GHCi, what is the signature of this function? (You're
+            allowed to check the types of <code>-</code>, <code>*</code>, and{' '}
+            <code>/</code>).
+        </div>
+    }
+    content={
+        <div>
+            <p>It takes a value and returns a value.</p>
+            <pre>
+                <code>fToC :: a -> a</code>
+            </pre>
+            <p>
+                {' '}
+                The value that it takes must be a numeric type (we're doing math
+                with several mathematical functions).{' '}
+            </p>
+            <pre>
+                <code>fToC :: Num a => a -> a</code>
+            </pre>
+            <p>
+                But not any numeric type will do! It has to be a type that can
+                be divided using <code>/</code>.
+            </p>
+            <pre className='font-bold'>
+                <code>fToC :: Fractional a => a -> a</code>
+            </pre>
+            <p>At the end of the day, the most restrictive constraint wins.</p>
+        </div>
+    }
+/>
+
+Until now, we've been restricting if the type is an instance of a particular type class. And we know that there can be more specialized type classes (`Fractional` is a more specialized type class than `Num`). **But what if you need a type that can both draw AND play basketball?**
+
+<Giff url='https://giphy.com/embed/3ohhwMUI70Br3i2H5K' />
+
+## Multiple constraints
+
+Applying constraints is more flexible than it seems. Sometimes you need different constraints for different type variables. Or the same type variable with multiple constraints. All this can be easily expressed in Haskell.
+
+### Multiple constraints for the same type variable
+
+Take this function that skips the number 3:
+
+```haskell
+skip3 x = if x == 3 then x+1 else x
+```
+
+The `x` can be of any type that is an instance of `Eq` (because of `==`) and `Num` (because of `+`). To specify multiple constraints for the same type variable, we have to surround them with parenthesis and add a comma between them. Like if they were a tuple:
+
+```haskell
+skip3 :: (Eq p, Num p) => p -> p
+```
+
+Now the `p` type variable has to be a type that's an instance of both `Eq` and `Num`. We could add more constraints if needed.
+
+### Constraints for multiple type variables
+
+<p>
+    Let's create a function that takes two values and returns one if the first
+    value is greater and zero otherwise. (In{' '}
+    <SideNote
+        content={
+            <div>
+                <h4>Binary code</h4>
+                <p>
+                    A binary code represents text, computer instructions, or any
+                    other data using a two-symbol system. The two-symbol system
+                    used is often <code>0</code> and <code>1</code> from the
+                    binary number system.
+                </p>
+            </div>
+        }
+    >
+        binary
+    </SideNote>
+    , <code>1</code> usually means <code>True</code> and <code>0</code> means <code>
+        False
+    </code>).
+</p>
+
+```haskell
+isXBigger x y = if x > y then 1 else 0
+```
+
+In this case, `x` and `y` have to be instances of `Eq`. And the return value is a number of an unspecified type, so it's an instance of `Num`. Putting this together, the type signature will be:
+
+```haskell
+isXBigger :: (Ord a, Num p) => a -> a -> p
+```
+
+Now, what about this function?
+
+```haskell
+mistery1 x y z = if x > y then z/2 else z
+```
+
+We compare `x` and `y`, so they have to be instances of `Ord` type class. And the return value it's divided using `/` in one of the if-else paths. So `z` has to be an instance of `Fractional`.
+
+```haskell
+mistery1 :: (Ord a, Fractional p) => a -> a -> p -> p
+```
+
+Finally, our last example is a modification of `mistery1` where we add `1` to `x` before comparing it to `y`:
+
+```haskell
+mistery2 x y z = if x+1 > y then z/2 else z
+```
+
+Same as before. But now `x` and `y` also have to be an instance of `Num` to be able to use `+`.
+
+```haskell
+mistery2 :: (Ord a, Num a, Fractional p) => a -> a -> p -> p
+```
+
+**As you can see, we can apply constraints as much as needed.** Of course, Haskell will apply them for you (most of the time). And you'll have to correctly interpret and understand function's type signatures to use them.
+
+There are tons of type classes and behaviors that we didn't cover today, but don't worry about it until you cross paths with them. It's no use to memorize a bunch of behaviors and type classes if you don't actively work with them.
+
+I hope that, by now, you feel comfortable reading—and appreciating the value of—type constraints. To help you with that, I've prepared some questions. 😬
+
+<p>
+    <mark>
+        Today's lesson will be the last purely-theoretical lesson for a while.
+        We've equipped ourselves with enough knowledge to start doing some
+        interesting things. And that's what we're going to do next lesson! WE'RE
+        GOING TO CODE OUR FIRST PROJECT! 🤩 So, make sure you complete today's
+        homework (especially the last part) to be ready!
+    </mark>
+</p>
+
+See you there!! 🙌 😄
+
+## Homework
