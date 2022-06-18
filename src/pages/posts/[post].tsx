@@ -9,7 +9,6 @@ import yaml from 'js-yaml';
 import { parseISO } from 'date-fns';
 import PostLayout from '../../components/PostLayout';
 
-import YouTube from 'react-youtube';
 import { Accordion } from '../../components/Accordion';
 import { PaizaEmbed } from '../../components/PaizaEmbed';
 import rehypeSlug from 'rehype-slug';
@@ -24,6 +23,8 @@ import { RevueEmbed } from '../../components/RevueEmbed';
 import { ShareOnSocialMedia } from '../../components/ShareOnSocialMedia';
 import { LessonNavigationButtons } from '../../components/LessonNavigationButtons';
 import { BlockNote } from '../../components/BlockNote';
+import { YouTubeCustom } from '../../components/YouTubeCustom/YouTubeCustom';
+
 hljs.registerLanguage('hs', require('highlight.js/lib/languages/haskell'));
 hljs.registerLanguage('Haskell', require('highlight.js/lib/languages/haskell'));
 hljs.registerLanguage('haskell', require('highlight.js/lib/languages/haskell'));
@@ -41,7 +42,7 @@ export type Props = {
 };
 
 const components = {
-  YouTube,
+  YouTubeCustom,
   Accordion,
   PaizaEmbed,
   TabbedContent,
