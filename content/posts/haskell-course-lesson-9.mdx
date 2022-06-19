@@ -1,0 +1,405 @@
+---
+slug: haskell-course-lesson-9
+title: Haskell Course - Lesson 9 - Setting up VSCode and writing our first program
+date: 2022-06-15
+author: robertinom
+thumbnail: /images/finish_your_project.jpg //TODO
+tags:
+  - programming
+  - haskell
+  - haskell-course
+---
+
+**Welcome to the first lesson where we're moving beyond just GHCi and creating our first Haskell project!** If you did last lesson's homework, you are ready for this one! No time to waste! Let's go!! 🔥
+
+## Creating our project
+
+Writing code is just a fancy way of writing plain text. At the end of the day, our source code will be a bunch of folders and files with text inside a main folder that we usually call "Project" or "Repository."
+
+Having said that, let's create a project for all the code we'll write in this course.
+
+**Create a folder in your computer called `Haskell_Course`.** You can create it wherever you want. It doesn't matter. (And don't worry, you can move it if you change your mind later.)
+
+Then, **open VSCode, go to `File -> Open Folder`, and select the `Haskell_Course` folder.** **Done!** You created your project (just a folder) and opened it in VSCode! 🎉
+
+<Giff url='https://giphy.com/embed/LJnA13jCK3K8g' />
+
+Yes! That's it!
+
+Now, let's do a quick tour around VSCode!
+
+## VSCode
+
+There's lots of tutorials and information about VSCode, so we won't spend much time learning how to use it. We'll do a quick tour, make sure you have the correct extensions, and start with the project. 💪
+
+### Quick tour
+
+To get familiar with VSCode, take a look at their official introductory video:
+
+<YouTubeCustom source='https://www.youtube-nocookie.com/embed/ITxcbrfEcIY' />
+
+Now that you're a VSCode expert, make sure that you installed all the extensions that you'll need:
+
+<img
+  src='/images/Haskell_VSCode_extensions.png'
+  with='100%'
+  style={{ margin: '1rem 0' }}
+/>
+
+- **Haskell Syntax Highlighting:** It will add colors to the code, making it easier to read and understand.
+- **Haskell:** It will help us to write better code by catching errors and suggesting changes.
+
+### Create your first file
+
+Now, right-click on the `Explorer` pane, select `New File`, and create a file called `lesson_9.txt`.
+
+Notice that the name ends with `.txt`. `.txt` is the file extension. When a computer tries to use a file, it needs to know which program to use, and for that, it looks at the file extension to guess the file type. That's why it knows to open files that end with `.jpg` or `.png` with image-related programs.
+
+By using `.txt`, we tell VSCode that this is a simple text file (we're lying, it'll be Haskell code, but bear with me, I'm making a point). 😁
+
+OK, we have our file. **Let's add some code!** The function to transform from Fahrenheit to Celsius, for example:
+
+```haskell
+fToC x = (x - 32)*5/9
+```
+
+Now, let's create a function that uses `fToC` to choose what to do depending on the temperature (write it down in VSCode, but don't copy-paste it!):
+
+```haskell
+whatToDo tempFa = if (fToC temFa) < 25 then "Let's code!" else "Let's code in the park!"
+```
+
+You should have something like this:
+
+<img
+  src='/images/haskell_code_without_syntaxHighlighting.png'
+  with='100%'
+  style={{ margin: '1rem 0' }}
+/>
+
+How much did it take you to write the `whatToDo` function? Are you sure that you wrote it correctly? Did you notice that I miss-typed `tempFa`?
+
+It's hard to write code. A single wrong character and your entire file cease to work! That's why we use IDEs. They help us avoid silly mistakes and write better code faster. Now, let's use that VSCode + Extensions magic!
+
+Delete the `whatToDo` function. Then, right-click on the file in the explorer pane and rename the file to `lesson_9.hs`. `.hs` is the extension to indicate that a file contains Haskell code. Once you hit enter, VSCode will know that you're coding in Haskell and will activate all the extensions related to Haskell. And voila! The text just changed colors and is easier to read! And not only that, if you write `whatToDo` again, as soon as you get to the code inside the parenthesis, VSCode will try to suggest relevant code!:
+
+<img
+  src='/images/vscode_code_completion.png'
+  with='100%'
+  style={{ margin: '1rem 0' }}
+/>
+
+As you can see, you're not alone when coding. VSCode and GHC have your back! 💪 Remember to always have the right tool for the right job!
+
+<BlockNote type='warning'>
+  <p className='mt-0'>
+    You can change the extension of any file. But that doesn't mean that the
+    type of the file itself changes. Only the program that the computer chooses
+    to use that file changes. You can change a file from <code>.txt</code> to{' '}
+    <code>.hs</code> or <code>.js</code> (to indicate that a file has JavaScript
+    code), and VSCode will be able to interpret them.
+  </p>
+  <p>
+    (Of course, if inside the file there's Haskell code, and you change the
+    extension to <code>.js</code> the contents will be invalid JavaScript. And
+    if you change a file from <code>.png</code> to <code>.jpg</code> the file
+    will still be <code>.png</code> but now the computer will think it's a{' '}
+    <code>.jpg</code> file and may have trouble using it!)
+  </p>
+</BlockNote>
+
+We have our first file with a couple of functions. But how can we check if those functions work properly?
+
+### Using your file
+
+The easiest way to check if functions work as expected is to load the file into the GHCi and use them directly!
+
+Usually, we would open our terminal emulator app, but now there's no need! VSCode comes with its own terminal! Go to View -> Terminal, and a Terminal will open below our code! 😎 Neat! Click on it and open GHCi as always.
+
+To load a file into GHCi, we can use the `:l` (load) command and specify the path to the file—in our case: `:l lesson_9.hs`—and hit Enter.
+
+<img
+  src='/images/ghci_load_module.png'
+  with='100%'
+  style={{ margin: '1rem 0' }}
+/>
+
+<BlockNote type='success'>
+  <p className='mt-0'>
+    Notice that—because there's no other file—you can write <code>:l le</code>
+    and hit Tab to auto-complete the file name. It also works with other terminal
+    commands and VSCode suggestions.
+  </p>
+</BlockNote>
+
+Now, everything inside our `lesson_9.hs` file is loaded into GHCi! Meaning we can use the `fToC` and `whatToDo` functions. Try them out!
+
+Remember that each time you change the file and want to test it, you have to save the file (Ctrl+S on Windows/Linux and Command+S on MacOs) and reload it with `:l`.
+
+Now that we use files, we can write and modify long and complex code! 🔥 So let's write some!
+
+### Indentation
+
+So far, we've been defining one-line functions. Like this function where we display a special message if it's a special year:
+
+```haskell
+specialBirthday :: (Eq a, Num a) => a -> [Char]
+specialBirthday age = if age == 1 then "First birthday!" else if age == 18 then "You're an adult!" else if age == 60 then "Finally, I can stop caring about new slang!" else "Nothing special"
+```
+
+Sure, it works, but it's like doing Crossfit: You suffer while doing it, and you end up friendless if you tell your friends all about it.
+
+So, what could we do? One solution is to use indentation.
+
+Some languages use symbols to separate lines and blocks of code, like JavaScript, which uses `;` at the end of a line and `{ }` to indicate the function's body. Others, like Python and Haskell, use indentation.
+
+The golden rule of indentation is:
+
+<blockquote>
+  <p>
+    Code which is part of some expression should be indented further in than the
+    beginning of that expression (even if the expression is not the leftmost
+    element of the line).
+  </p>
+  — <cite>Confucius</cite>
+</blockquote>
+
+<Giff url='https://giphy.com/embed/UuRm5zOchHZ3q' />
+
+Examples:
+
+These two definitions are equivalent:
+
+```haskell
+fToC :: Fractional a => a -> a
+fToC x = (x - 32) * 5 / 9
+
+-------------------------------
+
+fToC :: Fractional a => a -> a
+fToC x =
+    (x - 32) * 5 / 9
+```
+
+Because `(x - 32) * 5 / 9` is indented further, Haskell understands that it's part of the `fToC` definition.
+
+Now, for a more complex example, let's properly indent `speciaBirthday`'s definition:
+
+```haskell
+specialBirthday :: (Eq a, Num a) => a -> [Char]
+specialbirthday age =
+  if age == 1
+    then "First birthday!"
+    else
+      if age == 18
+        then "You're an adult!"
+        else
+          if age == 60
+            then "Finally, I can stop caring about new slang!"
+            else "Nothing special"
+```
+
+It's better than before, way better! But you should still be a little embarrassed if you pull one of those in an actual project 😂.
+
+I mean, this is far from the best way to express this function (it would look better with pattern matching (next lesson) or with guards), but you get the point. If it's further to the right, it's part of the expression further to the left.
+
+Ok, now we're ready to write some code. Next, we'll create a few functions that work together to create the blockchain-like data structure we saw in <a target="_blank" href='https://robertinom.com/posts/haskell-course-lesson-6#designing-a-blockchains-data-structure'>lesson 6 - Tuples</a>.
+
+## Creating some actions for our blockchain
+
+Today's objective is to create a few functions that we can use to generate a data structure like this one (explained in the <a target="_blank" href='https://robertinom.com/posts/haskell-course-lesson-6#designing-a-blockchains-data-structure'>tuples lesson</a>):
+
+```haskell
+(
+    "previous_block_hash"
+    ,[
+        ("Charles","Robertino", 200 :: Int, "d386d4606b3d4909530fb992d6478ca7")
+       ,("Sam","Daniel", 152, "19f70b538ba14a17ac1ce08045f57a8e")
+       ,("Jeff","Sahra", 92, "f4c655bbe173b37b832f1439e947fa29")
+       ,("Tesla","Elon", 9999999999999999999, "4cb7e7f002284fa0a113a26e307c51a7")
+    ]
+    ,"block_hash"
+)
+```
+
+I took the liberty to modify the numeric type from `Double` to `Int` because we'll manipulate this data now, and floating-point numbers can produce rounding errors.
+
+Let's start with our first function. One that generates transaction IDs!
+
+#### The ID function
+
+Because we won't be using real hashes (we'd have to use external libraries, and we're not there yet), we'll have to create our own function to create some fake IDs.
+
+<BlockNote type='success'>
+  <div>
+    <p className='mt-0'>
+      We can use <code>show</code> to transform to <code>String</code> any type
+      that it's an instance of the <code>Show</code> type class. For example, to
+      concatenate a <code>String</code> with a number, we first transform that
+      number into a string:
+    </p>
+    <p>
+      <pre>
+        <code>"Hello" ++ show 4</code>
+      </pre>
+    </p>
+    <p>
+      And because now we need to use <code>show</code> with our value, we need
+      to constrain it to only those types that are instances of the{' '}
+      <code>Show</code> type class. Luckily, all the numeric types are instances
+      of the <code>Show</code> type class. So we're free to use <code>Int</code>{' '}
+      as our value's type.
+    </p>
+  </div>
+</BlockNote>
+
+Create the next function in your file:
+
+<Accordion
+  title={
+    <div>
+      Create a function named <code>generateTxId</code> that takes three values
+      (two strings representing the addresses of the sender and receiver and the
+      value of the transaction) and concatenates all of them to a single{' '}
+      <code>String</code>.
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>generateTxId :: String -> String -> Int -> String</code>
+      </pre>
+      <pre>
+        <code>generateTxId from to value = from ++ to ++ show value</code>
+      </pre>
+    </div>
+  }
+/>
+
+Now let's create a transaction's data structure!
+
+### Generating a transaction's data structure
+
+Because we're not actually creating a transaction but just the data structure of one:
+
+<Accordion
+  title={
+    <div>
+      Create a function named <code>createTx</code> that takes the three values
+      (two strings representing the addresses of the sender and receiver and the
+      value of the transaction) that generates a 4-element tuple with all those
+      values plus the ID of the transaction.
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>
+          createTx :: String -> String -> Int -> (String, String, Int, String)
+        </code>
+      </pre>
+      <pre>
+        <code>
+          createTx from to value = (from, to, value, generateTxId from to value)
+        </code>
+      </pre>
+    </div>
+  }
+/>
+
+Awesome! Test this function by saving the file and loading it again into GHCi. Something like this should work:
+
+```haskell
+*Main> tx1 = createTx "Sahra" "Carl" 100
+*Main> tx1
+("Sahra","Carl",100,"SahraCarl100")
+```
+
+And because creating a list of transactions by hand is boring, we can use `replicate` to generate a list of anything we want (in this case, a list of transactions):
+
+```haskell
+replicate :: Int -> a -> [a]
+```
+
+<Accordion
+  title={
+    <div>
+      Use <code>replicate</code> to create a list that contains <code>tx1</code>{' '}
+      7 times
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>listTx = replicate 7 tx1</code>
+      </pre>
+    </div>
+  }
+/>
+
+Awesome! We can generate the data structure of our transactions and a list of transactions of arbitrary length. All that's left is to create the actual block of the blockchain!
+
+#### Generating a block
+
+For the next challenge, you'll need the `length` function. That takes a list and returns a number indicating how many elements that list contains. Easy peasy.
+
+OK, are you ready for the final boss? Let's go! 🔥
+
+<Accordion
+  title={
+    <div>
+      Write a function named <code>createBlock</code> that takes a string
+      representing the previous block ID with a list of transactions and creates
+      a block with the structure we're aiming for. (
+      <a
+        target='_blank'
+        href='https://robertinom.com/posts/haskell-course-lesson-6#creating-blocks'
+      >
+        {' '}
+        The lesson 6 - Tuples
+      </a>{' '}
+      structure.) Generate the block ID by concatenating the previous block ID
+      with the number of transactions contained in the block.
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>
+          createBlock :: String -> [(String, String, Int, String)] -> ( String,
+          [(String, String, Int, String)], String)
+        </code>
+      </pre>
+      <pre>
+        <code>
+          createBlock prevBlockHash listTx = (prevBlockHash, listTx,
+          prevBlockHash ++ show (length listTx))
+        </code>
+      </pre>
+    </div>
+  }
+/>
+
+Congratulations! 🥳 We have everything we need to create mockup blockchain blocks with the structure we want!
+
+You're all set! Now, take advantage of GHCi! Load your new program and test it by hand. Create some transactions, store them inside some definitions, and construct a few blocks!
+
+### Homework
+
+Today's homework will be simple. Imagine that someone sends you an already built block.
+
+To verify if someone else's block has been correctly built, we can write a function that re-generates the same block and checks if it's equal to the given block. I won't give you the inputs this time. Figure it out by yourself! 🤓
+
+(I'll give you the answer in the next lesson, but I think you got this! 💪)
+
+Obviously, this implementation isn't viable for a real blockchain (it doesn't actually do anything but assemble the structure). But served as a great way to introduce Haskell files and how to use them. Especially now that you have all those functions with syntax highlighting at a glance and ready to be improved!
+
+<p>
+  <mark>
+    The next lesson will be about my favorite Haskell feature: Pattern Matching!
+    🤩 That's when you can start to feel the actual power of Haskell! 💪 See you
+    then!
+  </mark>
+</p>
+
+<LessonNavigationButtons />

@@ -13,6 +13,8 @@ export const BlockNote: React.FC<IBlockNoteProps> = ({ type, children }) => {
           ? 'bg-orange-200 text-orange-600'
           : type === 'error'
           ? 'bg-red-200 text-red-600'
+          : type === 'success'
+          ? 'bg-green-200 text-green-600'
           : 'bg-gray-200 text-gray-600'
       }`}
     >
