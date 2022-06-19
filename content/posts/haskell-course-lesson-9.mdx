@@ -215,7 +215,7 @@ Today's objective is to create a few functions that we can use to generate a dat
     ,[
         ("Charles","Robertino", 200 :: Int, "d386d4606b3d4909530fb992d6478ca7")
        ,("Sam","Daniel", 152, "19f70b538ba14a17ac1ce08045f57a8e")
-       ,("Jeff","Sahra", 92, "f4c655bbe173b37b832f1439e947fa29")
+       ,("Jeff","Sarah", 92, "f4c655bbe173b37b832f1439e947fa29")
        ,("Tesla","Elon", 9999999999999999999, "4cb7e7f002284fa0a113a26e307c51a7")
     ]
     ,"block_hash"
@@ -310,9 +310,9 @@ Because we're not actually creating a transaction but just the data structure of
 Awesome! Test this function by saving the file and loading it again into GHCi. Something like this should work:
 
 ```haskell
-*Main> tx1 = createTx "Sahra" "Carl" 100
+*Main> tx1 = createTx "Sarah" "Carl" 100
 *Main> tx1
-("Sahra","Carl",100,"SahraCarl100")
+("Sarah","Carl",100,"SarahCarl100")
 ```
 
 And because creating a list of transactions by hand is boring, we can use `replicate` to generate a list of anything we want (in this case, a list of transactions):
