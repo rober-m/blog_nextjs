@@ -3,10 +3,10 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "npm run generate-admin-css && next dev",
-    "build": "npm run generate-admin-css && next build",
-    "start": "npm run generate-admin-css && next start",
-    "export": "npm run generate-admin-css && next build && next export -o ./dist",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build",
     "test": "jest",
     "generate-admin-css": "npx tailwindcss -c tailwind.config.js -o public/styles/ct.css -m"
   },
