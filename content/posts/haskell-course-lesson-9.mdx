@@ -3,7 +3,7 @@ slug: haskell-course-lesson-9
 title: Haskell Course - Lesson 9 - Setting up VSCode and writing our first program
 date: 2022-06-15
 author: robertinom
-thumbnail: /images/finish_your_project.jpg //TODO
+thumbnail: /images/meme-brand-new-project-1.png
 tags:
   - programming
   - haskell
@@ -77,17 +77,21 @@ You should have something like this:
   style={{ margin: '1rem 0' }}
 />
 
-How much did it take you to write the `whatToDo` function? Are you sure that you wrote it correctly? Did you notice that I miss-typed `tempFa`?
+**How much did it take you to write the `whatToDo` function? Are you sure that you wrote it correctly? Did you notice that I miss-typed `tempFa`?**
 
-It's hard to write code. A single wrong character and your entire file cease to work! That's why we use IDEs. They help us avoid silly mistakes and write better code faster. Now, let's use that VSCode + Extensions magic!
+It's hard to write code. A single wrong character and your entire file cease to work! That's why we use IDEs. They help us avoid silly mistakes and write better code faster. **Now, let's use that VSCode + Extensions magic!**
 
-Delete the `whatToDo` function. Then, right-click on the file in the explorer pane and rename the file to `lesson_9.hs`. `.hs` is the extension to indicate that a file contains Haskell code. Once you hit enter, VSCode will know that you're coding in Haskell and will activate all the extensions related to Haskell. And voila! The text just changed colors and is easier to read! And not only that, if you write `whatToDo` again, as soon as you get to the code inside the parenthesis, VSCode will try to suggest relevant code!:
+Delete the `whatToDo` function. Then, right-click on the file in the explorer pane and rename the file to `lesson_9.hs`. **`.hs` is the extension to indicate that a file contains Haskell code.** Once you hit enter, VSCode will know that you're coding in Haskell and will activate all the extensions related to Haskell.
+
+**And voila!** The text just changed colors and is easier to read! And not only that, if you write `whatToDo` again, as soon as you get to the code inside the parenthesis, VSCode will try to suggest relevant code!:
 
 <img
   src='/images/vscode_code_completion.png'
   with='100%'
   style={{ margin: '1rem 0' }}
 />
+
+<Giff url='https://giphy.com/embed/3o7btNa0RUYa5E7iiQ' />
 
 As you can see, you're not alone when coding. VSCode and GHC have your back! 💪 Remember to always have the right tool for the right job!
 
@@ -112,11 +116,11 @@ We have our first file with a couple of functions. But how can we check if those
 
 ### Using your file
 
-The easiest way to check if functions work as expected is to load the file into the GHCi and use them directly!
+**The easiest way to check if functions work as expected is to load the file into the GHCi and use them directly!**
 
-Usually, we would open our terminal emulator app, but now there's no need! VSCode comes with its own terminal! Go to View -> Terminal, and a Terminal will open below our code! 😎 Neat! Click on it and open GHCi as always.
+Usually, we would open our terminal emulator app, but now there's no need! VSCode comes with its own terminal! Go to `View -> Terminal`, and a Terminal will open below our code! 😎 Neat! Click on it and open GHCi as always.
 
-To load a file into GHCi, we can use the `:l` (load) command and specify the path to the file—in our case: `:l lesson_9.hs`—and hit Enter.
+To load a file into GHCi, we can use the `:load` or `:l` command and specify the path to the file—in our case: `:l lesson_9.hs`—and hit Enter.
 
 <img
   src='/images/ghci_load_module.png'
@@ -132,9 +136,9 @@ To load a file into GHCi, we can use the `:l` (load) command and specify the pat
   </p>
 </BlockNote>
 
-Now, everything inside our `lesson_9.hs` file is loaded into GHCi! Meaning we can use the `fToC` and `whatToDo` functions. Try them out!
+Now, **everything inside our `lesson_9.hs` file is loaded into GHCi!** Meaning we can use the `fToC` and `whatToDo` functions. Try them out!
 
-Remember that each time you change the file and want to test it, you have to save the file (Ctrl+S on Windows/Linux and Command+S on MacOs) and reload it with `:l`.
+Remember that **each time you change the file and want to test it, you have to save the file and reload it with `:l`.**
 
 Now that we use files, we can write and modify long and complex code! 🔥 So let's write some!
 
@@ -147,9 +151,9 @@ specialBirthday :: (Eq a, Num a) => a -> [Char]
 specialBirthday age = if age == 1 then "First birthday!" else if age == 18 then "You're an adult!" else if age == 60 then "Finally, I can stop caring about new slang!" else "Nothing special"
 ```
 
-Sure, it works, but it's like doing Crossfit: You suffer while doing it, and you end up friendless if you tell your friends all about it.
+Sure, it works, but it's like doing Crossfit: _You suffer while doing it, and you end up friendless if you tell your friends all about it._
 
-So, what could we do? One solution is to use indentation.
+So, what could we do?
 
 Some languages use symbols to separate lines and blocks of code, like JavaScript, which uses `;` at the end of a line and `{ }` to indicate the function's body. Others, like Python and Haskell, use indentation.
 
@@ -199,11 +203,11 @@ specialbirthday age =
             else "Nothing special"
 ```
 
-It's better than before, way better! But you should still be a little embarrassed if you pull one of those in an actual project 😂.
+It's better than before, **way better!** But you should still be a little embarrassed if you pull one of those in an actual project 😂.
 
 I mean, this is far from the best way to express this function (it would look better with pattern matching (next lesson) or with guards), but you get the point. If it's further to the right, it's part of the expression further to the left.
 
-Ok, now we're ready to write some code. Next, we'll create a few functions that work together to create the blockchain-like data structure we saw in <a target="_blank" href='https://robertinom.com/posts/haskell-course-lesson-6#designing-a-blockchains-data-structure'>lesson 6 - Tuples</a>.
+Ok, now we're ready to write some real code. Next, **we'll create a few functions that work together to create the blockchain-like data structure we saw in <a target="_blank" href='https://robertinom.com/posts/haskell-course-lesson-6#designing-a-blockchains-data-structure'>lesson 6 - Tuples</a>.**
 
 ## Creating some actions for our blockchain
 
@@ -233,10 +237,11 @@ Because we won't be using real hashes (we'd have to use external libraries, and 
 <BlockNote type='success'>
   <div>
     <p className='mt-0'>
-      We can use <code>show</code> to transform to <code>String</code> any type
-      that it's an instance of the <code>Show</code> type class. For example, to
-      concatenate a <code>String</code> with a number, we first transform that
-      number into a string:
+      We can use the <code>show</code> function to transform to{' '}
+      <code>String</code> any type that it's an instance of the{' '}
+      <code>Show</code> type class. For example, to concatenate a{' '}
+      <code>String</code> with a number, we first transform that number into a{' '}
+      <code>String</code> like this:
     </p>
     <p>
       <pre>
@@ -258,10 +263,22 @@ Create the next function in your file:
 <Accordion
   title={
     <div>
-      Create a function named <code>generateTxId</code> that takes three values
-      (two strings representing the addresses of the sender and receiver and the
-      value of the transaction) and concatenates all of them to a single{' '}
-      <code>String</code>.
+      Create a function named <code>generateTxId</code> that takes three values:
+      <ul>
+        <li>
+          A <code>String</code> representing the addresses of the sender
+        </li>
+        <li>
+          A <code>String</code> representing the addresses of the receiver
+        </li>
+        <li>
+          A <code>Int</code> representing the value of the transaction
+        </li>
+      </ul>
+      <p>
+        And concatenates all of them (in that order) into a single{' '}
+        <code>String</code>.
+      </p>
     </div>
   }
   content={
@@ -276,7 +293,7 @@ Create the next function in your file:
   }
 />
 
-Now let's create a transaction's data structure!
+We have our `generateTxId` helper function. Now let's create a transaction's data structure!
 
 ### Generating a transaction's data structure
 
@@ -285,10 +302,22 @@ Because we're not actually creating a transaction but just the data structure of
 <Accordion
   title={
     <div>
-      Create a function named <code>createTx</code> that takes the three values
-      (two strings representing the addresses of the sender and receiver and the
-      value of the transaction) that generates a 4-element tuple with all those
-      values plus the ID of the transaction.
+      Create a function named <code>createTx</code> that takes the three values:
+      <ul>
+        <li>
+          A <code>String</code> representing the addresses of the sender
+        </li>
+        <li>
+          A <code>String</code> representing the addresses of the receiver
+        </li>
+        <li>
+          A <code>Int</code> representing the value of the transaction
+        </li>
+      </ul>
+      <p>
+        And generates a 4-element tuple with all those values plus the ID of the
+        transaction.
+      </p>
     </div>
   }
   content={
@@ -337,29 +366,31 @@ replicate :: Int -> a -> [a]
   }
 />
 
-Awesome! We can generate the data structure of our transactions and a list of transactions of arbitrary length. All that's left is to create the actual block of the blockchain!
+Awesome! **We can generate the data structure of our transactions and a list of transactions of arbitrary length!** 💪 All that's left is to create the actual block of the blockchain!
 
 #### Generating a block
 
 For the next challenge, you'll need the `length` function. That takes a list and returns a number indicating how many elements that list contains. Easy peasy.
 
-OK, are you ready for the final boss? Let's go! 🔥
+**OK, are you ready for the final boss? Let's go! 🔥**
 
 <Accordion
   title={
     <div>
-      Write a function named <code>createBlock</code> that takes a string
+      Write a function named <code>createBlock</code> that takes a{' '}
+      <code>String</code>
       representing the previous block ID with a list of transactions and creates
-      a block with the structure we're aiming for. (
-      <a
+      a block with the structure we're aiming for. (<a
         target='_blank'
         href='https://robertinom.com/posts/haskell-course-lesson-6#creating-blocks'
       >
         {' '}
         The lesson 6 - Tuples
-      </a>{' '}
-      structure.) Generate the block ID by concatenating the previous block ID
-      with the number of transactions contained in the block.
+      </a> structure.)
+      <p>
+        Generate the block ID by concatenating the previous block ID with the
+        number of transactions contained in the block.
+      </p>
     </div>
   }
   content={
@@ -380,7 +411,7 @@ OK, are you ready for the final boss? Let's go! 🔥
   }
 />
 
-Congratulations! 🥳 We have everything we need to create mockup blockchain blocks with the structure we want!
+**Congratulations! 🥳 We have everything we need to create a blockchain's block data structure!!** 😎
 
 You're all set! Now, take advantage of GHCi! Load your new program and test it by hand. Create some transactions, store them inside some definitions, and construct a few blocks!
 
@@ -388,17 +419,17 @@ You're all set! Now, take advantage of GHCi! Load your new program and test it b
 
 Today's homework will be simple. Imagine that someone sends you an already built block.
 
-To verify if someone else's block has been correctly built, we can write a function that re-generates the same block and checks if it's equal to the given block. I won't give you the inputs this time. Figure it out by yourself! 🤓
+**To verify if someone else's block has been correctly built, we can write a function that re-generates the same block and checks if it's equal to the given block. I won't give you the inputs this time. Figure it out by yourself! 🤓**
 
 (I'll give you the answer in the next lesson, but I think you got this! 💪)
 
-Obviously, this implementation isn't viable for a real blockchain (it doesn't actually do anything but assemble the structure). But served as a great way to introduce Haskell files and how to use them. Especially now that you have all those functions with syntax highlighting at a glance and ready to be improved!
+Obviously, this implementation isn't viable for a real blockchain (it doesn't actually do anything). But served as a great way to introduce Haskell files and how to use them. Especially now that you have all those functions with syntax highlighting at a glance and ready to be improved!
 
 <p>
   <mark>
     The next lesson will be about my favorite Haskell feature: Pattern Matching!
-    🤩 That's when you can start to feel the actual power of Haskell! 💪 See you
-    then!
+    🤩 That's when you can start to feel the actual power of Haskell! 💪 Make
+    sure to complete your homework, and see you then!
   </mark>
 </p>
 
