@@ -1,14 +1,14 @@
 ---
-slug: haskell-course-lesson-3
+slug: haskell-course-lesson-03
 title: Haskell Course - Lesson 3 - Numbers
 date: 2022-03-14
 author: robertinom
 thumbnail: /images/meme-n.jpg
 description: 'Third lesson of the "Haskell for complete beginners" course. Numbers in Haskell.'
 tags:
-    - programming
-    - haskell-course
-    - haskell
+  - programming
+  - haskell-course
+  - haskell
 ---
 
 We'll study numbers first because they are one of the most useful types in Haskell. After this lesson, you'll understand 4 new types and learn how to use Haskell as your personal calculator. 🤓
@@ -57,53 +57,51 @@ So, **why do we need `Int` if `Integer` can do the same and has no limits?** Bec
 
 **What does all this mean to you?**
 
--   If you know you're going to work with small (smaller than ±2<sup>63</sup>) whole numbers, use `Int`. Else, use `Integer`.
--   If a function returns an `Int` or `Integer`, you can be sure that it'll be a whole number.
+- If you know you're going to work with small (smaller than ±2<sup>63</sup>) whole numbers, use `Int`. Else, use `Integer`.
+- If a function returns an `Int` or `Integer`, you can be sure that it'll be a whole number.
 
 But what about the rest of the numbers? What about numbers with decimal point (with fractional value) like 4.5?
 
 ### `Float` and `Double`
 
 <p>
-	Both <code>Float</code> and <code>Doube</code> are real{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Floating-point number</h4>
-				<p>
-					A floating-point number is one where the position of the
-					decimal point can "float" rather than being in a fixed
-					position within a number. Examples of floating-point numbers
-					are 1.23, 87.425, and 9039454.2.
-				</p>
-			</div>
-		}
-	>
-		floating-point numbers
-	</SideNote>
-	. They are types that represent real numbers, whole and fractional (i.e., 4.7
-	or 6.001).
+  Both <code>Float</code> and <code>Doube</code> are real{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Floating-point number</h4>
+        <p>
+          A floating-point number is one where the position of the decimal point
+          can "float" rather than being in a fixed position within a number.
+          Examples of floating-point numbers are 1.23, 87.425, and 9039454.2.
+        </p>
+      </div>
+    }
+  >
+    floating-point numbers
+  </SideNote>
+  . They are types that represent real numbers, whole and fractional (i.e., 4.7 or
+  6.001).
 </p>
 
 <p>
-	The difference is the level of precision that they have. <code>Float</code>{' '}
-	has{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Single precision floating-point</h4>
-				<p>
-					Basic format of floating-point number that uses ~7 decimal
-					digits to represent the number. Usually occupying 32 bits in
-					computre memory.
-				</p>
-			</div>
-		}
-	>
-		single precision
-	</SideNote>
-	, and <code>Double</code> has (you guessed it) double the <code>Float</code>'s
-	precision.
+  The difference is the level of precision that they have. <code>Float</code>{' '}
+  has{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Single precision floating-point</h4>
+        <p>
+          Basic format of floating-point number that uses ~7 decimal digits to
+          represent the number. Usually occupying 32 bits in computre memory.
+        </p>
+      </div>
+    }
+  >
+    single precision
+  </SideNote>
+  , and <code>Double</code> has (you guessed it) double the <code>Float</code>'s
+  precision.
 </p>
 
 Theoretically, the reasons as to when to use one or de other are somewhat analogous to the `Int` and `Integer` cases. `Double` has double the precision but hogs more memory because it uses twice as many bits to represent numbers.
@@ -149,14 +147,14 @@ Here are a few math operations in Haskell and its correspondent symbol and examp
 | Exponential    | ^              | 4 ^ 3   |
 
 <p>
-	<mark>Remember that operations have an order</mark> (division before
-	addition and such). And in Haskell—the same as in maths—you can alter the
-	order by applying parenthesis:
+  <mark>Remember that operations have an order</mark> (division before addition
+  and such). And in Haskell—the same as in maths—you can alter the order by
+  applying parenthesis:
 </p>
 
--   6 + 4 / 2 = 8
+- 6 + 4 / 2 = 8
 
--   (6 + 4) / 2 = 5
+- (6 + 4) / 2 = 5
 
 Now, we can use `ghci` as our personal calculator.
 
@@ -175,12 +173,12 @@ Note: _You can navigate through everything you executed in `ghci` using your arr
 Ok, that was the warm-up.
 
 <Accordion
-	title='Using GHCi answer: What is the volume of a cube with sides of length 8m?'
-	content={
-		<p>
-			<code>8^3</code> = 512m<sup>3</sup>
-		</p>
-	}
+  title='Using GHCi answer: What is the volume of a cube with sides of length 8m?'
+  content={
+    <p>
+      <code>8^3</code> = 512m<sup>3</sup>
+    </p>
+  }
 />
 
 I know, I know. That was too easy. Let's do something more interesting.
@@ -190,30 +188,30 @@ I know, I know. That was too easy. Let's do something more interesting.
 I'll provide the expression in the form of a sentence, and you have to translate it into a valid Haskell expression in GHCi and check the result:
 
 <Accordion
-	title='Divide by 3 the result of subtracting 13 to 22'
-	content={
-		<p>
-			<code>(22-13)/3</code> = 3.0
-		</p>
-	}
+  title='Divide by 3 the result of subtracting 13 to 22'
+  content={
+    <p>
+      <code>(22-13)/3</code> = 3.0
+    </p>
+  }
 />
 
 <Accordion
-	title='Add up the results of dividing 12 by 4 and the result of 4 squared'
-	content={
-		<p>
-			<code>12/4 + 4^2</code> = 19.0
-		</p>
-	}
+  title='Add up the results of dividing 12 by 4 and the result of 4 squared'
+  content={
+    <p>
+      <code>12/4 + 4^2</code> = 19.0
+    </p>
+  }
 />
 
 <Accordion
-	title='Subtract the result of multiplying 943 by 500 to the result of multiplying 3 by itself nine times.'
-	content={
-		<p>
-			<code>3^9 - 943*500</code> = -451817
-		</p>
-	}
+  title='Subtract the result of multiplying 943 by 500 to the result of multiplying 3 by itself nine times.'
+  content={
+    <p>
+      <code>3^9 - 943*500</code> = -451817
+    </p>
+  }
 />
 
 Notice that Haskell returns the first and second results as a floating-point number (`.0`) even if the results are whole numbers. But, in the last one, Haskell returns a whole number (without `.0`). Why is that?
@@ -234,38 +232,38 @@ Celsius (ºC)—also referred to as centigrade—is the most common non-scientif
 
 This is the formula to transform from Fahrenheit to Celsius: `Tc = (Tf - 32)*5/9`. Where `Tc` is the temperature in Celsius (the result) and `Tf` is the temperature in Fahrenheit. Using only `ghci` transform the temperatures to Celsius:
 
--   How many ºC is `100` ºF?
--   How many ºC is `32` ºF?
--   How many ºC is `212` ºF?
+- How many ºC is `100` ºF?
+- How many ºC is `32` ºF?
+- How many ºC is `212` ºF?
 
 <p>
-	<mark>
-		You are doing great! With each lesson, you get closer and closer to
-		becoming a full-fledged programmer! 🔥 Next lesson, we'll learn about
-		characters, lists, and Strings! See you there!{' '}
-	</mark>{' '}
-	😄
+  <mark>
+    You are doing great! With each lesson, you get closer and closer to becoming
+    a full-fledged programmer! 🔥 Next lesson, we'll learn about characters,
+    lists, and Strings! See you there!{' '}
+  </mark>{' '}
+  😄
 </p>
 
 <p
-	style={{
-		backgroundColor: '#dbd6fb',
-		padding: '0.5rem 1rem',
-		borderRadius: '4px',
-		color: '#733de4',
-	}}
+  style={{
+    backgroundColor: '#dbd6fb',
+    padding: '0.5rem 1rem',
+    borderRadius: '4px',
+    color: '#733de4',
+  }}
 >
-	<i>
-		PD: If you find this course valuable, please{' '}
-		<a
-			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
-			target='_blank'
-		>
-			share it
-		</a>{' '}
-		so more people can learn!
-	</i>{' '}
-	😄
+  <i>
+    PD: If you find this course valuable, please{' '}
+    <a
+      href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+      target='_blank'
+    >
+      share it
+    </a>{' '}
+    so more people can learn!
+  </i>{' '}
+  😄
 </p>
 
-<LessonNavigationButtons nextLesson='haskell-course-lesson-4' />
+<LessonNavigationButtons nextLesson='haskell-course-lesson-04' />

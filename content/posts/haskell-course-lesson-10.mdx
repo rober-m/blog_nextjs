@@ -1,0 +1,49 @@
+---
+slug: haskell-course-lesson-10
+title: Haskell Course - Lesson 10 - Pattern Matching
+date: 2022-06-29
+author: robertinom
+thumbnail: /images/meme-brand-new-project-1.png#TODO
+tags:
+  - programming
+  - haskell
+  - haskell-course
+---
+
+Today, we'll learn about pattern matching. This Haskell feature is, by far, one of my favorites. You'll see why in a sec. But before that, here's the solution to the last lesson's homework:
+
+<Accordion
+  title={
+    <div>
+      Create a function named <code>generateTxId</code> that takes three values:
+      <ul>
+        <li>
+          A <code>String</code> representing the addresses of the sender
+        </li>
+        <li>
+          A <code>String</code> representing the addresses of the receiver
+        </li>
+        <li>
+          A <code>Int</code> representing the value of the transaction
+        </li>
+      </ul>
+      <p>
+        And concatenates all of them (in that order) into a single{' '}
+        <code>String</code>.
+      </p>
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>generateTxId :: String -> String -> Int -> String</code>
+      </pre>
+      <pre>
+        <code>generateTxId from to value = from ++ to ++ show value</code>
+      </pre>
+    </div>
+  }
+/>
+
+<ShareOnSocialMedia />
+<LessonNavigationButtons />

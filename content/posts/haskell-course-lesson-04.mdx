@@ -1,13 +1,13 @@
 ---
-slug: haskell-course-lesson-4
+slug: haskell-course-lesson-04
 title: Haskell Course - Lesson 4 - Characters, Lists, and Strings
 date: 2022-03-18
 author: robertinom
 thumbnail: /images/meme-hello-world-sized.jpg
 tags:
-    - programming
-    - haskell
-    - haskell-course
+  - programming
+  - haskell
+  - haskell-course
 ---
 
 In the last lesson, we got familiar with numeric types. In this lesson, we'll learn about common text types. After this lesson, you'll be able to understand, use, and manipulate text in Haskell easily. Are you ready? Let's go! 💪🔥
@@ -15,33 +15,32 @@ In the last lesson, we got familiar with numeric types. In this lesson, we'll le
 ## `Char`
 
 <p>
-	<code>Char</code> is the type we use to represent a{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Unicode character</h4>
-				<p>
-					The Unicode standard (Unicode) is a set of rules that
-					enforce a way of handling and expressing text. It's needed
-					because computers think in numbers (ones and zeroes), and we
-					have to collectively decide which numbers represent which
-					characters.
-				</p>
-				<p>
-					It's actually a little more complicated (see:{' '}
-					<a href='https://en.wikipedia.org/wiki/Character_encoding'>
-						Character encoding
-					</a>
-					. But for our purpose, we just want to know that we can use almost
-					any symbol that we'll ever need by using Unicode characters.
-					Letters, numbers, and more than 140k+ symbols.
-				</p>
-			</div>
-		}
-	>
-		Unicode
-	</SideNote>{' '}
-	character.
+  <code>Char</code> is the type we use to represent a{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Unicode character</h4>
+        <p>
+          The Unicode standard (Unicode) is a set of rules that enforce a way of
+          handling and expressing text. It's needed because computers think in
+          numbers (ones and zeroes), and we have to collectively decide which
+          numbers represent which characters.
+        </p>
+        <p>
+          It's actually a little more complicated (see:{' '}
+          <a href='https://en.wikipedia.org/wiki/Character_encoding'>
+            Character encoding
+          </a>
+          . But for our purpose, we just want to know that we can use almost any
+          symbol that we'll ever need by using Unicode characters. Letters, numbers,
+          and more than 140k+ symbols.
+        </p>
+      </div>
+    }
+  >
+    Unicode
+  </SideNote>{' '}
+  character.
 </p>
 
 We write values of type `Char` (Unicode characters) between single quotes. Like this:
@@ -51,7 +50,7 @@ We write values of type `Char` (Unicode characters) between single quotes. Like 
 ```
 
 <pre>
-	<code className='hljs language-haskell'>'5'</code>
+  <code className='hljs language-haskell'>'5'</code>
 </pre>
 
 **Note that if you write a number surrounded by single quotes (like in the last expression), Haskell won't treat it like a number. It will treat it like any other character.** So, you can't do math with `'7'` (with quotes), but you can with `7` (without quotes).
@@ -65,25 +64,24 @@ I know that you want to write more than one character at a time. I get it. You d
 ## Lists
 
 <p>
-	<b>Lists are homogeneous </b>
-	<SideNote
-		content={
-			<div>
-				<h4>Data structure</h4>
-				<p>
-					A data structure is a data organization, management, and
-					storage format that enables efficient access and
-					modification. Is a collection of data values, the
-					relationships among them, and the functions or operations
-					that can be applied to the data.
-				</p>
-			</div>
-		}
-	>
-		{' '}
-		<b>data structures</b>
-	</SideNote>. This is just a fancy way of saying that they are lists that store
-	elements of the same type.
+  <b>Lists are homogeneous </b>
+  <SideNote
+    content={
+      <div>
+        <h4>Data structure</h4>
+        <p>
+          A data structure is a data organization, management, and storage
+          format that enables efficient access and modification. Is a collection
+          of data values, the relationships among them, and the functions or
+          operations that can be applied to the data.
+        </p>
+      </div>
+    }
+  >
+    {' '}
+    <b>data structures</b>
+  </SideNote>. This is just a fancy way of saying that they are lists that store
+  elements of the same type.
 </p>
 
 We represent lists by starting with `[`, writing the elements separated by `,`, and ending with `]`. This is an example of a list with three numbers:
@@ -142,37 +140,37 @@ Strings represent lists of characters. You can use the `String` type to write me
 ```
 
 <blockquote>
-	<p>
-		Waaaaaaait a minute! You just said that a list of characters is of type{' '}
-		<code>[Char]</code>. And now you're telling me that <code>String</code>{' '}
-		represents a list of characters? Which is it, you trickster?
-	</p>
-	— Weirdly angry student? 😂
+  <p>
+    Waaaaaaait a minute! You just said that a list of characters is of type{' '}
+    <code>[Char]</code>. And now you're telling me that <code>String</code>{' '}
+    represents a list of characters? Which is it, you trickster?
+  </p>
+  — Weirdly angry student? 😂
 </blockquote>{' '}
 
 <p>
-	It's both! 😁 Because{' '}
-	<b>
-		<code>String</code> and <code>[Char]</code> are the same type!
-	</b>{' '}
-	More specifically, <code>String</code> is{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Syntactic sugar</h4>
-				<p>
-					Syntactic sugar is syntax within a programming language that
-					is designed to make things easier to read or to express. It
-					makes the language "sweeter" for human use: things can be
-					expressed more clearly, more concisely, or in an alternative
-					style that some may prefer.
-				</p>
-			</div>
-		}
-	>
-		syntactic sugar
-	</SideNote>{' '}
-	for <code>[Char]</code> So, you can use them interchangeably.
+  It's both! 😁 Because{' '}
+  <b>
+    <code>String</code> and <code>[Char]</code> are the same type!
+  </b>{' '}
+  More specifically, <code>String</code> is{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Syntactic sugar</h4>
+        <p>
+          Syntactic sugar is syntax within a programming language that is
+          designed to make things easier to read or to express. It makes the
+          language "sweeter" for human use: things can be expressed more
+          clearly, more concisely, or in an alternative style that some may
+          prefer.
+        </p>
+      </div>
+    }
+  >
+    syntactic sugar
+  </SideNote>{' '}
+  for <code>[Char]</code> So, you can use them interchangeably.
 </p>
 
 What you can't use interchangeably in Haskell are single and double-quotes. `String`s (written in double-quotes) are lists of `Char` (written using single quotes). These are not the same!:
@@ -187,13 +185,13 @@ The first one is the same as `['A']`. And a list that contains the `'A'` element
 As you can see, we can write a `String` with a single character (e.g, `"p"`), but you can't write a `Char` with multiple characters (e.g. ~~`'hi'`~~).
 
 <img
-	src='/images/meme-string-char.jpg'
-	with='100%'
-	style={{ margin: '0.5rem 0' }}
+  src='/images/meme-string-char.jpg'
+  with='100%'
+  style={{ margin: '0.5rem 0' }}
 />
 <p className=' text-gray-400 text-right m-0 text-sm'>
-	Courtesy of{' '}
-	<a href='https://www.instagram.com/system32comics/'>System32Comics</a>
+  Courtesy of{' '}
+  <a href='https://www.instagram.com/system32comics/'>System32Comics</a>
 </p>
 
 Now that we're familiar with lists and Strings, let's have some fun!
@@ -215,9 +213,9 @@ The index of `'a'` is `0`, the index of `'b'` is `1`, and the index of `'c'` is 
 Lists indices start at `0` in almost all programming languages.
 
 <img
-	src='/images/meme-lists-zero.png'
-	with='100%'
-	style={{ margin: '0.5rem 0' }}
+  src='/images/meme-lists-zero.png'
+  with='100%'
+  style={{ margin: '0.5rem 0' }}
 />
 
 Now, how do we access a specific element using the index? By using the `!!` operator. The `!!` operator has to be written like this (a list to its left and the index of the element we want to its right):
@@ -228,24 +226,24 @@ Now, how do we access a specific element using the index? By using the `!!` oper
 ```
 
 <Accordion
-	title='What if we want to take the third element of the String "Covfefe!"? What will it give us?'
-	content={
-		<p>
-			Think about it, and then use GHCi to check your answer. You don't
-			need me to tell you (...kids grow up so fast 😢...).
-		</p>
-	}
+  title='What if we want to take the third element of the String "Covfefe!"? What will it give us?'
+  content={
+    <p>
+      Think about it, and then use GHCi to check your answer. You don't need me
+      to tell you (...kids grow up so fast 😢...).
+    </p>
+  }
 />
 
 <Accordion
-	title="What about ['g','e','f'] !! 3 ?"
-	content={
-		<p>
-			An error! Because there's no element of index <code>3</code>. The
-			list ends at index <code>2</code> of value <code>'f'</code>! If you
-			try in GHCi, the compiler will tell you that the index is too large.
-		</p>
-	}
+  title="What about ['g','e','f'] !! 3 ?"
+  content={
+    <p>
+      An error! Because there's no element of index <code>3</code>. The list
+      ends at index <code>2</code> of value <code>'f'</code>! If you try in
+      GHCi, the compiler will tell you that the index is too large.
+    </p>
+  }
 />
 
 Accessing elements sounds wonderful, but what if you have a bunch of lists? Do you have to access them one by one? Well, you could. But you could also concatenate them first! 👀
@@ -253,23 +251,23 @@ Accessing elements sounds wonderful, but what if you have a bunch of lists? Do y
 ### Concatenation of lists
 
 <p>
-	A common operation with lists is{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Concatenation</h4>
-				<p>
-					Concatenation is the operation of joining two things
-					(usually strings or lists) end-to-end.
-				</p>
-			</div>
-		}
-	>
-		concatenation
-	</SideNote>
-	. Imagine that you have a list with January's clients and a list with February's
-	clients, and you want a single list with all the clients. That's when concatenation
-	shines.{' '}
+  A common operation with lists is{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Concatenation</h4>
+        <p>
+          Concatenation is the operation of joining two things (usually strings
+          or lists) end-to-end.
+        </p>
+      </div>
+    }
+  >
+    concatenation
+  </SideNote>
+  . Imagine that you have a list with January's clients and a list with February's
+  clients, and you want a single list with all the clients. That's when concatenation
+  shines.{' '}
 </p>
 
 **We concatenate in Haskell by using the `++` operator.** Even though we know that this operator is two `+` one after the other, Haskell doesn't see it that way. For Haskell, `++` is a single thing! It's an operator that concatenates two lists (and only two lists). Nothing to do with `+`.
@@ -281,13 +279,13 @@ We can use the operator like this (try it out in GHCi):
 ```
 
 <Accordion
-	title='What about "Conca" ++ "tenated" ?'
-	content={
-		<p>
-			Exactly! Strings are lists as well, so we can do all the things that
-			we can do with lists.
-		</p>
-	}
+  title='What about "Conca" ++ "tenated" ?'
+  content={
+    <p>
+      Exactly! Strings are lists as well, so we can do all the things that we
+      can do with lists.
+    </p>
+  }
 />
 
 We can also use the operator as much as needed:
@@ -306,83 +304,83 @@ We can do many (many many many) more cool things with lists. That's why lists wi
 
 ### Solutions for lesson's 3 homework
 
--   How many ºC is `100` ºF? ➡️ `(100 - 32) *5/9` = 37.77ºC
--   How many ºC is `32` ºF? ➡️ `(32 - 32) *5/9` = 0ºC
--   How many ºC is `212` ºF? ➡️ `(212 - 32) *5/9` = 100ºC
+- How many ºC is `100` ºF? ➡️ `(100 - 32) *5/9` = 37.77ºC
+- How many ºC is `32` ºF? ➡️ `(32 - 32) *5/9` = 0ºC
+- How many ºC is `212` ºF? ➡️ `(212 - 32) *5/9` = 100ºC
 
 ### Predict the result of the expressions (use GHCi if needed)
 
 <Accordion
-	title="What is the result of concatenating the list [1,2,3] with the list ['a','b','c']?"
-	content={<p>Error! You can't concatenate a lists of different type!</p>}
+  title="What is the result of concatenating the list [1,2,3] with the list ['a','b','c']?"
+  content={<p>Error! You can't concatenate a lists of different type!</p>}
 />
 
 <Accordion
-	title='What is the element of index 7 in the list resultant of concatenating [3,7,5,1] with [0,5,1,2,9,8,4]? (hint: use parenthesis to indicate what you want to do first)'
-	content={
-		<div>
-			<p>
-				It's <code>2</code>! The expression to obtain the result is:
-			</p>
-			<p>
-				<code>([3,7,5,1] ++ [0,5,1,2,9,8,4]) !! 7</code>
-			</p>
-		</div>
-	}
+  title='What is the element of index 7 in the list resultant of concatenating [3,7,5,1] with [0,5,1,2,9,8,4]? (hint: use parenthesis to indicate what you want to do first)'
+  content={
+    <div>
+      <p>
+        It's <code>2</code>! The expression to obtain the result is:
+      </p>
+      <p>
+        <code>([3,7,5,1] ++ [0,5,1,2,9,8,4]) !! 7</code>
+      </p>
+    </div>
+  }
 />
 
 <Accordion
-	title={'What is the result of concatenating "Hello" with \'!\' "?'}
-	content={
-		<p>Error! You can't concatenate a string with a single character!</p>
-	}
+  title={'What is the result of concatenating "Hello" with \'!\' "?'}
+  content={
+    <p>Error! You can't concatenate a string with a single character!</p>
+  }
 />
 
 <Accordion
-	title='How can you make sure that the numbers in the list [1,2,3] are floating-point numbers of the maximum precision available?'
-	content={
-		<div>
-			<p>
-				By indicating that they are of type <code>Double</code>:
-			</p>
-			<p>
-				<code>[1,2,3] :: [Double]</code>
-			</p>
-			<p>or</p>
-			<p>
-				<code>[1 :: Double ,2,3]</code>
-			</p>
-		</div>
-	}
+  title='How can you make sure that the numbers in the list [1,2,3] are floating-point numbers of the maximum precision available?'
+  content={
+    <div>
+      <p>
+        By indicating that they are of type <code>Double</code>:
+      </p>
+      <p>
+        <code>[1,2,3] :: [Double]</code>
+      </p>
+      <p>or</p>
+      <p>
+        <code>[1 :: Double ,2,3]</code>
+      </p>
+    </div>
+  }
 />
 
 <p>
-	<mark>
-		We're done for today! 👏 Next lesson, we'll learn about Booleans and
-		Tuples! Those will be our last types before learning about functions!!
-		🤩 See you there!!
-	</mark>{' '}
+  <mark>
+    We're done for today! 👏 Next lesson, we'll learn about Booleans and Tuples!
+    Those will be our last types before learning about functions!! 🤩 See you
+    there!!
+  </mark>{' '}
 </p>
 
 <p
-	style={{
-		backgroundColor: '#dbd6fb',
-		padding: '0.5rem 1rem',
-		borderRadius: '4px',
-		color: '#733de4',
-	}}
+  style={{
+    backgroundColor: '#dbd6fb',
+    padding: '0.5rem 1rem',
+    borderRadius: '4px',
+    color: '#733de4',
+  }}
 >
-	<i>
-		PD: If you find this course valuable, please{' '}
-		<a
-			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
-			target='_blank'
-		>
-			share it
-		</a>{' '}
-		so more people can learn!
-	</i>{' '}
-	😄
+  <i>
+    PD: If you find this course valuable, please{' '}
+    <a
+      href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+      target='_blank'
+    >
+      share it
+    </a>{' '}
+    so more people can learn!
+  </i>{' '}
+  😄
 </p>
 
-<LessonNavigationButtons nextLesson='haskell-course-lesson-5' />
+<LessonNavigationButtons nextLesson='haskell-course-lesson-05' />

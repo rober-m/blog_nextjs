@@ -1,13 +1,13 @@
 ---
-slug: haskell-course-lesson-5
+slug: haskell-course-lesson-05
 title: Haskell Course - Lesson 5 - Booleans and Equality testing
 date: 2022-03-21
 author: robertinom
 thumbnail: /images/meme-bool.jpg
 tags:
-    - programming
-    - haskell
-    - haskell-course
+  - programming
+  - haskell
+  - haskell-course
 ---
 
 In this lesson, we'll learn about booleans. What they are and how to use them. We'll also learn how to write conditional statements that execute different pieces of code based on a condition and all the different ways to compare elements in Haskell.
@@ -29,23 +29,22 @@ One of the ways that we can do it in Haskell is using if-else statements.
 ## If-else statement
 
 <p>
-	In Haskell, the if-else syntax looks like this (this is{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Pseudocode</h4>
-				<p>
-					Pseudocode literally means "Fake code." It's a
-					plain-language description of the steps in an algorithm or
-					expression. It's intended to provide an easy syntax for
-					humans to read.
-				</p>
-			</div>
-		}
-	>
-		pseudocode
-	</SideNote>
-	, not real code):
+  In Haskell, the if-else syntax looks like this (this is{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Pseudocode</h4>
+        <p>
+          Pseudocode literally means "Fake code." It's a plain-language
+          description of the steps in an algorithm or expression. It's intended
+          to provide an easy syntax for humans to read.
+        </p>
+      </div>
+    }
+  >
+    pseudocode
+  </SideNote>
+  , not real code):
 </p>
 
 ```haskell
@@ -79,7 +78,7 @@ I can write:
 And I'll get the same result. Because `True` will always be `True`. Hence, we'll always execute the expression after `then`.
 
 <blockquote>
-	<p>Not very useful, if I may add 👀</p>— The sassy student
+  <p>Not very useful, if I may add 👀</p>— The sassy student
 </blockquote>
 
 Not very useful indeed. That's why we use equality and inequality testing!
@@ -116,79 +115,78 @@ Obviously, equality testing is useless unless at least one of the values is unkn
 **Variables are named boxes that we use to store values**. When we use variables, we don't know the value ahead of time, and equality testing will be extremely useful to write code that depends on the value of that variable. We'll work on that in the next lesson. For now, solidify the concept of equality testing with a few exercises:
 
 <Accordion
-	title={
-		<div>
-			Write an if-else that compares if 3 is equal to 5 and shows "It's
-			equal!" if it's true and "It's not equal" if it's false.
-		</div>
-	}
-	content={
-		<p>
-			<code>if 3 == 5 then "It's equal" else "It's not equal"</code>
-		</p>
-	}
+  title={
+    <div>
+      Write an if-else that compares if 3 is equal to 5 and shows "It's equal!"
+      if it's true and "It's not equal" if it's false.
+    </div>
+  }
+  content={
+    <p>
+      <code>if 3 == 5 then "It's equal" else "It's not equal"</code>
+    </p>
+  }
 />
 
 <Accordion
-	title={
-		<div>
-			Write an if-else that compares if 3 is equal to 3.0 and shows "It's
-			equal!" if true and "It's not equal" if false.
-		</div>
-	}
-	content={
-		<p>
-			<code>if 3 == 3.0 then "It's equal" else "It's not equal"</code>
-		</p>
-	}
+  title={
+    <div>
+      Write an if-else that compares if 3 is equal to 3.0 and shows "It's
+      equal!" if true and "It's not equal" if false.
+    </div>
+  }
+  content={
+    <p>
+      <code>if 3 == 3.0 then "It's equal" else "It's not equal"</code>
+    </p>
+  }
 />
 
 <Accordion
-	title={
-		<div>
-			Write an if-else that compares if <code>7 :: Float</code> is equal
-			to <code>7 :: Double</code>
-			and shows "It's equal!" if it's true and "It's not equal" if it's false.
-			(Use parentheseses to make sure you're setting the type before comparing.)
-		</div>
-	}
-	content={
-		<div>
-			<p>The correct way of expressing what I asked for is:</p>
-			<p>
-				<code>
-					if (7 :: Float) == (7 :: Double) then "It's equal" else
-					"It's not equal"
-				</code>
-			</p>
-			<p>
-				But we're getting an error because{' '}
-				<b>You can't compare two elements of different type!</b>
-			</p>
-		</div>
-	}
+  title={
+    <div>
+      Write an if-else that compares if <code>7 :: Float</code> is equal to{' '}
+      <code>7 :: Double</code>
+      and shows "It's equal!" if it's true and "It's not equal" if it's false. (Use
+      parentheseses to make sure you're setting the type before comparing.)
+    </div>
+  }
+  content={
+    <div>
+      <p>The correct way of expressing what I asked for is:</p>
+      <p>
+        <code>
+          if (7 :: Float) == (7 :: Double) then "It's equal" else "It's not
+          equal"
+        </code>
+      </p>
+      <p>
+        But we're getting an error because{' '}
+        <b>You can't compare two elements of different type!</b>
+      </p>
+    </div>
+  }
 />
 
 <Accordion
-	title={
-		<div>
-			Write an if-else that compares if 5 is equal to '5' and shows "It's
-			equal!" if true and "It's not equal" if false.
-		</div>
-	}
-	content={
-		<div>
-			<p>The correct way of expressing what I asked for is:</p>
-			<p>
-				<code>if 5 == '5' then "It's equal" else "It's not equal"</code>
-			</p>
-			<p>
-				But we're getting an error for the same reason as the previous
-				question.
-				<b>You can't compare two elements of different type!</b>
-			</p>
-		</div>
-	}
+  title={
+    <div>
+      Write an if-else that compares if 5 is equal to '5' and shows "It's
+      equal!" if true and "It's not equal" if false.
+    </div>
+  }
+  content={
+    <div>
+      <p>The correct way of expressing what I asked for is:</p>
+      <p>
+        <code>if 5 == '5' then "It's equal" else "It's not equal"</code>
+      </p>
+      <p>
+        But we're getting an error for the same reason as the previous question.
+        <b>You can't compare two elements of different type!</b>
+      </p>
+    </div>
+  }
 />
 
 If you're not sure why `3 == 3.0` works and `(7 :: Float) == (7 :: Double)` gives us an error, think about it, and then keep reading.
@@ -306,44 +304,41 @@ Now I'm going to ask you to look up the order in the Unicode specification and t
 Looking up the <a target='_blank' href='https://en.wikipedia.org/wiki/List_of_Unicode_characters#Latin_script'>List of Unicode characters</a> in Wikipedia, predict if it's `True` or `False`. Then, check your response using GHCi:
 
 <Accordion
-	title={
-		<div>
-			<code>'9'</code> is greater than <code>'A'</code>.
-		</div>
-	}
-	content={
-		<p>
-			<code>False</code>, <code>'9'</code> is 57 and <code>'A'</code> is
-			65.
-		</p>
-	}
+  title={
+    <div>
+      <code>'9'</code> is greater than <code>'A'</code>.
+    </div>
+  }
+  content={
+    <p>
+      <code>False</code>, <code>'9'</code> is 57 and <code>'A'</code> is 65.
+    </p>
+  }
 />
 <Accordion
-	title={
-		<div>
-			<code>','</code> is smaller or equal than <code>';'</code>.
-		</div>
-	}
-	content={
-		<p>
-			<code>True</code>, <code>','</code> is 44 and <code>';'</code> is
-			59.
-		</p>
-	}
+  title={
+    <div>
+      <code>','</code> is smaller or equal than <code>';'</code>.
+    </div>
+  }
+  content={
+    <p>
+      <code>True</code>, <code>','</code> is 44 and <code>';'</code> is 59.
+    </p>
+  }
 />
 
 <Accordion
-	title={
-		<div>
-			<code>'a'</code> is equal to <code>'á'</code>.
-		</div>
-	}
-	content={
-		<p>
-			<code>False</code>, <code>'a'</code> is 97 and <code>'á'</code> is
-			225.
-		</p>
-	}
+  title={
+    <div>
+      <code>'a'</code> is equal to <code>'á'</code>.
+    </div>
+  }
+  content={
+    <p>
+      <code>False</code>, <code>'a'</code> is 97 and <code>'á'</code> is 225.
+    </p>
+  }
 />
 
 Ok, that's it. No more manually checking the Unicode specification. **Now, let's learn how lists and Strings are compared. 💪** It's not as intuitive the first time, but then it makes sense.
@@ -481,32 +476,32 @@ This time, I won't give you the solutions right away. You should be able to chec
 4. Write an if-else statement that returns the first element of the list [42,14,99] if either the first element or the last one is greater than 50. Else it returns the last one.
 
 <p>
-	<mark>
-		That's it for today! The next lesson will be about tuples, and we're
-		going to design the data structure of a freaking blockchain with them!
-		🤯 See you then!
-	</mark>
+  <mark>
+    That's it for today! The next lesson will be about tuples, and we're going
+    to design the data structure of a freaking blockchain with them! 🤯 See you
+    then!
+  </mark>
 </p>
 
 <p
-	style={{
-		backgroundColor: '#dbd6fb',
-		padding: '0.5rem 1rem',
-		borderRadius: '4px',
-		color: '#733de4',
-	}}
+  style={{
+    backgroundColor: '#dbd6fb',
+    padding: '0.5rem 1rem',
+    borderRadius: '4px',
+    color: '#733de4',
+  }}
 >
-	<i>
-		PD: If you find this course valuable, please{' '}
-		<a
-			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
-			target='_blank'
-		>
-			share it
-		</a>{' '}
-		so more people can learn!
-	</i>{' '}
-	😄
+  <i>
+    PD: If you find this course valuable, please{' '}
+    <a
+      href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+      target='_blank'
+    >
+      share it
+    </a>{' '}
+    so more people can learn!
+  </i>{' '}
+  😄
 </p>
 
-<LessonNavigationButtons nextLesson='haskell-course-lesson-6' />
+<LessonNavigationButtons nextLesson='haskell-course-lesson-06' />

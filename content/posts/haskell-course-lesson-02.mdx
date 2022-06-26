@@ -1,22 +1,22 @@
 ---
-slug: haskell-course-lesson-2
+slug: haskell-course-lesson-02
 title: Haskell Course - Lesson 2 - Haskell Type system
 date: 2022-03-10
 author: robertinom
 thumbnail: /images/meme-use-the-power-of-the-type-system.jpg
 description: 'The second lesson of the "Haskell for complete beginners" course. The Haskell Type system.'
 tags:
-    - haskell-course
-    - haskell
-    - programming
+  - haskell-course
+  - haskell
+  - programming
 ---
 
 Types are **attributes that constraint the values a piece of code can have**. For example, if you indicate that some data is a number, that data could have any of these values:
 
--   4
--   32
--   9999695939294
--   0.5
+- 4
+- 32
+- 9999695939294
+- 0.5
 
 But, if you try to add a character in there, like this: `6A3` (instead of `63`), the compiler/<SideNote content={<p>What? You still don't know what an interpreter is? This was last week's homework! 🤣 It's ok, I don't like homework either. Here you go: <a href='https://en.wikipedia.org/wiki/Interpreter_(computing)' target='_blank'>Interpreter.</a></p>}>interpreter</SideNote> will yell at you: "That's not a number, you imbecile!" (you got a sassy one, my condolences).
 
@@ -27,54 +27,53 @@ First, we'll see an overview of the concepts, and then, we'll talk specifically 
 ## Type checking
 
 <p>
-	<mark>
-		Type checking is the process of verifying and enforcing the constraints
-		of types.
-	</mark>
+  <mark>
+    Type checking is the process of verifying and enforcing the constraints of
+    types.
+  </mark>
 </p>
 
 **What does this mean?** It means that each type has its own constraints (E.g., you can't do math with letters. Unless... 🤔 No, no, you can't), and this process checks that those constraints are respected.
 
 <p>
-	<b>Why would you do this?</b> To avoid preventable mistakes. If further
-	along in your program, you want to add up some numbers and one of them has a
-	letter, the program wouldn't know what to do, and it would{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Crash (programming)</h4>
-				<p>
-					A <b>crash</b>, or <b>system crash</b>, occurs when a
-					program such as a software application or an operating
-					system stops functioning properly and exits (stops
-					executing/running).
-				</p>
-			</div>
-		}
-	>
-		crash
-	</SideNote>{' '}
-	on you. Those are preventable mistakes{' '}
-	<SideNote
-		content={
-			<div>
-				<h4>Bugs (programming)</h4>
-				<p>
-					Bugs are the result of a mistake in the code. They are
-					errors that produce an incorrect, unexpected, or unintended
-					result or behaviour in the program.
-				</p>
-				<p>
-					{' '}
-					Once encountered, those bugs have to be resolved.
-					<b>Debugging</b> is the process of finding and fixing bugs
-				</p>
-			</div>
-		}
-	>
-		(bugs)
-	</SideNote>
-	, and the compiler/interpreter helps you avoid them.
+  <b>Why would you do this?</b> To avoid preventable mistakes. If further along
+  in your program, you want to add up some numbers and one of them has a letter,
+  the program wouldn't know what to do, and it would{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Crash (programming)</h4>
+        <p>
+          A <b>crash</b>, or <b>system crash</b>, occurs when a program such as
+          a software application or an operating system stops functioning
+          properly and exits (stops executing/running).
+        </p>
+      </div>
+    }
+  >
+    crash
+  </SideNote>{' '}
+  on you. Those are preventable mistakes{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Bugs (programming)</h4>
+        <p>
+          Bugs are the result of a mistake in the code. They are errors that
+          produce an incorrect, unexpected, or unintended result or behaviour in
+          the program.
+        </p>
+        <p>
+          {' '}
+          Once encountered, those bugs have to be resolved.
+          <b>Debugging</b> is the process of finding and fixing bugs
+        </p>
+      </div>
+    }
+  >
+    (bugs)
+  </SideNote>
+  , and the compiler/interpreter helps you avoid them.
 </p>
 
 Usually, this is done automatically. But not all languages do this the same way. There are two main distinctions regarding as to **WHEN** the types are checked.
@@ -102,8 +101,8 @@ That's our overview of the general concepts. Now let's see how Haskell fits into
 ## Haskell type system
 
 <p>
-	<mark>Haskell is statically typed</mark>. And, in Haskell,{' '}
-	<b>Everything has a type</b>.
+  <mark>Haskell is statically typed</mark>. And, in Haskell,{' '}
+  <b>Everything has a type</b>.
 </p>
 
 <Giff url='https://giphy.com/embed/AO3giAtLPH4MIuugsB' />
@@ -143,44 +142,44 @@ And that's it for today! 🙃 Make sure to do the homework and solidify today's 
 1. Answer these questions in your head and open them to check your answer (repeat every few minutes until you get all of them right):
 
 <Accordion
-	title='What are types?'
-	content={
-		<p>Attributes that constraint the values a piece of code can have</p>
-	}
+  title='What are types?'
+  content={
+    <p>Attributes that constraint the values a piece of code can have</p>
+  }
 />
 <Accordion
-	title='What is type checking?'
-	content={
-		<p>The process of verifying and enforcing the constraints of types.</p>
-	}
+  title='What is type checking?'
+  content={
+    <p>The process of verifying and enforcing the constraints of types.</p>
+  }
 />
 <Accordion
-	title="What's the difference between dynamically and statically typed languages?"
-	content={
-		<p>
-			Dynamically typed languages check the types at run-time, and
-			statically typed languages, check the types at compile-time.
-		</p>
-	}
+  title="What's the difference between dynamically and statically typed languages?"
+  content={
+    <p>
+      Dynamically typed languages check the types at run-time, and statically
+      typed languages, check the types at compile-time.
+    </p>
+  }
 />
 <Accordion
-	title="What happens if I don't indicate the type in Haskell?"
-	content={
-		<p>
-			Haskell will try to infer the type. And if it can't, it'll ask me to
-			specify it.
-		</p>
-	}
+  title="What happens if I don't indicate the type in Haskell?"
+  content={
+    <p>
+      Haskell will try to infer the type. And if it can't, it'll ask me to
+      specify it.
+    </p>
+  }
 />
 <Accordion
-	title='How do you express "USD has type of Currency" in Haskell?'
-	content={
-		<pre>
-			<code className='hljs language-hs'>
-				USD :: <span className='hljs-type'>Currency</span>{' '}
-			</code>
-		</pre>
-	}
+  title='How do you express "USD has type of Currency" in Haskell?'
+  content={
+    <pre>
+      <code className='hljs language-hs'>
+        USD :: <span className='hljs-type'>Currency</span>{' '}
+      </code>
+    </pre>
+  }
 />
 
 2. Search the difference between **strongly typed languages** and **weakly typed languages**.
@@ -188,24 +187,24 @@ And that's it for today! 🙃 Make sure to do the homework and solidify today's 
 In the next lesson, we'll learn about Numbers in Haskell! ➕➖➗✖️ See you there!! 😄
 
 <p
-	style={{
-		backgroundColor: '#dbd6fb',
-		padding: '0.5rem 1rem',
-		borderRadius: '4px',
-		color: '#733de4',
-	}}
+  style={{
+    backgroundColor: '#dbd6fb',
+    padding: '0.5rem 1rem',
+    borderRadius: '4px',
+    color: '#733de4',
+  }}
 >
-	<i>
-		PD: If you find this course valuable, please{' '}
-		<a
-			href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
-			target='_blank'
-		>
-			share it
-		</a>{' '}
-		so more people can learn!
-	</i>{' '}
-	😄
+  <i>
+    PD: If you find this course valuable, please{' '}
+    <a
+      href='https://twitter.com/share?url=https://robertinom.com/posts/haskell-course-lesson-0'
+      target='_blank'
+    >
+      share it
+    </a>{' '}
+    so more people can learn!
+  </i>{' '}
+  😄
 </p>
 
-<LessonNavigationButtons nextLesson='haskell-course-lesson-3' />
+<LessonNavigationButtons nextLesson='haskell-course-lesson-03' />

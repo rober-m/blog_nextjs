@@ -1,25 +1,25 @@
 ---
-slug: haskell-course-lesson-8
+slug: haskell-course-lesson-08
 title: Haskell Course - Lesson 8 - Intro to Type classes
 date: 2022-04-17
 author: robertinom
 thumbnail: /images/meme_instance_type_class_1.jpg
 tags:
-    - programming
-    - haskell
-    - haskell-course
+  - programming
+  - haskell
+  - haskell-course
 ---
 
 Many beginners struggle with type classes. That's because it's a more abstract concept than the ones we have learned so far. But don't worry. We'll see many examples and repeat our reasoning in different circumstances to hone in on the intuitive understanding of the concepts. Hope you like it! 😄
 
 <blockquote>
-    <p>
-        First of all, let's set things straight. You said that functions are
-        used by writing first their name and then their parameters separated by
-        spaces. So, how come the <code>==</code> and others like this have one
-        parameter before their name and one after?
-    </p>
-    — The guy that sits in the front row in every class.
+  <p>
+    First of all, let's set things straight. You said that functions are used by
+    writing first their name and then their parameters separated by spaces. So,
+    how come the <code>==</code> and others like this have one parameter before
+    their name and one after?
+  </p>
+  — The guy that sits in the front row in every class.
 </blockquote>
 
 Sorry, I overlooked that in the last lesson 😅. Sure, let's see prefix and infix functions first!
@@ -27,7 +27,7 @@ Sorry, I overlooked that in the last lesson 😅. Sure, let's see prefix and inf
 ## Prefix and Infix functions
 
 <BlockNote>
-    I'll probably move this section to the functions lessons in the future.
+  I'll probably move this section to the functions lessons in the future.
 </BlockNote>
 
 **Prefix and infix are the two ways of calling (using) functions.**
@@ -85,37 +85,37 @@ It looks less intuitive in these cases. But it's useful in certain circumstances
 **OK, with that out of the way, we can see what the heck type classes are.**
 
 <BlockNote>
-    This is an introduction to type classes, so we won't learn how to create
-    type classes nor make a type an instance of a type class. The objective of
-    this lesson is to understand what they are so we can use the native type
-    classes that come with Haskell.
+  This is an introduction to type classes, so we won't learn how to create type
+  classes nor make a type an instance of a type class. The objective of this
+  lesson is to understand what they are so we can use the native type classes
+  that come with Haskell.
 </BlockNote>
 
 ## Type Classes
 
 <BlockNote type='warning'>
-    If you search for "class" or "classes" as a programming concept, you could
-    get more confused. Most responses will be about{' '}
-    <SideNote
-        content={
-            <div className='text-gray-800 not-italic'>
-                <h4>Object-oriented programming</h4>
-                <p>
-                    Object-oriented programming (OOP) is a computer programming
-                    model that organizes software design around data—or
-                    objects—rather than functions and logic.
-                </p>
-                <p>
-                    In OOP, computer programs are designed by making them out of
-                    objects that interact with one another.
-                </p>
-            </div>
-        }
-    >
-        object-oriented programming (OOP)
-    </SideNote>
-    , and "class" in OOP is a different thing. Make sure to add the "type" and "Haskell"
-    keywords to your search!
+  If you search for "class" or "classes" as a programming concept, you could get
+  more confused. Most responses will be about{' '}
+  <SideNote
+    content={
+      <div className='text-gray-800 not-italic'>
+        <h4>Object-oriented programming</h4>
+        <p>
+          Object-oriented programming (OOP) is a computer programming model that
+          organizes software design around data—or objects—rather than functions
+          and logic.
+        </p>
+        <p>
+          In OOP, computer programs are designed by making them out of objects
+          that interact with one another.
+        </p>
+      </div>
+    }
+  >
+    object-oriented programming (OOP)
+  </SideNote>
+  , and "class" in OOP is a different thing. Make sure to add the "type" and "Haskell"
+  keywords to your search!
 </BlockNote>
 
 **Type classes are interfaces that define some behavior.** They are like clubs that types can belong to if they have what it takes! 😈
@@ -181,22 +181,22 @@ We've already used this function in previous lessons. It takes two values of the
 ```
 
 <p>
-    <b>How are the values ordered? It depends on the type.</b> With numbers, it
-    follows the mathematical order (e.g., `4` comes before `5` and after `3`).
-    With characters, it follows the Unicode order (like we discussed{' '}
-    <a
-        target='_blank'
-        href='https://robertinom.com/posts/haskell-course-lesson-5#characters'
-    >
-        here
-    </a>
-    ). And other types have other rankings.
+  <b>How are the values ordered? It depends on the type.</b> With numbers, it
+  follows the mathematical order (e.g., `4` comes before `5` and after `3`).
+  With characters, it follows the Unicode order (like we discussed{' '}
+  <a
+    target='_blank'
+    href='https://robertinom.com/posts/haskell-course-lesson-5#characters'
+  >
+    here
+  </a>
+  ). And other types have other rankings.
 </p>
 
 As you can see, **each type has its own way of implementing the behaviors (functions) of the type class. And the type class doesn't care, as long as they have them.** It makes sense because each type has its own quirks, and a single definition of `==` or `>` can't possibly fit them all.
 
 <BlockNote>
-    We'll learn how to implement our own instances in future lessons.
+  We'll learn how to implement our own instances in future lessons.
 </BlockNote>
 
 They may look similar, but`Ord` is on an entirely different level than `Eq`. Because for `>` to be effective, the type has to have some sort of ranking. A way to tell if something is greater than another thing. And this opens the doors to many other functions that derive from this capacity. i.e., <a target="_blank" href="https://robertinom.com/posts/haskell-course-lesson-5#inequality-testing">all the operators that do inequality testing</a>, `compare`, `max`, and `min` functions.
@@ -262,10 +262,10 @@ Again, so far, all the types we learned are instances of this class type (except
 Now, you might say:
 
 <blockquote>
-    <p>
-        If I can check <code>EQ</code> with the <code>Ord</code> type class, why
-        do I need the <code>Eq</code> type class?
-    </p>
+  <p>
+    If I can check <code>EQ</code> with the <code>Ord</code> type class, why do
+    I need the <code>Eq</code> type class?
+  </p>
 </blockquote>
 
 Because you have to learn how to doodle before you can learn how to draw.
@@ -383,37 +383,37 @@ fToC x = (x - 32)*5/9
 ```
 
 <Accordion
-    title={
-        <div>
-            Without using GHCi, what is the signature of this function? (You're
-            allowed to check the types of <code>-</code>, <code>*</code>, and{' '}
-            <code>/</code>).
-        </div>
-    }
-    content={
-        <div>
-            <p>It takes a value and returns a value.</p>
-            <pre>
-                <code>fToC :: a -> a</code>
-            </pre>
-            <p>
-                {' '}
-                The value that it takes must be a numeric type (we're doing math
-                with several mathematical functions).{' '}
-            </p>
-            <pre>
-                <code>fToC :: Num a => a -> a</code>
-            </pre>
-            <p>
-                But not any numeric type will do! It has to be a type that can
-                be divided using <code>/</code>.
-            </p>
-            <pre className='font-bold'>
-                <code>fToC :: Fractional a => a -> a</code>
-            </pre>
-            <p>At the end of the day, the most restrictive constraint wins.</p>
-        </div>
-    }
+  title={
+    <div>
+      Without using GHCi, what is the signature of this function? (You're
+      allowed to check the types of <code>-</code>, <code>*</code>, and{' '}
+      <code>/</code>).
+    </div>
+  }
+  content={
+    <div>
+      <p>It takes a value and returns a value.</p>
+      <pre>
+        <code>fToC :: a -> a</code>
+      </pre>
+      <p>
+        {' '}
+        The value that it takes must be a numeric type (we're doing math with several
+        mathematical functions).{' '}
+      </p>
+      <pre>
+        <code>fToC :: Num a => a -> a</code>
+      </pre>
+      <p>
+        But not any numeric type will do! It has to be a type that can be
+        divided using <code>/</code>.
+      </p>
+      <pre className='font-bold'>
+        <code>fToC :: Fractional a => a -> a</code>
+      </pre>
+      <p>At the end of the day, the most restrictive constraint wins.</p>
+    </div>
+  }
 />
 
 Until now, we've been restricting if the type is an instance of a particular type class. And we know that there can be more specialized type classes (`Fractional` is a more specialized type class than `Num`). **But what if you need a type that can both draw AND play basketball?**
@@ -443,27 +443,25 @@ Now the `p` type variable has to be a type that's an instance of both `Eq` and `
 ### Constraints for multiple type variables
 
 <p>
-    Let's create a function that takes two values and returns <code>1</code> if
-    the first value is greater than the second, and <code>0</code> otherwise.
-    (In{' '}
-    <SideNote
-        content={
-            <div>
-                <h4>Binary code</h4>
-                <p>
-                    A binary code represents text, computer instructions, or any
-                    other data using a two-symbol system. The two-symbol system
-                    used is often <code>0</code> and <code>1</code> from the
-                    binary number system.
-                </p>
-            </div>
-        }
-    >
-        binary
-    </SideNote>
-    , <code>1</code> usually means <code>True</code> and <code>0</code> means <code>
-        False
-    </code>).
+  Let's create a function that takes two values and returns <code>1</code> if
+  the first value is greater than the second, and <code>0</code> otherwise. (In{' '}
+  <SideNote
+    content={
+      <div>
+        <h4>Binary code</h4>
+        <p>
+          A binary code represents text, computer instructions, or any other
+          data using a two-symbol system. The two-symbol system used is often{' '}
+          <code>0</code> and <code>1</code> from the binary number system.
+        </p>
+      </div>
+    }
+  >
+    binary
+  </SideNote>
+  , <code>1</code> usually means <code>True</code> and <code>0</code> means <code>
+    False
+  </code>).
 </p>
 
 ```haskell
@@ -505,11 +503,10 @@ mistery2 :: (Ord a, Num a, Fractional p) => a -> a -> p -> p
 **There are tons of type classes and behaviors that we didn't cover today, but don't worry about it until you cross paths with them.** It's no use to memorize a bunch of behaviors and type classes if you don't actively work with them.
 
 <p>
-    <mark>
-        I hope that, by now, you feel comfortable reading—and appreciating the
-        value of—type constraints. To help you with that, I've prepared some
-        questions. 😬
-    </mark>
+  <mark>
+    I hope that, by now, you feel comfortable reading—and appreciating the value
+    of—type constraints. To help you with that, I've prepared some questions. 😬
+  </mark>
 </p>
 
 ## Homework
@@ -523,18 +520,18 @@ func a b = if a > 18 then "You can pass, " ++ b else "Sorry, " ++ b ++ ". Too yo
 ```
 
 <Accordion
-    title='Show answer'
-    content={
-        <div>
-            <pre>
-                <code>func :: (Ord a, Num a) => a -> [Char] -> [Char]</code>
-            </pre>
-            <p>
-                <code>a</code> has to be an instance of <code>Ord</code> to use{' '}
-                <code>></code> and <code>Num</code> to be compared to a number.
-            </p>
-        </div>
-    }
+  title='Show answer'
+  content={
+    <div>
+      <pre>
+        <code>func :: (Ord a, Num a) => a -> [Char] -> [Char]</code>
+      </pre>
+      <p>
+        <code>a</code> has to be an instance of <code>Ord</code> to use{' '}
+        <code>></code> and <code>Num</code> to be compared to a number.
+      </p>
+    </div>
+  }
 />
 
 Which function is more type-restrictive?
@@ -548,45 +545,45 @@ func3 x y = x `div` 2 + y
 ```
 
 <Accordion
-    title='Show answer'
-    content={
-        <div>
-            <pre>
-                <code>func1 :: Num a => a -> a -> a</code>
-            </pre>
-            <pre>
-                <code>func2 :: Fractional a => a -> a -> a</code>
-            </pre>
-            <pre>
-                <code>func3 :: Integral a => a -> a -> a</code>
-            </pre>
-            <p>
-                <code>func1</code> is the less restrictive of the three, because
-                all native numeric types are accepted. <code>func2</code> and{' '}
-                <code>func3</code> are equally restrictive because each can
-                accept only two native numeric types.
-            </p>
-        </div>
-    }
+  title='Show answer'
+  content={
+    <div>
+      <pre>
+        <code>func1 :: Num a => a -> a -> a</code>
+      </pre>
+      <pre>
+        <code>func2 :: Fractional a => a -> a -> a</code>
+      </pre>
+      <pre>
+        <code>func3 :: Integral a => a -> a -> a</code>
+      </pre>
+      <p>
+        <code>func1</code> is the less restrictive of the three, because all
+        native numeric types are accepted. <code>func2</code> and{' '}
+        <code>func3</code> are equally restrictive because each can accept only
+        two native numeric types.
+      </p>
+    </div>
+  }
 />
 
 Last question:
 
 <Accordion
-    title={
-        <div>
-            The function <code>fromIntegral</code> takes an{' '}
-            <code>Integral</code> number and turns it into a more general{' '}
-            <code>Num</code> number. What's its type signature?
-        </div>
-    }
-    content={
-        <div>
-            <pre>
-                <code>fromIntegral :: (Integral a, Num b) => a -> b</code>
-            </pre>
-        </div>
-    }
+  title={
+    <div>
+      The function <code>fromIntegral</code> takes an <code>Integral</code>{' '}
+      number and turns it into a more general <code>Num</code> number. What's
+      its type signature?
+    </div>
+  }
+  content={
+    <div>
+      <pre>
+        <code>fromIntegral :: (Integral a, Num b) => a -> b</code>
+      </pre>
+    </div>
+  }
 />
 
 ### Install VSCode
@@ -597,26 +594,25 @@ I won't explain step-by-step how to install a program as popular as VSCode. But 
 
 We need:
 
--   VSCode.
--   Two VSCode extensions:
-    -   Haskell Syntax Highlighting.
-    -   Haskell (Haskell language support powered by the Haskell Language Server).
+- VSCode.
+- Two VSCode extensions:
+  - Haskell Syntax Highlighting.
+  - Haskell (Haskell language support powered by the Haskell Language Server).
 
 <p>
-    If you look around for tutorials, you'll cross paths with other tools like
-    Cabal or Stack. We'll eventually use them, but not right now. You can safely
-    ignore them. <mark>Search away!! ⛵️</mark>
+  If you look around for tutorials, you'll cross paths with other tools like
+  Cabal or Stack. We'll eventually use them, but not right now. You can safely
+  ignore them. <mark>Search away!! ⛵️</mark>
 </p>
 
 <p>
-    <mark>
-        We've equipped ourselves with enough knowledge to start doing some
-        interesting things. And that's what we're going to do the next lesson!
-        WE'RE GOING TO CODE OUR FIRST PROJECT! 🤩 So, make sure you complete
-        today's homework (especially the last part) to be ready! See you there!!
-        🙌 😄
-    </mark>
+  <mark>
+    We've equipped ourselves with enough knowledge to start doing some
+    interesting things. And that's what we're going to do the next lesson! WE'RE
+    GOING TO CODE OUR FIRST PROJECT! 🤩 So, make sure you complete today's
+    homework (especially the last part) to be ready! See you there!! 🙌 😄
+  </mark>
 </p>
 
 <ShareOnSocialMedia />
-<LessonNavigationButtons nextLesson='haskell-course-lesson-9' />
+<LessonNavigationButtons nextLesson='haskell-course-lesson-09' />
