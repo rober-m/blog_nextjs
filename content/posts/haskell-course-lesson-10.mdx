@@ -12,38 +12,19 @@ tags:
 
 Today, we'll learn about pattern matching. This Haskell feature is, by far, one of my favorites. You'll see why in a sec. But before that, here's the solution to the last lesson's homework:
 
-<Accordion
-  title={
-    <div>
-      Create a function named <code>generateTxId</code> that takes three values:
-      <ul>
-        <li>
-          A <code>String</code> representing the addresses of the sender
-        </li>
-        <li>
-          A <code>String</code> representing the addresses of the receiver
-        </li>
-        <li>
-          A <code>Int</code> representing the value of the transaction
-        </li>
-      </ul>
-      <p>
-        And concatenates all of them (in that order) into a single{' '}
-        <code>String</code>.
-      </p>
-    </div>
-  }
-  content={
-    <div>
-      <pre>
-        <code>generateTxId :: String -> String -> Int -> String</code>
-      </pre>
-      <pre>
-        <code>generateTxId from to value = from ++ to ++ show value</code>
-      </pre>
-    </div>
-  }
-/>
+**Lesson 9 homework's answer:**
+
+```haskell
+verifyBlock ::
+  (String, [(String, String, Int, String)], String) ->
+  String ->
+  [(String, String, Int, String)] ->
+  String
+verifyBlock block prevBlockHash listTx =
+  if block == createBlock prevBlockHash listTx
+    then "The block checks out"
+    else "Error! Fake block!"
+```
 
 <ShareOnSocialMedia />
 <LessonNavigationButtons />
