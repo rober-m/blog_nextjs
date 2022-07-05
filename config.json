@@ -1,37 +1,37 @@
 {
-    "base_url": "https://robertinom.com",
-    "site_title": "Robertino Martinez",
-    "site_description": "Learn how to build Dapps on Cardano for free!",
-    "site_keywords": [
-        {
-            "keyword": "Business"
-        },
-        {
-            "keyword": "Blockchain"
-        },
-        {
-            "keyword": "Programming"
-        },
-        {
-            "keyword": "Development"
-        },
-        {
-            "keyword": "Coding"
-        },
-        {
-            "keyword": "Indie"
-        },
-        {
-            "keyword": "Haskell"
-        },
-        {
-            "keyword": "Plutus"
-        },
-        {
-            "keyword": "Cardano"
-        }
-    ],
-    "posts_per_page": 5,
-    "twitter_account": "@robertinom_en",
-    "github_account": "rober-m"
+  "base_url": "https://robertinom.com",
+  "site_title": "Robertino Martinez",
+  "site_description": "Learn how to build Dapps on Cardano for free!",
+  "site_keywords": [
+    {
+      "keyword": "Business"
+    },
+    {
+      "keyword": "Blockchain"
+    },
+    {
+      "keyword": "Programming"
+    },
+    {
+      "keyword": "Development"
+    },
+    {
+      "keyword": "Coding"
+    },
+    {
+      "keyword": "Indie"
+    },
+    {
+      "keyword": "Haskell"
+    },
+    {
+      "keyword": "Plutus"
+    },
+    {
+      "keyword": "Cardano"
+    }
+  ],
+  "posts_per_page": 5,
+  "twitter_account": "@_roberm_",
+  "github_account": "rober-m"
 }

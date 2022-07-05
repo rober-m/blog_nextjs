@@ -5,10 +5,10 @@ date: 2022-03-03
 author: robertinom
 thumbnail: /images/cardano_dapp_course.jpg
 tags:
-    - blockchain
-    - programming
-    - haskell-course
-    - haskell
+  - blockchain
+  - programming
+  - haskell-course
+  - haskell
 ---
 
 So, I heard that you want to develop a Dapp.
@@ -22,241 +22,221 @@ Ok, are you ready? Let's go! 🔥
 ## What is a Dapp?
 
 <p>
-	A Dapp (Decentralized app) is a <b>software application that runs on a </b>
-	<SideNote
-		content={
-			<div>
-				<h4>Decentralized network</h4>
-				<p>
-					A decentralized network is a collection of interconnected
-					but independent elements — known as nodes — that interact
-					with one another without the need for a centralized power or
-					server.
-				</p>
-				<p>
-					The network is decentralized specifically because the nodes
-					can communicate and work together without the need for a
-					central authority.
-				</p>
-			</div>
-		}
-	>
-		<b>decentralized network</b>
-	</SideNote> (click on the highlight for a pleasant surprise. All the highlights
-	have it! 😃). A Dapp is just like any other software application. It could be
-	a website or an app on your phone or computer. What makes a Dapp different than
-	a traditional app is that it's <b>built on a decentralized network</b>, like
-	Cardano or Ethereum.
+  A Dapp (Decentralized app) is a <b>software application that runs on a </b>
+  <SideNote
+    content={
+      <div>
+        <h4>Decentralized network</h4>
+        <p>
+          A decentralized network is a collection of interconnected but
+          independent elements — known as nodes — that interact with one another
+          without the need for a centralized power or server.
+        </p>
+        <p>
+          The network is decentralized specifically because the nodes can
+          communicate and work together without the need for a central
+          authority.
+        </p>
+      </div>
+    }
+  >
+    <b>decentralized network</b>
+  </SideNote> (click on the highlight for a pleasant surprise. All the highlights
+  have it! 😃). A Dapp is just like any other software application. It could be a
+  website or an app on your phone or computer. What makes a Dapp different than a
+  traditional app is that it's <b>built on a decentralized network</b>, like Cardano
+  or Ethereum.
 </p>
 
 Running an app in a decentralized network gives you extra possibilities regarding what your app can do. A Dapp can:
 
--   Mint/burn NFTs
--   Charge, pay, and redistribute money.
--   Issue certificates.
--   Act as an escrow.
--   Provide loans.
--   Manage recurrent payments.
--   Provide a platform for trustless governance.
--   Manage identities.
--   And many other things.
+- Mint/burn NFTs
+- Charge, pay, and redistribute money.
+- Issue certificates.
+- Act as an escrow.
+- Provide loans.
+- Manage recurrent payments.
+- Provide a platform for trustless governance.
+- Manage identities.
+- And many other things.
 
 And the best of all is that **your Dapp will run in a system that is trustless, permissionless, and independent**. (And if you use Cardano, it's cheap for your users, too 😜.)
 
 It's not without sacrifices, though. **A Dapp is a product of combining many software engineering disciplines**. To write a Dapp, you have to:
 
--   Securely process and manage your user's data.
--   Securely interact with the blockchain.
--   And provide a beautiful and easy-to-use interface to make your users so happy that they'll never stop talking about your Dapp.
+- Securely process and manage your user's data.
+- Securely interact with the blockchain.
+- And provide a beautiful and easy-to-use interface to make your users so happy that they'll never stop talking about your Dapp.
 
 <Giff url='https://giphy.com/embed/f0Tonnws0PDVYzsbzO' />
 
 ## The components that constitute a Dapp.
 
 <blockquote>
-	<p>
-		Yeah yeah yeah... a Dapp is just an app that runs on a decentralized
-		network... cool. The thing is, I also don't know how regular apps work.
-	</p>
-	— Said someone, probably.
+  <p>
+    Yeah yeah yeah... a Dapp is just an app that runs on a decentralized
+    network... cool. The thing is, I also don't know how regular apps work.
+  </p>
+  — Said someone, probably.
 </blockquote>
 
 I got you! Let's have a brief overview of the components that constitute a Dapp.
 
 To create a Dapp, you need three things (two are a must):
 
--   A frontend.
--   A way to interact with the blockchain.
--   A backend (optional, but usually needed).
+- A frontend.
+- A way to interact with the blockchain.
+- A backend (optional, but usually needed).
 
 ### The frontend
 
 The frontend is **the component of a Dapp users interact with**. The visual component. It can be a website, a mobile app, or a desktop app.
 
 <TabbedContent
-	tabs={[
-		{
-			title: 'Mobile',
-			content: (
-				<div>
-					<p>
-						If you want to develop a mobile app, you have to take
-						into account that each platform (mainly Android and iOS)
-						has its own programming languages, set of technologies,
-						and tools.
-					</p>
-					<ul>
-						<li>
-							Android uses <b>Java</b> and <b>Kotlin</b> as{' '}
-							<SideNote
-								content={
-									<div>
-										<h4>Programming language</h4>
-										<p>
-											A programming language is a formal
-											language used by programmers
-											(developers) to communicate
-											instructions to computers. Usually,
-											programming languages are written in
-											plain text where each word, symbol,
-											and number, has a pre-defined
-											meaning for that specific language.
-										</p>
-										<p>Example:</p>
-										<img
-											src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png'
-											alt='screenshot of C programming language'
-										/>
-									</div>
-								}
-							>
-								programming languages
-							</SideNote>{' '}
-							and <b>AndroidStudio</b> as its main{' '}
-							<SideNote
-								content={
-									<div>
-										<h4>
-											Integrated Development Environment
-											(IDE)
-										</h4>
-										<p>
-											Software for building applications
-											that combines common developer tools
-											into a single graphical user
-											interface (GUI). An IDE typically
-											consists of:
-										</p>
-										<ul>
-											<li>
-												<b>Source code editor:</b> A
-												text editor that can assist in
-												writing software code.
-											</li>
-											<li>
-												<b>Debugger:</b> Program for
-												testing other programs that
-												helps you locating and fixing
-												bugs.
-											</li>
-											<li>
-												<b>Automation:</b> Utilities
-												that automate simple, repeatable
-												tasks as part of creating the
-												software.
-											</li>
-										</ul>
-									</div>
-								}
-							>
-								IDE
-							</SideNote>{' '}
-							.
-						</li>
-						<li>
-							iOS uses <b>Objective-C and Swift</b> as programming
-							languages and <b>XCode</b> as the main IDE.
-						</li>
-					</ul>
-					<p>
-						Personally, I develop my mobile apps in <b>Flutter</b> (
-						<SideNote
-							content={
-								<div>
-									<h4>Cross-platform frameworks</h4>
-									<p>
-										Cross-platform frameworks allow
-										developers to build apps for multiple
-										platforms (Android, iOS, Windows, Linux,
-										etc.) with a single source code.
-									</p>
-									<p>
-										They save time, money, and effort by
-										avoiding the development of the same
-										exact app multiple times (for each
-										platform).
-									</p>
-								</div>
-							}
-						>
-							cross-platform framework
-						</SideNote>
-						) using <b>Dart</b> programming language and <b>
-							VSCode/Vim
-						</b> as my IDEs. And I use the platform-specific technologies
-						previously mentioned to write minor platform-specific code.
-						I highly recommend the Flutter framework.
-					</p>
-				</div>
-			),
-		},
-		{
-			title: 'Desktop',
-			content: (
-				<div>
-					<p>
-						If you want to develop a desktop app, you also have to
-						take into account that each platform (mainly Windows,
-						macOS, and Linux) has its own quirks.
-					</p>
-					<p>
-						You could get by using a <b>framework</b> that allows
-						you to build <b>cross-platform</b> apps using Web
-						technologies (like I do 😛). Electron, per example. So
-						no need to learn much of the specific desktop stuff.
-						<p>
-							Which are those web technologies? I'll explain in
-							the Web tab.
-						</p>
-					</p>
-				</div>
-			),
-		},
-		{
-			title: 'Web',
-			content: (
-				<div>
-					<p>
-						To develop a web app, you have to take into account that
-						each browser (mainly Chrome, Firefox, and Safari)
-						supports different things. (
-						<b>
-							Although 99% of the time, you can use the same code
-							for all modern browsers, so no biggie
-						</b>{' '}
-						😉.)
-					</p>
-					<p>
-						To build a website's frontend, you need at least three
-						technologies: <b>JavaScript</b>, <b>HTML</b>, and{' '}
-						<b>CSS</b>. But, if you want to build a more complex web
-						app, the usual is to use a framework like <b>React</b>{' '}
-						that makes the development easier.
-					</p>
-				</div>
-			),
-		},
-	]}
+  tabs={[
+    {
+      title: 'Mobile',
+      content: (
+        <div>
+          <p>
+            If you want to develop a mobile app, you have to take into account
+            that each platform (mainly Android and iOS) has its own programming
+            languages, set of technologies, and tools.
+          </p>
+          <ul>
+            <li>
+              Android uses <b>Java</b> and <b>Kotlin</b> as{' '}
+              <SideNote
+                content={
+                  <div>
+                    <h4>Programming language</h4>
+                    <p>
+                      A programming language is a formal language used by
+                      programmers (developers) to communicate instructions to
+                      computers. Usually, programming languages are written in
+                      plain text where each word, symbol, and number, has a
+                      pre-defined meaning for that specific language.
+                    </p>
+                    <p>Example:</p>
+                    <img
+                      src='https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png'
+                      alt='screenshot of C programming language'
+                    />
+                  </div>
+                }
+              >
+                programming languages
+              </SideNote>{' '}
+              and <b>AndroidStudio</b> as its main{' '}
+              <SideNote
+                content={
+                  <div>
+                    <h4>Integrated Development Environment (IDE)</h4>
+                    <p>
+                      Software for building applications that combines common
+                      developer tools into a single graphical user interface
+                      (GUI). An IDE typically consists of:
+                    </p>
+                    <ul>
+                      <li>
+                        <b>Source code editor:</b> A text editor that can assist
+                        in writing software code.
+                      </li>
+                      <li>
+                        <b>Debugger:</b> Program for testing other programs that
+                        helps you locating and fixing bugs.
+                      </li>
+                      <li>
+                        <b>Automation:</b> Utilities that automate simple,
+                        repeatable tasks as part of creating the software.
+                      </li>
+                    </ul>
+                  </div>
+                }
+              >
+                IDE
+              </SideNote>{' '}
+              .
+            </li>
+            <li>
+              iOS uses <b>Objective-C and Swift</b> as programming languages and{' '}
+              <b>XCode</b> as the main IDE.
+            </li>
+          </ul>
+          <p>
+            Personally, I develop my mobile apps in <b>Flutter</b> (
+            <SideNote
+              content={
+                <div>
+                  <h4>Cross-platform frameworks</h4>
+                  <p>
+                    Cross-platform frameworks allow developers to build apps for
+                    multiple platforms (Android, iOS, Windows, Linux, etc.) with
+                    a single source code.
+                  </p>
+                  <p>
+                    They save time, money, and effort by avoiding the
+                    development of the same exact app multiple times (for each
+                    platform).
+                  </p>
+                </div>
+              }
+            >
+              cross-platform framework
+            </SideNote>
+            ) using <b>Dart</b> programming language and <b>VSCode/Vim</b> as my
+            IDEs. And I use the platform-specific technologies previously mentioned
+            to write minor platform-specific code. I highly recommend the Flutter
+            framework.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: 'Desktop',
+      content: (
+        <div>
+          <p>
+            If you want to develop a desktop app, you also have to take into
+            account that each platform (mainly Windows, macOS, and Linux) has
+            its own quirks.
+          </p>
+          <p>
+            You could get by using a <b>framework</b> that allows you to build{' '}
+            <b>cross-platform</b> apps using Web technologies (like I do 😛).
+            Electron, per example. So no need to learn much of the specific
+            desktop stuff.
+            <p>
+              Which are those web technologies? I'll explain in the Web tab.
+            </p>
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: 'Web',
+      content: (
+        <div>
+          <p>
+            To develop a web app, you have to take into account that each
+            browser (mainly Chrome, Firefox, and Safari) supports different
+            things. (
+            <b>
+              Although 99% of the time, you can use the same code for all modern
+              browsers, so no biggie
+            </b>{' '}
+            😉.)
+          </p>
+          <p>
+            To build a website's frontend, you need at least three technologies:{' '}
+            <b>JavaScript</b>, <b>HTML</b>, and <b>CSS</b>. But, if you want to
+            build a more complex web app, the usual is to use a framework like{' '}
+            <b>React</b> that makes the development easier.
+          </p>
+        </div>
+      ),
+    },
+  ]}
 />
 
 If it seems like a lot, it's because it _is_ a lot. That's why **most companies/projects start with the one that better fits its use-case** and then add the rest when/if needed.
@@ -273,31 +253,28 @@ Blockchains are just a bunch of _nodes_ (servers/computers) that interact follow
 
 There are two main ways to interact with a node:
 
--   **Spin up your own node:** If you have your own node, your Dapp can talk with it directly! Anyone can do it (although I don't recommend it unless you know what you are doing).
--   **Use a third-party API:** Some companies will maintain Cardano nodes for you and provide an
-    <SideNote
-    	content={
-    		<div>
-    			<h4>Application Programming Interface (API)</h4>
-    			<p>
-    				<b>
-    					Software used to communicate between computers or
-    					programs.
-    				</b>
-    			</p>
-    			<p>
-    				User interfaces are created to allow people to interact with
-    				programs, and APIs are created so other software can
-    				interact with the software that provides the API
-    			</p>
-    		</div>
-    	}
-    >
-    	{' '}
-    	API
-    </SideNote> so you can talk to them! (Way easier — and cheaper — than spinning
-    up your own node!) Usually, you pay only for the request you made. So if no one
-    uses your Dapp, you pay nothing, and if everyone uses it, you pay proportionally.
+- **Spin up your own node:** If you have your own node, your Dapp can talk with it directly! Anyone can do it (although I don't recommend it unless you know what you are doing).
+- **Use a third-party API:** Some companies will maintain Cardano nodes for you and provide an
+  <SideNote
+    content={
+      <div>
+        <h4>Application Programming Interface (API)</h4>
+        <p>
+          <b>Software used to communicate between computers or programs.</b>
+        </p>
+        <p>
+          User interfaces are created to allow people to interact with programs,
+          and APIs are created so other software can interact with the software
+          that provides the API
+        </p>
+      </div>
+    }
+  >
+    {' '}
+    API
+  </SideNote> so you can talk to them! (Way easier — and cheaper — than spinning
+  up your own node!) Usually, you pay only for the request you made. So if no one
+  uses your Dapp, you pay nothing, and if everyone uses it, you pay proportionally.
 
 The Cardano blockchain runs something called "**smart contracts**" (I'll leave the details for the course). Smart contracts are **automated digital agreements**. They are self-executing, incorruptible, unalterable, and don't require any actions or the presence of third parties.
 
@@ -305,9 +282,9 @@ When you communicate with the Cardano blockchain, you can interact with smart co
 
 **Plutus is the smart contract platform of the Cardano blockchain**. It allows you to write applications that interact with the Cardano blockchain. To write Plutus contracts, you have to know:
 
--   **Haskell**: Haskell is the programming language for Plutus contracts. It's a functional programming language that very few can use. ("Haskell for complete beginners" is one of the free courses 😉.)
--   **Blockchain protocols**: You have to know how the Cardano blockchain itself works under the hood (node communication, the eUTxO model, etc.).
--   How to use all the **Cardano ecosystem and Plutus tools**.
+- **Haskell**: Haskell is the programming language for Plutus contracts. It's a functional programming language that very few can use. ("Haskell for complete beginners" is one of the free courses 😉.)
+- **Blockchain protocols**: You have to know how the Cardano blockchain itself works under the hood (node communication, the eUTxO model, etc.).
+- How to use all the **Cardano ecosystem and Plutus tools**.
 
 Done! That's enough to build a Dapp! Write a smart contract, deploy it, and create the frontend to interact with it. _But, wait! There's more! For an extra $99, you get the exclusive..._ **just kidding!** 😆 There really is more, though 🤣.
 
@@ -325,19 +302,19 @@ Some call smart contracts "the backend of Dapps." Well, if you only use smart co
 
 Backends do most of the heavy lifting:
 
--   **The database is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. **There are tons of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc.** Even though there are dozens of options, programmers usually pick a few and always use the same.
--   **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example (hover to zoom): <img src='/images/backend_logic.png' alt='backend logic' />
--   **Communication** with other backends.
--   Manage the **identity** and **permissions** of the user.
--   Other tasks like **sending emails and notifications**, periodically **checking the state of** the blockchain, or other information like stocks, the weather, etc.
+- **The database is the backend's component that stores users' data and other important information**. When you leave — for example — a comment on a social network, everything is saved in a database. Who wrote it (you), in which post, at what time, how many likes did it get, etc. **There are tons of databases, languages, and tools: SQL, MySQL, MongoDB, Oracle, Firebase Firestore, etc.** Even though there are dozens of options, programmers usually pick a few and always use the same.
+- **Business logic**: Databases by themselves don't do much. That's why you need to write code that interacts with the database, the frontend, and the smart contract. Example (hover to zoom): <img src='/images/backend_logic.png' alt='backend logic' />
+- **Communication** with other backends.
+- Manage the **identity** and **permissions** of the user.
+- Other tasks like **sending emails and notifications**, periodically **checking the state of** the blockchain, or other information like stocks, the weather, etc.
 
 **That's a lot to code from scratch! 😱 Lucky us, we don't need to! 😁** There are tons of solutions that allow us to go from nothing to a fully functional backend in a matter of days!
 
 Here are some tech/services that I use:
 
--   Firebase
--   Google Cloud
--   AWS (Amazon Web Services)
+- Firebase
+- Google Cloud
+- AWS (Amazon Web Services)
 
 Those are highly performant and easy to set up and use. But there's a catch. Those are **centralized backends**, which depending on your needs (_avoid censorship and stuff like that_), may defeat the purpose of your Dapp. One way to combat this is to use a **decentralized off-chain storage** solution, like IPFS.
 
@@ -352,11 +329,11 @@ Once you have all that, you have to connect everything together. Usually, your f
 And now is when you go:
 
 <blockquote>
-	<p>
-		"And that's it? Are you kidding me? That's so much! It'll take ages to
-		learn all that!"
-	</p>{' '}
-	— Every coder when starting their coding journey.
+  <p>
+    "And that's it? Are you kidding me? That's so much! It'll take ages to learn
+    all that!"
+  </p>{' '}
+  — Every coder when starting their coding journey.
 </blockquote>
 
 **Yes**. That's one of the main reasons **most projects need several coders**. The usual is that a coder specializes in one of those three components and works with others to build the Dapp.
@@ -365,9 +342,9 @@ You can learn all three (frontend, backend, blockchain) simultaneously. But, it'
 
 A better approach would be: **Choose one, become good at it, and advance to the next one, or partner up with your counterparts**. There are virtually no cons, and the pros are obvious:
 
--   A significantly **shorter period and effort** until you become good enough to produce production-quality code.
--   Once you master one, you could get a job (full-time or part-time) and **earn a lot of money** while learning the other in your free time.
--   Once you master one, you can partner up with your counterparts. You'll be able to **start building in 1/3 of the time** (the time it takes you to learn just the one), and (because you'll be 3) **it'll take ~1/3 of the time to finish**.
+- A significantly **shorter period and effort** until you become good enough to produce production-quality code.
+- Once you master one, you could get a job (full-time or part-time) and **earn a lot of money** while learning the other in your free time.
+- Once you master one, you can partner up with your counterparts. You'll be able to **start building in 1/3 of the time** (the time it takes you to learn just the one), and (because you'll be 3) **it'll take ~1/3 of the time to finish**.
 
 Now, **which one should you start with?** That's like choosing a starter in Pokemon. They're all great options, and you can't go wrong with either one (except for Squirtle 👀).
 
@@ -386,10 +363,10 @@ As we saw, most of what you need to learn is already out there and free to acces
 That's the current Achille's heel of the Cardano ecosystem. **Few people have the skillset to even start learning about Plutus!**
 
 <p>
-	<mark>
-		That's what I intend to fix. I want to fill the gap between people with
-		zero coding experience and currently available resources.
-	</mark>
+  <mark>
+    That's what I intend to fix. I want to fill the gap between people with zero
+    coding experience and currently available resources.
+  </mark>
 </p>
 
 And for that, I'm creating a few courses:
@@ -399,11 +376,11 @@ And for that, I'm creating a few courses:
 3. **Cardano under the hood**: This will be a theoretical course about how Cardano works under the hood and why. This information is critical to being a productive Cardano developer and/or community member.
 
 <p>
-	<mark>
-		Anyone that completes those courses will be able to go through current
-		Cardano resources (like the Plutus Pioneer Program) without breaking a
-		sweat.
-	</mark>
+  <mark>
+    Anyone that completes those courses will be able to go through current
+    Cardano resources (like the Plutus Pioneer Program) without breaking a
+    sweat.
+  </mark>
 </p>
 
 Creating the courses will be challenging. It'll take a lot of time and effort, but we'll get there! 💪
@@ -414,6 +391,6 @@ The courses will be text-based. That way, I can create, update, and improve them
 
 ### How do I get started?
 
-**You don't need to sign up or pay anything**. But if you want to know each time I release a lesson, you can <mark>follow me on [Twitter](https://twitter.com/robertinom_en) or sign up for the newsletter that I just created for this exact reason (below)</mark>. Else, you can periodically check the course [here](https://robertinom.com/courses/haskell-course).
+**You don't need to sign up or pay anything**. But if you want to know each time I release a lesson, you can <mark>follow me on [Twitter](https://twitter.com/_roberm_) or sign up for the newsletter that I just created for this exact reason (below)</mark>. Else, you can periodically check the course [here](https://robertinom.com/courses/haskell-course).
 
 **Let's build some Cardano Dapps together!! 😄**

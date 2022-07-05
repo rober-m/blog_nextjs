@@ -14,7 +14,7 @@ export default function Index() {
         <div className='max-w-md'>
           <h1 className='md:text-5xl'>Hi, I'm Robertino Martinez</h1>
           <span className='inline-block mt-1 text-gray-500 font-ubuntuMono'>
-            @robertinom_en
+            @_roberm_
           </span>
           <h2 className='before:hidden md:text-4xl'>
             Engineer, technical founder, Blockchain developer
