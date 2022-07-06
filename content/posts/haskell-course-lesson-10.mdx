@@ -1,13 +1,15 @@
----
+.---
 slug: haskell-course-lesson-10
 title: Haskell Course - Lesson 10 - Pattern Matching
 date: 2022-06-29
 author: robertinom
 thumbnail: /images/meme-brand-new-project-1.png#TODO
 tags:
-  - programming
-  - haskell
-  - haskell-course
+
+- programming
+- haskell
+- haskell-course
+
 ---
 
 Today, we'll learn about pattern matching. This Haskell feature is, by far, one of my favorites. You'll see why in a sec. But before that, here's the solution to the last lesson's homework:
@@ -25,6 +27,341 @@ verifyBlock block prevBlockHash listTx =
     then "The block checks out"
     else "Error! Fake block!"
 ```
+
+Ok, now that that's out of the way, let's start!
+
+<p>
+  <mark>
+    Pattern matching is the act of matching data (values, types, etc.) against a
+    pattern, optionally binding variables to successful matches.
+  </mark>
+</p>
+
+It sounds complicated, but it's actually pretty intuitive when you get the hang of it. It'll be clear as day after a few examples.
+
+Let's pattern match some functions!
+
+## Pattern Matching function definitions
+
+Remember `specialBirthday` function from last lesson?:
+
+```haskell
+specialBirthday :: (Eq a, Num a) => a -> [Char]
+specialbirthday age =
+  if age == 1
+    then "First birthday!"
+    else
+      if age == 18
+        then "You're an adult!"
+        else
+          if age == 60
+            then "Finally, I can stop caring about new lingo!"
+            else "Nothing special"
+```
+
+It's time to express that atrocity more elegantly and understandably.
+
+To pattern match on function definitions, we just have to define the same function multiple times, replacing the parameters with values. Like this:
+
+```haskell
+specialBirthday :: (Eq a, Num a) => a -> [Char]
+specialBirthday 1   = "First birthday!"
+specialBirthday 18  = "You're an adult!"
+specialBirthday 60  = "finally, I can stop caring about new lingo!"
+```
+
+That's it! Our function has been defined! And it looks way nicer than before!
+
+And how does it work? Well, when presented with code like this, Haskell will try to match the value of `age` with the first definition. If `age /= 1`, it will try to match the second definition. If `age /= 18`, it will try to match the third definition. And so on until the value passed as a parameter matches one of the definition's values.
+
+<blockquote>
+  <p>
+    But wait... what if I pass a value that isn't in any of the definitions?
+    Like <code>35</code>?
+  </p>
+  — The one guy paying attention
+</blockquote>
+
+Good eye! Let's solve that!
+
+### Catch-all patterns
+
+The function's signature clearly states that you can pass any value of type `a` that is an instance of `Eq` and `Num`.
+
+So we could pass `14`—per example—or any other number, for that matter. But what should the function do if we pass `14`? We didn't specify it because we didn't pattern match for `14`! So, the program will crash 💥 because it doesn't know how to handle that value! 😱
+
+Because we need the function to work with any value that our types can accept, we need to pattern match for all possible situations. But you can't write a definition for every single value! Then, what can you do?!?!
+
+Use a catch-all pattern!
+
+<Giff url='https://giphy.com/embed/W04QVzelTHsNW' />
+
+Catch-all patterns allow you to provide a default definition in case none of your specific ones match. In this case, it'll play the role of the `else` at the end of `specialBirthday`.
+
+To use catch-all patterns, you have to provide a name that starts with lowercase, like `age`, `x`, or `yearsSinceThisPoorSoulHasTouchedTheEarth`. Like this:
+
+```haskell
+specialBirthday :: (Eq a, Num a) => a -> [Char]
+specialBirthday 1   = "First birthday!"
+specialBirthday 18  = "You're an adult!"
+specialBirthday 60  = "finally, I can stop caring about new lingo!"
+specialBirthday age = "Nothing special"
+```
+
+Now, if we pass any number different than `1`, `18`, or `60`, `specialBirthday` will evaluate to `"Nothing special"`.
+
+<BlockNote type='warning'>
+  <p className='mt-0'>
+    IMPORTANT:{' '}
+    <b>Always provide a valid catch-all pattern as the last match!</b>
+  </p>
+  If you don't, you'll get the next warning:
+  <p>
+    <code>
+      Pattern match(es) are non-exhaustive In an equation for `specialBirthday`
+    </code>
+  </p>
+</BlockNote>
+
+Another important detail is that Haskell matches from top to bottom. So, if you do something like:
+
+```haskell
+specialBirthday :: (Eq a, Num a) => a -> [Char]
+specialBirthday age = "Nothing special"
+specialBirthday 1   = "First birthday!"
+specialBirthday 18  = "You're an adult!"
+specialBirthday 60  = "finally, I can stop caring about new lingo!"
+```
+
+The first definition will catch all the occurrences, and we'll always get `"Nothing special"` as a result, no matter the number we pass.
+
+Last but not least, we said that you can optionally _bind_ variables to successful matches, and that's what we just did!
+
+### Binding catch-all patterns
+
+When using `specialBirthday`, every time the value falls into the `age` catch-all pattern, we bind that value to the `age` variable. Allowing us to use the value inside the definition's expression!:
+
+```haskell
+specialBirthday :: (Eq a, Num a, Show a) => a -> [Char]
+specialBirthday 1   = "First birthday!"
+specialBirthday 18  = "You're an adult!"
+specialBirthday 60  = "finally, I can stop caring about new lingo!"
+specialBirthday age = "Nothing special, you're just " ++ show age
+```
+
+You cannot overstate how useful this is! **You're filtering values to the ones that match a specific pattern AND binding those values to variables for later use at the same time!**
+
+A more compeling example of how this is useful is when pattern matching more complex structures like lists and tuples. Let's explore that.
+
+## Pattern Matching lists
+
+Before learning about pattern matching with lists, we need to take a closer look at the insides of lists. 😈
+
+<Giff url='https://giphy.com/embed/RHOwWKH5OY7buuGHNi' />
+
+### The `:` operator
+
+The `:` (_cons_) operator adds an element to the beginning of a list (prepends an element):
+
+```haskell
+(:) :: a -> [a] -> [a]
+
+--------------------------------------------
+
+3 : [4,5]  -- [3,4,5]
+
+'I' : "'m programming"  -- "I'm programming"
+```
+
+It's different from `++` because it takes a single element and a list (`++` takes two lists). Notice from the type signature that you can't do something like `[1,2]:3`. You can't switch the parameter's places, so you can't use `:` to add an element at the end of a list.
+
+Remember when I told you that `String` was syntactic sugar for `[Char]`? Well, get ready for a sugar rush because the way we wrote lists so far is actually syntactic sugar for the real way Haskell sees lists! As an empty list prepended with all the elements that it contains! 🤯
+
+Examples (you can paste these examples into GHCi to check):
+
+```haskell
+[1,2,3,4] == 1:2:3:4:[]                  -- True
+
+"Hello!"  == 'H':'e':'l':'l':'o':'!':[]  -- True
+```
+
+Now, you could be thinking: "Why do I care? I'll keep writing lists as always." To what I say: "AHA! PATTERN MATCHING!!"
+
+### Pattern Matching lists
+
+Now that we know what lists look like without makeup, we can use their structure to pattern match different function definitions depending on the list structure!
+
+Let's pattern match in a bunch of different ways and investigate how the code works later:
+
+```haskell
+whatsInsideThisList :: Show a => [a] -> [Char]
+whatsInsideThisList []         = "It's empty!"
+whatsInsideThisList [x]        = "A single element: " ++ show x
+whatsInsideThisList [x, y]     = "Two elements: " ++ show [x, y]
+whatsInsideThisList (x:y:z:[]) = "The first three elements are: " ++ show [x,y] ++ "And the last one is: " ++ show z
+whatsInsideThisList (x:rest)   = "The first element is: " ++ show x ++ "And the rest is: " ++ show rest
+```
+
+As you can see, you can pattern match for:
+
+- Empty lists (`[]`).
+- List of fixed size, both with (`[x]`, `[x,y]`) and without (`x:[]`,`x:y:[]`) syntactic sugar.
+- Non-empty lists of any size with `x:rest`. (Commonly used in recursive functions and usually named `x:xs`.)
+
+<BlockNote type='info'>
+  We surround with <code>()</code> the patterns of the last two definitions to
+  indicate that the function takes everything inside the <code>()</code> as its
+  argument.
+</BlockNote>
+
+And, because you pattern-matched for specific elements inside the list (`x`, `y`,`z`, `rest`), you can use those specific values inside the function's definition (`show [x, y]`).
+
+But what if you don't need them? What if you want to do something when a specific pattern matches but don't care for the actual value/values? Binding values and then ignoring them pollutes your environment with variables you'll never use! But don't worry. There's a way to pattern-match anything you want while binding only the values you'll need.
+
+### Ignoring matched values
+
+To put the cherry on top, you can ignore the data you don't care for while pattern matching for the rest! Take a look at the following function. It tells us which are the first and third elements in a list (if any):
+
+```haskell
+firstAndThird :: Show a => [a] -> [Char]
+firstAndThird (x:_:z:_) = "The first and third elements are: " ++ show x ++ " and " ++ show z
+firstAndThird list = "I don't care!"
+```
+
+The first definition will pattern match any list with 3 or more elements, and using `_`, it will ignore the second element and the rest of the list. Awesome, right?
+
+Now let's see how pattern matching makes our lives easier with tuples!
+
+## Pattern Matching tuples
+
+As you can recall from previous lessons, we could only get the elements inside a pair (tuple of two elements) using the `fst` and `snd` functions. If you needed a value from tuples bigger than that, you were <s>screwed</s> in a pickle. But now that you're a pattern-matching magician, the sky is the limit!
+
+Want to extract the first element of a 3-element tuple? No problem:
+
+```haskell
+firstOfThree (x,_,_) = x
+```
+
+Done!
+
+Want to create a pair with the second and fourth elements of a 4-element tuple? Super easy, barely an inconvenience!:
+
+```haskell
+pairFromFour (_,x,_,y) = (x,y)
+```
+
+BOOM! Done!
+
+Ok, big shot. Let's do something a little bit more interesting:
+
+Open your Haskell file and write a function that takes two tuples (each containing a person's name and a number indicating how much money they have) and returns the total amount of money held by the two together. More specifically, if we use the function like this:
+
+```haskell
+ sumOfMoney ("Daniel",15) ("Santiago",10)
+```
+
+The function has to return:
+
+```haskell
+"Between Daniel and Santiago, they have 25"
+```
+
+<Accordion
+  title='Answer'
+  content={
+    <div>
+      <pre>
+        <code>
+          sumOfMoney :: (Show a, Num a) => ([Char], a) -> ([Char], a) -> [Char]
+        </code>
+      </pre>
+      <pre>
+        <code>
+          sumOfMoney (name1, money1) (name2, money2) = "Between " ++ name1 ++ "
+          and " ++ name2 ++ ", they have " ++ show (money1 + money2)
+        </code>
+      </pre>
+    </div>
+  }
+/>
+
+Now, based on that function, create a new one called `transfer` that transfers money from the first to the second. It should take **a LIST with two pairs**, plus a numeric value. And it should return the two pairs with their values updated. If we give it a list with more or fewer pairs, it should return the list without modifications.
+
+More specifically, if we use the function like this:
+
+```haskell
+transfer [("Daniel",15), ("Santiago",10)] 10
+```
+
+The function has to return:
+
+```haskell
+[("Daniel",5),("Santiago",20)]
+```
+
+And if we use it like this:
+
+```haskell
+transfer [("Daniel",15)] 10
+```
+
+it should return:
+
+```haskell
+[("Daniel",15)]
+```
+
+<Accordion
+  title='Answer'
+  content={
+    <div>
+      <pre>
+        <code>transfer :: Num a => [(String, a)] -> a -> [(String, a)]</code>
+      </pre>
+      <pre>
+        <code>
+          transfer [(name1, money1), (name2, money2)] value = [(name1, money1 -
+          value), (name2, money2 + value)]
+        </code>
+        <code>transfer list value = list</code>
+      </pre>
+    </div>
+  }
+/>
+
+Awesome! 💪
+
+As a final exercise, add to `transfer` a way to manage lists with three tuples. Where the first two tuples transfer the value and the third receives it.
+
+More specifically, if we use the function like this:
+
+```haskell
+transfer [("Daniel",15), ("Santiago",10), ("Rick",0)] 10
+```
+
+The function has to return:
+
+```haskell
+[("Daniel",5),("Santiago",0),("Rick",20)]
+```
+
+<Accordion
+  title='Answer'
+  content={
+    <div>
+      You don't need me to give you the answer. This is too easy for you! 😎
+    </div>
+  }
+/>
+
+<mark>
+  <p>
+    That's it for today. 😃 We have learned a lot about pattern matching, but do
+    know that it doesn't stop here! You can pattern match in many ways we'll
+    discuss in future lessons! As a general rule of thumb, if something has a
+    structure, you can pattern match it! 🤩
+  </p>
+</mark>
 
 <ShareOnSocialMedia />
 <LessonNavigationButtons />
